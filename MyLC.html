@@ -1,4 +1,8 @@
 <head>
+  <link rel="stylesheet" href="//code.jquery.com/ui/1.11.4/themes/smoothness/jquery-ui.css">
+
+  <script src="//code.jquery.com/jquery-1.10.2.js"></script>
+  <script src="//code.jquery.com/ui/1.11.4/jquery-ui.js"></script>
   <title>Todo List</title>
 </head>
 
@@ -17,12 +21,17 @@
         {{> task}}
       {{/each}}
     </ul>
+
   </div>
 </body>
 
 <template name="task">
   <li>
-    <button class="delete">&times;</button>
-    <span class="text">{{text}}</span>
+    <div class="portlet">
+      <div class="portlet-header">{{text}}</div>
+      <div class="portlet-content">Lorem ipsum dolor sit amet, consectetuer adipiscing elit
+        <button class="delete">&times;</button>
+      </div>
+    </div>
   </li>
 </template>
