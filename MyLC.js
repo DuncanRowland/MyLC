@@ -16,6 +16,7 @@ if (Meteor.isClient) {
             .addClass( "ui-widget-header ui-corner-all" )
             .prepend( "<span class='ui-icon ui-icon-plusthick portlet-toggle'></span>");
 
+        $( ".portlet-toggle" ).unbind("click");
         $( ".portlet-toggle" ).click(function() {
           var icon = $( this );
           icon.toggleClass( "ui-icon-minusthick ui-icon-plusthick" );
