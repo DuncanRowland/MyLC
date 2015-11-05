@@ -10,15 +10,6 @@ if (Meteor.isClient) {
   });
 
   Template.task.rendered = function() {
-    //should I be here
-        $( ".column" ).sortable({
-          connectWith: ".column",
-          handle: ".portlet-header",
-          cancel: ".portlet-toggle",
-          placeholder: "portlet-placeholder ui-corner-all"
-        });
-
-
         $( ".portlet" )
           .addClass( "ui-widget ui-widget-content ui-helper-clearfix ui-corner-all" )
           .find( ".portlet-header" )
