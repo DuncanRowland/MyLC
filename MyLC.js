@@ -8,8 +8,19 @@ if (Meteor.isClient) {
   Template.body.helpers({
     tasks: function () {
       // Show in alphabetical order
-
-      return Tasks.find({}, {sort: {text: 1}});
+      var r = [];
+      var result = Tasks.find({}, {sort: {text: 1}});
+      result.forEach(function(entry) {
+          img = Images.findOne({_id: entry['imageid']});
+          obj = {};
+          obj['_id']=entry['_id'];
+          obj['text']=entry['text'];
+          obj['description']=entry['description'];
+          obj['image']=img;
+          r.push(obj)
+          console.log(obj);
+      });
+      return r;
     }
   });
 
@@ -28,14 +39,7 @@ if (Meteor.isClient) {
         });
   }
 
-
-  //var imageFile = "";
-
   Template.body.events({
-
-//    "change .myFileInput": function(event, template) {
-//      imageFile = event.target.files[0];
-//    },
 
     "submit .new-task": function (event) {
       // Prevent default browser form submit
