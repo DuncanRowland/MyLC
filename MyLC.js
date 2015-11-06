@@ -42,25 +42,24 @@ if (Meteor.isClient) {
       event.preventDefault();
 
       // Get value from form element
-      var imageFile = event.target.myFileInput.files[0];
+      var image = event.target.image.files[0];
       var text = event.target.text.value;
       var description = event.target.description.value;
 
-      Images.insert(imageFile, function (err, fileObj) {
+      Images.insert(image, function (err, fileObj) {
         // Inserted new doc with ID fileObj._id, and kicked off the data upload using HTTP
-        console.log(err);
-        console.log(fileObj._id);
-      });
-
-      // Insert a task into the collection
-      Tasks.insert({
-        text: text,
-        description: description
+        // Insert a task into the collection
+        Tasks.insert({
+          text: text,
+          description: description,
+          imageid: fileObj._id
+        });
       });
 
       // Clear form
       event.target.text.value = "";
       event.target.description.value = "";
+      event.target.image.value = "";
     }
   });
 
