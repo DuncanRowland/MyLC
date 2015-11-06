@@ -7,7 +7,6 @@ if (Meteor.isClient) {
   // This code only runs on the client
   Template.body.helpers({
     tasks: function () {
-      console.log("task function called")
       // Show in alphabetical order
       var r = [];
       var result = Tasks.find({}, {sort: {text: 1}});
