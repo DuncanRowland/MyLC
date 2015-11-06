@@ -1,9 +1,9 @@
 <head>
   <link rel="stylesheet" href="//code.jquery.com/ui/1.11.4/themes/smoothness/jquery-ui.css">
 
-  <script src="//code.jquery.com/jquery-1.10.2.js"></script>
-  <script src="//code.jquery.com/ui/1.11.4/jquery-ui.js"></script>
-  <title>Todo List</title>
+<!--  <script src="//code.jquery.com/jquery-1.10.2.js"></script> -->
+  <script src="http://code.jquery.com/ui/1.11.4/jquery-ui.js"></script>
+   <title>Todo List</title>
 </head>
 
 <body>
@@ -12,7 +12,9 @@
       <h1>Todo List</h1>
 
       <form class="new-task">
-        <input type="text" name="text" placeholder="Type to add new tasks" />
+        <input type="text" name="text" placeholder="Type to add item title" onkeydown="if (event.keyCode == 13) {return false;}"/>
+        <input type="text" name="description" placeholder="Type to add description" onkeydown="if (event.keyCode == 13) {return false;}"/>
+        <button class="TBD">create</button>
       </form>
     </header>
 
@@ -29,7 +31,7 @@
   <li>
     <div class="portlet">
       <div class="portlet-header">{{text}}</div>
-      <div class="portlet-content">Lorem ipsum dolor sit amet, consectetuer adipiscing elit
+      <div class="portlet-content">{{description}}
         <button class="delete">&times;</button>
       </div>
     </div>

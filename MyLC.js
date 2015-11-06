@@ -5,6 +5,7 @@ if (Meteor.isClient) {
   Template.body.helpers({
     tasks: function () {
       // Show in alphabetical order
+
       return Tasks.find({}, {sort: {text: 1}});
     }
   });
@@ -31,14 +32,17 @@ if (Meteor.isClient) {
 
       // Get value from form element
       var text = event.target.text.value;
+      var description = event.target.description.value;
 
       // Insert a task into the collection
       Tasks.insert({
-        text: text
+        text: text,
+        description: description
       });
 
       // Clear form
       event.target.text.value = "";
+      event.target.description.value = "";
     }
   });
 
