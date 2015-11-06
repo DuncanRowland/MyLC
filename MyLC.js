@@ -1,4 +1,7 @@
 Tasks = new Mongo.Collection("tasks");
+Images = new FS.Collection("images", {
+  stores: [new FS.Store.FileSystem("images", {path: "~/uploads"})]
+});
 
 if (Meteor.isClient) {
   // This code only runs on the client
@@ -26,6 +29,17 @@ if (Meteor.isClient) {
   }
 
   Template.body.events({
+
+    'change .myFileInput': function(event, template) {
+      console.log("hello");
+      var files = event.target.files;
+      for (var i = 0, ln = files.length; i < ln; i++) {
+        Images.insert(files[i], function (err, fileObj) {
+          // Inserted new doc with ID fileObj._id, and kicked off the data upload using HTTP
+        });
+      }
+    },
+
     "submit .new-task": function (event) {
       // Prevent default browser form submit
       event.preventDefault();
@@ -49,6 +63,16 @@ if (Meteor.isClient) {
   Template.task.events({
     "click .delete": function () {
       Tasks.remove(this._id);
+    }
+  });
+}
+
+if (Meteor.isServer) {
+  // This code only runs on the server
+  Images.allow({
+    'insert': function () {
+      // add custom authentication code here
+      return true;
     }
   });
 }
