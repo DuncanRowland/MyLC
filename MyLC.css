@@ -151,3 +151,7 @@ header .hide-completed {
  margin: 0 1em 1em 0;
  height: 50px;
 }
+
+.create {
+  font-size: 14px;
+}
