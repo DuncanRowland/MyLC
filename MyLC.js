@@ -28,25 +28,29 @@ if (Meteor.isClient) {
         });
   }
 
+
+  //var imageFile = "";
+
   Template.body.events({
 
-    'change .myFileInput': function(event, template) {
-      console.log("hello");
-      var files = event.target.files;
-      for (var i = 0, ln = files.length; i < ln; i++) {
-        Images.insert(files[i], function (err, fileObj) {
-          // Inserted new doc with ID fileObj._id, and kicked off the data upload using HTTP
-        });
-      }
-    },
+//    "change .myFileInput": function(event, template) {
+//      imageFile = event.target.files[0];
+//    },
 
     "submit .new-task": function (event) {
       // Prevent default browser form submit
       event.preventDefault();
 
       // Get value from form element
+      var imageFile = event.target.myFileInput.files[0];
       var text = event.target.text.value;
       var description = event.target.description.value;
+
+      Images.insert(imageFile, function (err, fileObj) {
+        // Inserted new doc with ID fileObj._id, and kicked off the data upload using HTTP
+        console.log(err);
+        console.log(fileObj._id);
+      });
 
       // Insert a task into the collection
       Tasks.insert({
