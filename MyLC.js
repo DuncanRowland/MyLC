@@ -27,12 +27,6 @@ if (Meteor.isClient) {
   });
 
   Template.task.rendered = function() {
-        $( ".portlet" )
-          .addClass( "ui-widget ui-widget-content ui-helper-clearfix ui-corner-all" )
-          .find( ".portlet-header" )
-            .addClass( "ui-widget-header ui-corner-all" )
-            .prepend( "<span class='ui-icon ui-icon-plusthick portlet-toggle'></span>");
-
         $( ".portlet-toggle" ).unbind("click");
         $( ".portlet-toggle" ).click(function() {
           var icon = $( this );
