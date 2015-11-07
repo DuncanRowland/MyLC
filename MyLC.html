@@ -7,6 +7,10 @@
 </head>
 
 <body>
+  {{> admin}}
+</body>
+
+<template name="admin">
   <div class="container">
     <header>
       <h1>Todo List</h1>
@@ -25,7 +29,7 @@
       {{/each}}
     </ul>
   </div>
-</body>
+</template>
 
 <template name="task">
   <li>

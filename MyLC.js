@@ -5,7 +5,7 @@ Images = new FS.Collection("images", {
 
 if (Meteor.isClient) {
   // This code only runs on the client
-  Template.body.helpers({
+  Template.admin.helpers({
     tasks: function () {
       // Show in alphabetical order
       var r = [];
@@ -35,7 +35,7 @@ if (Meteor.isClient) {
         });
   }
 
-  Template.body.events({
+  Template.admin.events({
 
     "submit .new-task": function (event) {
       // Prevent default browser form submit
