@@ -16,11 +16,9 @@ Drag all the items you would like to include in your exhibition over to this sid
     <div class="column">
 You can just leave any items that you do not want to include in your exhibition over here. Click + to expand.
 
-      <ul>
         {{#each items}}
           {{> item}}
         {{/each}}
-      </ul>
 
     </div>
   </div>
@@ -60,7 +58,6 @@ You can just leave any items that you do not want to include in your exhibition 
 </template>
 
 <template name="item">
-  <li>
     <div class="portlet ui-widget ui-widget-content ui-helper-clearfix ui-corner-all">
       <div class="portlet-header ui-widget-header ui-corner-all">{{text}}
          <span class='ui-icon ui-icon-plusthick portlet-toggle'></span></div>
@@ -68,5 +65,4 @@ You can just leave any items that you do not want to include in your exhibition 
       <div><img src="{{image.url store='images'}}"/></div>
       </div>
     </div>
-  </li>
 </template>
