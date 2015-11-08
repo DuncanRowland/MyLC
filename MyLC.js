@@ -56,6 +56,15 @@ if (Meteor.isClient) {
   });
 
 
+  Template.itemDelete.rendered = function() {
+        $( ".portlet-toggle" ).unbind("click");
+        $( ".portlet-toggle" ).click(function() {
+          var icon = $( this );
+          icon.toggleClass( "ui-icon-minusthick ui-icon-plusthick" );
+          icon.closest( ".portlet" ).find( ".portlet-content" ).toggle();
+        });
+  }
+
   Template.item.rendered = function() {
         $( ".portlet-toggle" ).unbind("click");
         $( ".portlet-toggle" ).click(function() {
@@ -93,7 +102,7 @@ if (Meteor.isClient) {
     }
   });
 
-  Template.item.events({
+  Template.itemDelete.events({
     "click .delete": function () {
       Items.remove(this._id);
     }

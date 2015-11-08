@@ -40,10 +40,23 @@ You can just leave any items that you do not want to include in your exhibition 
     </header>
     <ul>
       {{#each items}}
-        {{> item}}
+        {{> itemDelete}}
       {{/each}}
     </ul>
   </div>
+</template>
+
+<template name="itemDelete">
+  <li>
+    <div class="portlet ui-widget ui-widget-content ui-helper-clearfix ui-corner-all">
+      <div class="portlet-header ui-widget-header ui-corner-all">{{text}}
+         <span class='ui-icon ui-icon-plusthick portlet-toggle'></span></div>
+      <div class="portlet-content">{{description}}
+      <div><img src="{{image.url store='images'}}"/></div>
+        <button class="delete">&times;</button>
+      </div>
+    </div>
+  </li>
 </template>
 
 <template name="item">
@@ -53,7 +66,6 @@ You can just leave any items that you do not want to include in your exhibition 
          <span class='ui-icon ui-icon-plusthick portlet-toggle'></span></div>
       <div class="portlet-content">{{description}}
       <div><img src="{{image.url store='images'}}"/></div>
-        <button class="delete">&times;</button>
       </div>
     </div>
   </li>
