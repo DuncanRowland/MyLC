@@ -69,10 +69,10 @@ if (Meteor.isClient) {
         var text = "";
         var id = 0;
         while(entry[id]!=undefined) {
-          text += entry[id.toString()] + ",";
+          text += Items.findOne({_id: entry[id]}).text + ", ";
           id+=1;
         }
-        text = text.substring(0, text.length - 1);
+        text = text.substring(0, text.length - 2);
         console.log(text);
         obj = {preferences: text};
         r.push(obj)
