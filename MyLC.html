@@ -47,6 +47,19 @@ You can just leave any items that you do not want to include in your exhibition 
   </div>
 </template>
 
+<template name="result">
+  <div class="container">
+    <header>
+      <h1>Results</h1>
+    </header>
+    <ul>
+      {{#each items}}
+        {{> itemDelete}}
+      {{/each}}
+    </ul>
+  </div>
+</template>
+
 <template name="itemDelete">
   <li>
     <div class="portlet ui-widget ui-widget-content ui-helper-clearfix ui-corner-all">

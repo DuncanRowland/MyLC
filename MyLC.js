@@ -12,6 +12,10 @@ Router.route('/vote', function () {
   this.render('vote');
 });
 
+Router.route('/results', function () {
+  this.render('result');
+});
+
 if (Meteor.isClient) {
   // This code only runs on the client
   Template.admin.helpers({
@@ -97,22 +101,7 @@ if (Meteor.isClient) {
          rank+=1;
       });
       Votes.insert(v);
-      console.log(v);
-      console.log("lo")
-      //var image = event.target.image.files[0];
-      //var text = event.target.text.value;
-      //var description = event.target.description.value;
-
-      /*Images.insert(image, function (err, fileObj) {
-        // Inserted new doc with ID fileObj._id, and kicked off the data upload using HTTP
-        // Insert a item into the collection
-        Items.insert({
-          text: text,
-          description: description,
-          imageid: fileObj._id
-        });
-      });*/
-      //Router.go('/hi'); //load template
+      Router.go('/results');
     }
   });
 
