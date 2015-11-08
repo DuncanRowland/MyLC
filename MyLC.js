@@ -13,7 +13,7 @@ Router.route('/vote', function () {
 });
 
 Router.route('/results', function () {
-  this.render('result');
+  this.render('results');
 });
 
 if (Meteor.isClient) {
@@ -55,6 +55,27 @@ if (Meteor.isClient) {
           obj['image']=img;
           r.push(obj)
           }
+      });
+      return r;
+    }
+  });
+
+  Template.results.helpers({
+    results: function () {
+      // Get all votes
+      var r = [];
+      var result = Votes.find();
+      result.forEach(function(entry) {
+        var text = "";
+        var id = 0;
+        while(entry[id]!=undefined) {
+          text += entry[id.toString()] + ",";
+          id+=1;
+        }
+        text = text.substring(0, text.length - 1);
+        console.log(text);
+        obj = {preferences: text};
+        r.push(obj)
       });
       return r;
     }

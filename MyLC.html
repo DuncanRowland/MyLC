@@ -47,14 +47,14 @@ You can just leave any items that you do not want to include in your exhibition 
   </div>
 </template>
 
-<template name="result">
+<template name="results">
   <div class="container">
     <header>
       <h1>Results</h1>
     </header>
     <ul>
-      {{#each items}}
-        {{> itemDelete}}
+      {{#each results}}
+        {{> result}}
       {{/each}}
     </ul>
   </div>
@@ -81,4 +81,8 @@ You can just leave any items that you do not want to include in your exhibition 
       <div><img src="{{image.url store='images'}}"/></div>
       </div>
     </div>
+</template>
+
+<template name="result">
+    {{preferences}}<br>
 </template>
