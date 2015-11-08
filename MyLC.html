@@ -6,15 +6,14 @@
    <title>Todo List</title>
 </head>
 
-<body>
+<!--<body>
   {{> admin}}
-</body>
+</body>-->
 
 <template name="admin">
   <div class="container">
     <header>
-      <h1>Todo List</h1>
-
+      <h1>Administration</h1>
       <form class="new-task">
         <input type="text" name="text" placeholder="Type to add item title" onkeydown="if (event.keyCode == 13) {return false;}"/>
         <input type="text" name="description" placeholder="Type to add description" onkeydown="if (event.keyCode == 13) {return false;}"/>
@@ -22,7 +21,6 @@
         <center><button class="create">Create</button></center>
       </form>
     </header>
-
     <ul>
       {{#each tasks}}
         {{> task}}

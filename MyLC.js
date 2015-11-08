@@ -3,6 +3,10 @@ Images = new FS.Collection("images", {
   stores: [new FS.Store.FileSystem("images", {path: "~/uploads"})]
 });
 
+Router.route('/admin', function () {
+  this.render('admin');
+});
+
 if (Meteor.isClient) {
   // This code only runs on the client
   Template.admin.helpers({
