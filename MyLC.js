@@ -82,6 +82,35 @@ if (Meteor.isClient) {
     });
   }
 
+  Template.vote.events({
+
+    "submit .user-submit": function (event) {
+      // Prevent default browser form submit
+      event.preventDefault();
+
+      // Get value from form element
+      console.log("hi")
+      $("div[id='ranked']").children().each(function(){
+         console.log(this.id);
+      });
+      console.log("lo")
+      //var image = event.target.image.files[0];
+      //var text = event.target.text.value;
+      //var description = event.target.description.value;
+
+      /*Images.insert(image, function (err, fileObj) {
+        // Inserted new doc with ID fileObj._id, and kicked off the data upload using HTTP
+        // Insert a item into the collection
+        Items.insert({
+          text: text,
+          description: description,
+          imageid: fileObj._id
+        });
+      });*/
+      //Router.go('/hi'); //load template
+    }
+  });
+
   Template.admin.events({
 
     "submit .new-item": function (event) {
