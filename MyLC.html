@@ -1,20 +1,37 @@
 <head>
-<!--  <link rel="stylesheet" href="//code.jquery.com/ui/1.11.4/themes/smoothness/jquery-ui.css"> -->
-
-<!--  <script src="//code.jquery.com/jquery-1.10.2.js"></script> -->
-<!--  <script src="http://code.jquery.com/ui/1.11.4/jquery-ui.js"></script> -->
    <title>MyLC</title>
 </head>
 
-<!--<body>
-  {{> admin}}
-</body>-->
+<template name="vote">
+  <div class="container">
+    <header>
+      <h1>Vote</h1>
+    </header>
+    <div class="column">
+Drag all the items you would like to include in your exhibition over to this side. Order them most to least important to include.
+    </div>
+
+    <div class="column-gap"></div>
+
+    <div class="column">
+You can just leave any items that you do not want to include in your exhibition over here. Click + to expand.
+
+      <ul>
+        {{#each items}}
+          {{> item}}
+        {{/each}}
+      </ul>
+
+    </div>
+  </div>
+
+</template>
 
 <template name="admin">
   <div class="container">
     <header>
       <h1>Administration</h1>
-      <form class="new-task">
+      <form class="new-item">
         <input type="text" name="text" placeholder="Type to add item title" onkeydown="if (event.keyCode == 13) {return false;}"/>
         <input type="text" name="description" placeholder="Type to add description" onkeydown="if (event.keyCode == 13) {return false;}"/>
         <input type="file" name="image"/>
@@ -22,14 +39,14 @@
       </form>
     </header>
     <ul>
-      {{#each tasks}}
-        {{> task}}
+      {{#each items}}
+        {{> item}}
       {{/each}}
     </ul>
   </div>
 </template>
 
-<template name="task">
+<template name="item">
   <li>
     <div class="portlet ui-widget ui-widget-content ui-helper-clearfix ui-corner-all">
       <div class="portlet-header ui-widget-header ui-corner-all">{{text}}

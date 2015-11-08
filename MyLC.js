@@ -1,4 +1,4 @@
-Tasks = new Mongo.Collection("tasks");
+Items = new Mongo.Collection("items");
 Images = new FS.Collection("images", {
   stores: [new FS.Store.FileSystem("images", {path: "~/uploads"})]
 });
@@ -7,13 +7,17 @@ Router.route('/admin', function () {
   this.render('admin');
 });
 
+Router.route('/vote', function () {
+  this.render('vote');
+});
+
 if (Meteor.isClient) {
   // This code only runs on the client
   Template.admin.helpers({
-    tasks: function () {
+    items: function () {
       // Show in alphabetical order
       var r = [];
-      var result = Tasks.find({}, {sort: {text: 1}});
+      var result = Items.find({}, {sort: {text: 1}});
       result.forEach(function(entry) {
         var imageid = entry['imageid'];
         var img = Images.findOne({_id: imageid});
@@ -30,7 +34,29 @@ if (Meteor.isClient) {
     }
   });
 
-  Template.task.rendered = function() {
+  Template.vote.helpers({
+    items: function () {
+      // Show in alphabetical order
+      var r = [];
+      var result = Items.find({}, {sort: {text: 1}});
+      result.forEach(function(entry) {
+        var imageid = entry['imageid'];
+        var img = Images.findOne({_id: imageid});
+        if(img != undefined) {
+          var obj = {};
+          obj['_id']=entry['_id'];
+          obj['text']=entry['text'];
+          obj['description']=entry['description'];
+          obj['image']=img;
+          r.push(obj)
+          }
+      });
+      return r;
+    }
+  });
+
+
+  Template.item.rendered = function() {
         $( ".portlet-toggle" ).unbind("click");
         $( ".portlet-toggle" ).click(function() {
           var icon = $( this );
@@ -41,7 +67,7 @@ if (Meteor.isClient) {
 
   Template.admin.events({
 
-    "submit .new-task": function (event) {
+    "submit .new-item": function (event) {
       // Prevent default browser form submit
       event.preventDefault();
 
@@ -52,8 +78,8 @@ if (Meteor.isClient) {
 
       Images.insert(image, function (err, fileObj) {
         // Inserted new doc with ID fileObj._id, and kicked off the data upload using HTTP
-        // Insert a task into the collection
-        Tasks.insert({
+        // Insert a item into the collection
+        Items.insert({
           text: text,
           description: description,
           imageid: fileObj._id
@@ -67,9 +93,9 @@ if (Meteor.isClient) {
     }
   });
 
-  Template.task.events({
+  Template.item.events({
     "click .delete": function () {
-      Tasks.remove(this._id);
+      Items.remove(this._id);
     }
   });
 }
