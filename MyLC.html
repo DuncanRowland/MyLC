@@ -33,8 +33,8 @@ You can just leave any items that you do not want to include in your exhibition 
     <header>
       <h1>Administration</h1>
       <form class="new-item">
-        <input type="text" name="text" placeholder="Type to add item title" onkeydown="if (event.keyCode == 13) {return false;}"/>
-        <input type="text" name="description" placeholder="Type to add description" onkeydown="if (event.keyCode == 13) {return false;}"/>
+        <input type="text" name="text" placeholder="Type here to set item title" onkeydown="if (event.keyCode == 13) {return false;}"/>
+        <input type="text" name="description" placeholder="Type here to add description" onkeydown="if (event.keyCode == 13) {return false;}"/>
         <input type="file" name="image"/>
         <center><button class="create">Create</button></center>
       </form>
@@ -50,7 +50,7 @@ You can just leave any items that you do not want to include in your exhibition 
 <template name="results">
   <div class="container">
     <header>
-      <h1>All Results</h1>
+      <h1>All Submissions</h1>
     </header>
     <ul>
       {{#each results}}
@@ -67,7 +67,9 @@ You can just leave any items that you do not want to include in your exhibition 
          <span class='ui-icon ui-icon-plusthick portlet-toggle'></span></div>
       <div class="portlet-content">{{description}}
       <div><img src="{{image.url store='images'}}"/></div>
-        <button class="delete">&times;</button>
+        <span title="DELETE">
+          <button class="delete">&times;</button>
+        </span>
       </div>
     </div>
   </li>
