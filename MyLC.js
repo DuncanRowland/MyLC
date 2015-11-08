@@ -2,6 +2,7 @@ Items = new Mongo.Collection("items");
 Images = new FS.Collection("images", {
   stores: [new FS.Store.FileSystem("images", {path: "~/uploads"})]
 });
+Votes = new Mongo.Collection("votes");
 
 Router.route('/admin', function () {
   this.render('admin');
@@ -89,10 +90,14 @@ if (Meteor.isClient) {
       event.preventDefault();
 
       // Get value from form element
-      console.log("hi")
+      var v = {};
+      var rank = 0;
       $("div[id='ranked']").children().each(function(){
-         console.log(this.id);
+         v[rank]=this.id;
+         rank+=1;
       });
+      Votes.insert(v);
+      console.log(v);
       console.log("lo")
       //var image = event.target.image.files[0];
       //var text = event.target.text.value;
