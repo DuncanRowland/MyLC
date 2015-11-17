@@ -16,6 +16,10 @@ Router.route('/results', function () {
   this.render('results');
 });
 
+Router.route('/gallery', function () {
+  this.render('gallery');
+});
+
 if (Meteor.isClient) {
   // This code only runs on the client
   Template.admin.helpers({
@@ -82,6 +86,27 @@ if (Meteor.isClient) {
         text = text.substring(0, text.length - 2);
         obj = {preferences: text};
         r.push(obj)
+      });
+      return r;
+    }
+  });
+
+  Template.gallery.helpers({
+    images: function () {
+      // Show in alphabetical order
+      var r = [];
+      var result = Items.find({}, {sort: {text: 1}});
+      result.forEach(function(entry) {
+        var imageid = entry['imageid'];
+        var img = Images.findOne({_id: imageid});
+        if(img != undefined) {
+          var obj = {};
+          //obj['_id']=entry['_id'];
+          //obj['text']=entry['text'];
+          //obj['description']=entry['description'];
+          obj['image']=img;
+          r.push(obj)
+          }
       });
       return r;
     }

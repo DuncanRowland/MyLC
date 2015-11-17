@@ -60,6 +60,21 @@ You can just leave any items that you do not want to include in your exhibition 
   </div>
 </template>
 
+<template name="gallery">
+  <div class="container">
+    <header>
+      <h1>All Images</h1>
+    </header>
+    <ul>
+      {{#each images}}<img class="thumb" src="{{image.url store='images'}}"/>{{/each}}
+      {{#each images}}<img class="thumb" src="{{image.url store='images'}}"/>{{/each}}
+      {{#each images}}<img class="thumb" src="{{image.url store='images'}}"/>{{/each}}
+      {{#each images}}<img class="thumb" src="{{image.url store='images'}}"/>{{/each}}
+      {{#each images}}<img class="thumb" src="{{image.url store='images'}}"/>{{/each}}
+    </ul>
+  </div>
+</template>
+
 <template name="itemDelete">
   <li>
     <div class="portlet ui-widget ui-widget-content ui-helper-clearfix ui-corner-all">
