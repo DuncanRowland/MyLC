@@ -4,6 +4,10 @@ Images = new FS.Collection("images", {
 });
 Votes = new Mongo.Collection("votes");
 
+Router.route('/', function () {
+  this.render('menu');
+});
+
 Router.route('/admin', function () {
   this.render('admin');
 });
