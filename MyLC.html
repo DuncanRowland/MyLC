@@ -5,7 +5,7 @@
 <template name="menu">
   <div class="container">
     <header>
-      <h1>Debug Menu</h1>
+      <h1>Debug Menu</h1><div style="text-align:right"><a href="/">Debug</a></div>
     </header>
     <ul>
       <li><h1><a href="admin">Admin</a></h1></li>
@@ -19,7 +19,7 @@
 <template name="vote">
   <div class="container">
     <header>
-      <h1>Vote</h1>
+      <h1>Vote</h1><div style="text-align:right"><a href="/">Debug</a></div>
       <form class="user-submit">
         <center><button class="create">Submit</button></center>
       </form>
@@ -45,7 +45,7 @@ You can just leave any items that you do not want to include in your exhibition 
 <template name="admin">
   <div class="container">
     <header>
-      <h1>Administration</h1>
+      <h1>Administration</h1><div style="text-align:right"><a href="/">Debug</a></div>
       <form class="new-item">
         <input type="text" name="text" placeholder="Type here to set item title" onkeydown="if (event.keyCode == 13) {return false;}"/>
         <input type="text" name="description" placeholder="Type here to add description" onkeydown="if (event.keyCode == 13) {return false;}"/>
@@ -64,7 +64,7 @@ You can just leave any items that you do not want to include in your exhibition 
 <template name="results">
   <div class="container">
     <header>
-      <h1>All Submissions</h1>
+      <h1>All Submissions</h1><div style="text-align:right"><a href="/">Debug</a></div>
     </header>
     <ul>
       {{#each results}}
@@ -77,7 +77,7 @@ You can just leave any items that you do not want to include in your exhibition 
 <template name="gallery">
   <div class="container">
     <header>
-      <h1>All Images</h1>
+      <h1>All Images</h1><div style="text-align:right"><a href="/">Debug</a></div>
     </header>
     <ul>
       {{#each images}}<img class="thumb" src="{{image.url store='images'}}"/>{{/each}}
