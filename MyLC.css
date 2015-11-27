@@ -152,23 +152,19 @@ header .hide-completed {
  margin: 0 1em 1em 0;
  height: 50px;
 }
-img {
+.img-fill-div {
   max-width: 100%;
   max-height: 100%;
 }
 .thumb {
-  max-width: 19.70%;
-  max-height: 19.70%;
+  width: 100px;
+  height: auto;
 }
 textarea {
      width: 100%;
      -webkit-box-sizing: border-box; /* Safari/Chrome, other WebKit */
      -moz-box-sizing: border-box;    /* Firefox, other Gecko */
      box-sizing: border-box;         /* Opera/IE 8+ */
-}
-.fancybox {
-  max-width: 19.0%;
-  max-height: 19.0%;
 }
 
 .create {

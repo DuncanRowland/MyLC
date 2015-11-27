@@ -20,6 +20,9 @@ Template.gallery.helpers({
 });
 
 Template.gallery.rendered = function() {
+  $( ".container" ).sortable({
+    connectWith: ".container",
+  });
   $(document).ready(function() {
     $(".fancybox").fancybox({
       helpers : {
