@@ -3,11 +3,14 @@
     <header>
       <h1>All Images</h1><div style="text-align:right"><a href="/">Debug</a></div>
     </header>
-    <span class="container">
+    <div class="container">
     {{#each images}}
-       <a href={{image.url store='images'}} class="fancybox" rel="gallery"
-         title={{text}} data-info={{description}}><img src={{image.url store='images'}} class='thumb'/></a>
+    <div class="inline">
+       <a href={{image.url store='images'}} class="fancybox" rel="gallery" title={{text}} data-info={{description}}>
+         <img src={{image.url store='images'}} class='thumb'/>
+       </a>
+    </div>
     {{/each}}
-    </span>
+  </div>
   </div>
 </template>
