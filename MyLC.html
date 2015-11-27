@@ -81,7 +81,7 @@ You can just leave any items that you do not want to include in your exhibition 
     </header>
     {{#each images}}
        <a href={{image.url store='images'}} class="fancybox" rel="gallery"
-         title={{text}}><img class="thumb" src={{image.url store='images'}} /></a>
+         title={{text}} data-info={{description}}><img class="thumb" src={{image.url store='images'}} /></a>
     {{/each}}
   </div>
 </template>

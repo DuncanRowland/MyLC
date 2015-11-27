@@ -155,7 +155,17 @@ if (Meteor.isClient) {
 
   Template.gallery.rendered = function() {
     $(document).ready(function() {
-        $('.fancybox').fancybox();
+      $(".fancybox").fancybox({
+        helpers : {
+          title: {
+            type: 'inside'
+          }
+        },
+        beforeLoad : function() {
+          console.log(this.id)
+          this.title = $(this.element).data('info');
+        }
+      });
     });
   }
 
