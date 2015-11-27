@@ -4,24 +4,34 @@ Images = new FS.Collection("images", {
 });
 Votes = new Mongo.Collection("votes");
 
-Router.route('/', function () {
-  this.render('menu');
+FlowRouter.route('/', {
+    action: function() {
+       BlazeLayout.render('menu');
+    }
 });
 
-Router.route('/admin', function () {
-  this.render('admin');
+FlowRouter.route('/admin', {
+    action: function(params, queryParams) {
+       BlazeLayout.render('admin');
+    }
 });
 
-Router.route('/vote', function () {
-  this.render('vote');
+FlowRouter.route('/vote', {
+    action: function(params, queryParams) {
+       BlazeLayout.render('vote');
+    }
 });
 
-Router.route('/results', function () {
-  this.render('results');
+FlowRouter.route('/results', {
+    action: function(params, queryParams) {
+       BlazeLayout.render('results');
+    }
 });
 
-Router.route('/gallery', function () {
-  this.render('gallery');
+FlowRouter.route('/gallery', {
+    action: function(params, queryParams) {
+       BlazeLayout.render('gallery');
+    }
 });
 
 if (Meteor.isClient) {
@@ -157,7 +167,7 @@ if (Meteor.isClient) {
          rank+=1;
       });
       Votes.insert(v);
-      Router.go('/results');
+      FlowRouter.go('/results');
     }
   });
 
