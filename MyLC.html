@@ -11,7 +11,6 @@
       <li><h1><a href="admin">Admin</a></h1></li>
       <li><h1><a href="results">Results</a></h1></li>
       <li><h1><a href="vote">Vote</a></h1></li>
-      <li><h1><a href="gallery">Gallery</a></h1></li>
     </ul>
   </div>
 </template>
@@ -24,18 +23,16 @@
         <center><button class="create">Submit</button></center>
       </form>
     </header>
-    <div class="column" id="ranked">
+    <div class="dragable-images" id="ranked">
 Drag all the items you would like to include in your exhibition over to this side. Order them most to least important to include.
     </div>
 
-    <div class="column-gap"></div>
-
-    <div class="column">
+    <div class="dragable-images">
 You can just leave any items that you do not want to include in your exhibition over here. Click + to expand.
 
-        {{#each items}}
-          {{> item}}
-        {{/each}}
+    {{#each items}}
+      {{> imageItem}}
+    {{/each}}
 
     </div>
   </div>
@@ -74,18 +71,6 @@ You can just leave any items that you do not want to include in your exhibition 
   </div>
 </template>
 
-<template name="gallery">
-  <div class="container">
-    <header>
-      <h1>All Images</h1><div style="text-align:right"><a href="/">Debug</a></div>
-    </header>
-    {{#each images}}
-       <a href={{image.url store='images'}} class="fancybox" rel="gallery"
-         title={{text}} data-info={{description}}><img class="thumb" src={{image.url store='images'}} /></a>
-    {{/each}}
-  </div>
-</template>
-
 <template name="itemDelete">
   <li>
     <div class="portlet ui-widget ui-widget-content ui-helper-clearfix ui-corner-all">
@@ -101,15 +86,12 @@ You can just leave any items that you do not want to include in your exhibition 
   </li>
 </template>
 
-<template name="item">
-    <div class="portlet ui-widget ui-widget-content ui-helper-clearfix ui-corner-all" id={{_id}}>
-      <div class="portlet-header ui-widget-header ui-corner-all">{{text}}
-         <span class='ui-icon ui-icon-plusthick portlet-toggle'></span></div>
-      <div class="portlet-content">{{description}}
-      <div><img src="{{image.url store='images'}}"/>
-      <textarea>Why would you like to include this item?...</textarea></div>
-      </div>
-    </div>
+<template name="imageItem">
+   <img class="thumb" src={{image.url store='images'}} id={{_id}} />
+   <!--
+     <div><a href={{image.url store='images'}} class="fancybox" rel="gallery"
+     title={{text}} data-info={{description}}><img class="thumb" src={{image.url store='images'}} /></a></div>
+   -->
 </template>
 
 <template name="result">

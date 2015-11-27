@@ -166,22 +166,12 @@ textarea {
      -moz-box-sizing: border-box;    /* Firefox, other Gecko */
      box-sizing: border-box;         /* Opera/IE 8+ */
 }
-.fancybox {
-  max-width: 19.0%;
-  max-height: 19.0%;
-}
 
 .create {
   font-size: 14px;
 }
 
-.column {
-  width: 48%;
-  float: left;
-  padding-bottom: 100px;
-}
-.column-gap {
-  width: 4%;
-  float: left;
+.dragable-images {
+  width: 100%;
   padding-bottom: 100px;
 }

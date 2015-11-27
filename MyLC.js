@@ -28,12 +28,6 @@ FlowRouter.route('/results', {
     }
 });
 
-FlowRouter.route('/gallery', {
-    action: function(params, queryParams) {
-       BlazeLayout.render('gallery');
-    }
-});
-
 if (Meteor.isClient) {
   // This code only runs on the client
   Template.admin.helpers({
@@ -105,57 +99,10 @@ if (Meteor.isClient) {
     }
   });
 
-  Template.gallery.helpers({
-    images: function () {
-      // Show in alphabetical order
-      var r = [];
-      var result = Items.find({}, {sort: {text: 1}});
-      result.forEach(function(entry) {
-        var imageid = entry['imageid'];
-        var img = Images.findOne({_id: imageid});
-        if(img != undefined) {
-          var obj = {};
-          obj['_id']=entry['_id'];
-          obj['text']=entry['text'];
-          obj['description']=entry['description'];
-          obj['image']=img;
-          r.push(obj)
-          }
-      });
-      return r;
-    }
-  });
-
   Template.vote.rendered = function() {
-    $( ".column" ).sortable({
-      connectWith: ".column",
-      handle: ".portlet-header",
-      cancel: ".portlet-toggle",
-      placeholder: "portlet-placeholder ui-corner-all"
-    });
-  }
-
-  Template.itemDelete.rendered = function() {
-    $( ".portlet-toggle" ).unbind("click");
-    $( ".portlet-toggle" ).click(function() {
-      var icon = $( this );
-      icon.toggleClass( "ui-icon-minusthick ui-icon-plusthick" );
-      icon.closest( ".portlet" ).find( ".portlet-content" ).toggle();
-    });
-  }
-
-  Template.item.rendered = function() {
-    $( ".portlet-toggle" ).unbind("click");
-    $( ".portlet-toggle" ).click(function() {
-      var icon = $( this );
-      icon.toggleClass( "ui-icon-minusthick ui-icon-plusthick" );
-      icon.closest( ".portlet" ).find( ".portlet-content" ).toggle();
-    });
-  }
-
-  Template.gallery.rendered = function() {
     $(document).ready(function() {
       $(".fancybox").fancybox({
+        type: 'iframe',
         helpers : {
           title: {
             type: 'inside'
@@ -163,9 +110,22 @@ if (Meteor.isClient) {
         },
         beforeLoad : function() {
           console.log(this.id)
-          this.title = $(this.element).data('info');
+          this.title = "<h1>"+$(this.element).data('info')+"</h1>";
         }
       });
+      $( ".dragable-images" ).sortable({
+        connectWith: ".dragable-images"
+      });
+    });
+  }
+
+
+  Template.itemDelete.rendered = function() {
+    $( ".portlet-toggle" ).unbind("click");
+    $( ".portlet-toggle" ).click(function() {
+      var icon = $( this );
+      icon.toggleClass( "ui-icon-minusthick ui-icon-plusthick" );
+      icon.closest( ".portlet" ).find( ".portlet-content" ).toggle();
     });
   }
 
