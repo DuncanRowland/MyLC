@@ -1,0 +1,16 @@
+<template name="results">
+  <div class="container">
+    <header>
+      <h1>All Submissions</h1><div style="text-align:right"><a href="/">Debug</a></div>
+    </header>
+    <ul>
+      {{#each results}}
+        {{> result}}
+      {{/each}}
+    </ul>
+  </div>
+</template>
+
+<template name="result">
+    {{preferences}}<br>
+</template>

@@ -1,0 +1,33 @@
+<template name="admin">
+  <div class="container">
+    <header>
+      <h1>Administration</h1><div style="text-align:right"><a href="/">Debug</a></div>
+      <form class="new-item">
+        <input type="text" name="text" placeholder="Type here to set item title" onkeydown="if (event.keyCode == 13) {return false;}"/>
+        <input type="text" name="description" placeholder="Type here to add description" onkeydown="if (event.keyCode == 13) {return false;}"/>
+        <input type="file" name="image"/>
+        <center><button class="create">Create</button></center>
+      </form>
+    </header>
+    <ul>
+      {{#each items}}
+        {{> itemDeleteable}}
+      {{/each}}
+    </ul>
+  </div>
+</template>
+
+<template name="itemDeleteable">
+  <li>
+    <div class="portlet ui-widget ui-widget-content ui-helper-clearfix ui-corner-all">
+      <div class="portlet-header ui-widget-header ui-corner-all">{{text}}
+         <span class='ui-icon ui-icon-plusthick portlet-toggle'></span></div>
+      <div class="portlet-content">{{description}}
+      <div><img src="{{image.url store='images'}}"/></div>
+        <span title="DELETE">
+          <button class="delete">&times;</button>
+        </span>
+      </div>
+    </div>
+  </li>
+</template>
