@@ -115,9 +115,9 @@ if (Meteor.isClient) {
         var img = Images.findOne({_id: imageid});
         if(img != undefined) {
           var obj = {};
-          //obj['_id']=entry['_id'];
-          //obj['text']=entry['text'];
-          //obj['description']=entry['description'];
+          obj['_id']=entry['_id'];
+          obj['text']=entry['text'];
+          obj['description']=entry['description'];
           obj['image']=img;
           r.push(obj)
           }
@@ -150,6 +150,12 @@ if (Meteor.isClient) {
       var icon = $( this );
       icon.toggleClass( "ui-icon-minusthick ui-icon-plusthick" );
       icon.closest( ".portlet" ).find( ".portlet-content" ).toggle();
+    });
+  }
+
+  Template.gallery.rendered = function() {
+    $(document).ready(function() {
+        $('.fancybox').fancybox();
     });
   }
 

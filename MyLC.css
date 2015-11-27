@@ -166,6 +166,10 @@ textarea {
      -moz-box-sizing: border-box;    /* Firefox, other Gecko */
      box-sizing: border-box;         /* Opera/IE 8+ */
 }
+.fancybox {
+  max-width: 19.0%;
+  max-height: 19.0%;
+}
 
 .create {
   font-size: 14px;
