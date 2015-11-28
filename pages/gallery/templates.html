@@ -4,13 +4,15 @@
       <h1>All Images</h1><div style="text-align:right"><a href="/">Debug</a></div>
     </header>
     <div class="sortableitems">
-    {{#each images}}
-    <div class="inline">
-       <a href={{image.url store='images'}} class="fancybox" rel="gallery" title={{text}} data-info={{description}}>
-         <img src={{image.url store='images'}} class='thumb'/>
-       </a>
+      {{#each images}}<div class="inline"><a href={{image.url store='images'}} class="fancybox" rel="gallery" title={{text}} data-info={{description}}><img src={{image.url store='images'}} class='img-fill-div'/></a></div>{{/each}}
     </div>
-    {{/each}}
-  </div>
+zzz
+    <div class="sortableitems">
+      {{#each images}}<div class="inline"><a href={{image.url store='images'}} class="fancybox" rel="gallery" title={{text}} data-info={{description}}><img src={{image.url store='images'}} class='img-fill-div'/></a></div>{{/each}}
+      {{#each images}}<div class="inline"><a href={{image.url store='images'}} class="fancybox" rel="gallery" title={{text}} data-info={{description}}><img src={{image.url store='images'}} class='img-fill-div'/></a></div>{{/each}}
+      {{#each images}}<div class="inline"><a href={{image.url store='images'}} class="fancybox" rel="gallery" title={{text}} data-info={{description}}><img src={{image.url store='images'}} class='img-fill-div'/></a></div>{{/each}}
+      {{#each images}}<div class="inline"><a href={{image.url store='images'}} class="fancybox" rel="gallery" title={{text}} data-info={{description}}><img src={{image.url store='images'}} class='img-fill-div'/></a></div>{{/each}}
+      {{#each images}}<div class="inline"><a href={{image.url store='images'}} class="fancybox" rel="gallery" title={{text}} data-info={{description}}><img src={{image.url store='images'}} class='img-fill-div'/></a></div>{{/each}}
+    </div>
   </div>
 </template>
