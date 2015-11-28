@@ -55,5 +55,5 @@ Template.gallery.rendered = function() {
       }
     });
   });
-  
+
 }

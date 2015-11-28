@@ -20,12 +20,42 @@ Template.vote.helpers({
 });
 
 Template.vote.rendered = function() {
-  $( ".column" ).sortable({
-    connectWith: ".column",
-    handle: ".portlet-header",
-    cancel: ".portlet-toggle",
-    placeholder: "portlet-placeholder ui-corner-all"
+
+  $( ".sortable-items-target" ).sortable({
+    connectWith: ".sortable-items-source",
+    revert: 300,
+    dropOnEmpty: true,
+    receive: function(event, ui) {
+      if ($(this).children().length == 10) {
+        $(".sortable-items-source").sortable( "option", "connectWith", "" );
+      }
+    }
+  }).disableSelection();
+
+  $( ".sortable-items-source" ).sortable({
+    connectWith: ".sortable-items-target",
+    revert: 300,
+    receive: function(event, ui) {
+      if ($(ui.sender).children().length == 9) {
+        $(".sortable-items-source").sortable( "option", "connectWith", ".sortable-items-target" );
+      }
+    }
+  }).disableSelection();
+
+  $(document).ready(function() {
+    $(".fancybox").fancybox({
+      helpers : {
+        title: {
+          type: 'inside'
+        }
+      },
+      beforeLoad : function() {
+        console.log(this.id)
+        this.title = $(this.element).data('info');
+      }
+    });
   });
+
 }
 
 Template.vote.events({

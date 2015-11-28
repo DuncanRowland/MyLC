@@ -1,25 +1,15 @@
 <template name="vote">
-  <div class="container sortable-items-source">
+  <div class="container sortableitems">
     <header>
       <h1>Vote</h1><div style="text-align:right"><a href="/">Debug</a></div>
       <form class="user-submit">
         <center><button class="create">Submit</button></center>
       </form>
     </header>
-    <div class="column" id="ranked">
 Drag all the items you would like to include in your exhibition over to this side. Order them most to least important to include.
-    </div>
-
-    <div class="column-gap"></div>
-
-    <div class="column">
+    <div class="sortable-items-target" id="ranked"></div>
 You can just leave any items that you do not want to include in your exhibition over here. Click + to expand.
-
-        {{#each items}}
-          {{> item}}
-        {{/each}}
-
-    </div>
+    <div class="sortable-items-source">{{#each items}}<div class="inline"><a href={{image.url store='images'}} class="fancybox" rel="gallery" title={{text}} data-info={{description}}><img src={{image.url store='images'}} class='img-fill-div'/></a></div>{{/each}}{{#each items}}<div class="inline"><a href={{image.url store='images'}} class="fancybox" rel="gallery" title={{text}} data-info={{description}}><img src={{image.url store='images'}} class='img-fill-div'/></a></div>{{/each}}{{#each items}}<div class="inline"><a href={{image.url store='images'}} class="fancybox" rel="gallery" title={{text}} data-info={{description}}><img src={{image.url store='images'}} class='img-fill-div'/></a></div>{{/each}}{{#each items}}<div class="inline"><a href={{image.url store='images'}} class="fancybox" rel="gallery" title={{text}} data-info={{description}}><img src={{image.url store='images'}} class='img-fill-div'/></a></div>{{/each}}{{#each items}}<div class="inline"><a href={{image.url store='images'}} class="fancybox" rel="gallery" title={{text}} data-info={{description}}><img src={{image.url store='images'}} class='img-fill-div'/></a></div>{{/each}}{{#each items}}<div class="inline"><a href={{image.url store='images'}} class="fancybox" rel="gallery" title={{text}} data-info={{description}}><img src={{image.url store='images'}} class='img-fill-div'/></a></div>{{/each}}</div>
   </div>
 
 </template>
