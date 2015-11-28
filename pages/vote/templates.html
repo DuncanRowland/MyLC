@@ -9,18 +9,14 @@
 Drag all the items you would like to include in your exhibition over to this side. Order them most to least important to include.
     <div class="sortable-items-target" id="ranked"></div>
 You can just leave any items that you do not want to include in your exhibition over here. Click + to expand.
-    <div class="sortable-items-source">{{#each items}}<div class="inline"><a href={{image.url store='images'}} class="fancybox" title={{text}} data-info={{description}}><img src={{image.url store='images'}} class='img-fill-div'/></a></div>{{/each}}{{#each items}}<div class="inline"><a href={{image.url store='images'}} class="fancybox" title={{text}} data-info={{description}}><img src={{image.url store='images'}} class='img-fill-div'/></a></div>{{/each}}{{#each items}}<div class="inline"><a href={{image.url store='images'}} class="fancybox" title={{text}} data-info={{description}}><img src={{image.url store='images'}} class='img-fill-div'/></a></div>{{/each}}{{#each items}}<div class="inline"><a href={{image.url store='images'}} class="fancybox" title={{text}} data-info={{description}}><img src={{image.url store='images'}} class='img-fill-div'/></a></div>{{/each}}{{#each items}}<div class="inline"><a href={{image.url store='images'}} class="fancybox" title={{text}} data-info={{description}}><img src={{image.url store='images'}} class='img-fill-div'/></a></div>{{/each}}{{#each items}}<div class="inline"><a href={{image.url store='images'}} class="fancybox" title={{text}} data-info={{description}}><img src={{image.url store='images'}} class='img-fill-div'/></a></div>{{/each}}</div>
+    <div class="sortable-items-source">
+      {{#each items}}{{>item}}{{>item}}{{>item}}{{>item}}{{>item}}{{/each}}</div>
   </div>
 
 </template>
 
 <template name="item">
-    <div class="portlet ui-widget ui-widget-content ui-helper-clearfix ui-corner-all" id={{_id}}>
-      <div class="portlet-header ui-widget-header ui-corner-all">{{text}}
-         <span class='ui-icon ui-icon-plusthick portlet-toggle'></span></div>
-      <div class="portlet-content">{{description}}
-      <div><img src="{{image.url store='images'}}" class='img-fill-div'/>
-      <textarea>Why would you like to include this item?...</textarea></div>
-      </div>
-    </div>
+  <div class="inline" id={{_id}}>
+    <a href={{image.url store='images'}} class="fancybox" title={{text}} data-info={{description}}><img src={{image.url store='images'}} class='img-fill-div'/></a>
+  </div>
 </template>
