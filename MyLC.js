@@ -28,12 +28,6 @@ FlowRouter.route('/results', {
     }
 });
 
-FlowRouter.route('/gallery', {
-    action: function(params, queryParams) {
-       BlazeLayout.render('gallery');
-    }
-});
-
 if (Meteor.isServer) {
   Images.allow({
     'insert': function () {
