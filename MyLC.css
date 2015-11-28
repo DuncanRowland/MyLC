@@ -168,8 +168,10 @@ header .hide-completed {
   width: 60px;
 }
 .sortable-items-source {
+    height: 60px;
 }
 .sortable-items-target {
+    height: 60px;
 }
 
 textarea {

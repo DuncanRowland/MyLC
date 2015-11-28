@@ -20,17 +20,28 @@ Template.gallery.helpers({
 });
 
 Template.gallery.rendered = function() {
+
   $( ".sortable-items-target" ).sortable({
     connectWith: ".sortable-items-source",
+    revert: 300,
+    dropOnEmpty: true,
     receive: function(event, ui) {
-    if ($(this).children().length > 10) {
-        $(ui.sender).sortable('cancel');
+      if ($(this).children().length == 10) {
+        $(".sortable-items-source").sortable( "option", "connectWith", "" );
       }
     }
-  });
+  }).disableSelection();
+
   $( ".sortable-items-source" ).sortable({
-    connectWith: ".sortable-items-target"
-  });
+    connectWith: ".sortable-items-target",
+    revert: 300,
+    receive: function(event, ui) {
+      if ($(ui.sender).children().length == 9) {
+        $(".sortable-items-source").sortable( "option", "connectWith", ".sortable-items-target" );
+      }
+    }
+  }).disableSelection();
+
   $(document).ready(function() {
     $(".fancybox").fancybox({
       helpers : {
@@ -44,4 +55,5 @@ Template.gallery.rendered = function() {
       }
     });
   });
+  
 }
