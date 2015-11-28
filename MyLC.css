@@ -167,7 +167,9 @@ header .hide-completed {
   height: 60px;
   width: 60px;
 }
-.sortableitems {
+.sortable-items-source {
+}
+.sortable-items-target {
 }
 
 textarea {

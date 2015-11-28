@@ -20,8 +20,16 @@ Template.gallery.helpers({
 });
 
 Template.gallery.rendered = function() {
-  $( ".sortableitems" ).sortable({
-    connectWith: ".sortableitems",
+  $( ".sortable-items-target" ).sortable({
+    connectWith: ".sortable-items-source",
+    receive: function(event, ui) {
+    if ($(this).children().length > 10) {
+        $(ui.sender).sortable('cancel');
+      }
+    }
+  });
+  $( ".sortable-items-source" ).sortable({
+    connectWith: ".sortable-items-target"
   });
   $(document).ready(function() {
     $(".fancybox").fancybox({
