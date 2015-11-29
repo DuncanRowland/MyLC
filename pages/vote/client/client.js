@@ -36,7 +36,7 @@ Template.vote.rendered = function() {
         $(".sortable-items-source").sortable( "option", "connectWith", "" );
       }
       for (r=0;r<9;r++) {
-        if ($("#row"+r).children().length == 2) {
+        if ($("#row"+r).children().length == 9) {
           $("#row"+(r+1)).children().eq(0).appendTo($("#row"+r));
         }
       }
@@ -51,8 +51,8 @@ Template.vote.rendered = function() {
         $(".sortable-items-source").sortable( "option", "connectWith", ".sortable-items-target" );
       }
       for (r=0;r<9;r++) {
-        if ($("#row"+r).children().length == 4) {
-          $("#row"+r).children().eq(3).prependTo($("#row"+(r+1)));
+        if ($("#row"+r).children().length == 11) {
+          $("#row"+r).children().eq(10).prependTo($("#row"+(r+1)));
         }
       }
     }
