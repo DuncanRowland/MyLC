@@ -1,19 +1,25 @@
 Template.vote.helpers({
-  items: function () {
-    // Show in alphabetical order
+  items: function (options) {
+    // Show start-stop sliced subset from alphabetical order
     var r = [];
-    var result = Items.find({}, {sort: {text: 1}});
+    var result = Items.find( {}, {sort: {text: 1}});
+    var index = 0;
+    var start = options.hash.start;
+    var end = options.hash.start + options.hash.count;
     result.forEach(function(entry) {
       var imageid = entry['imageid'];
       var img = Images.findOne({_id: imageid});
       if(img != undefined) {
-        var obj = {};
-        obj['_id']=entry['_id'];
-        obj['text']=entry['text'];
-        obj['description']=entry['description'];
-        obj['image']=img;
-        r.push(obj)
+        if( index >= start && index < end ) {
+          var obj = {};
+          obj['_id']=entry['_id'];
+          obj['text']=entry['text'];
+          obj['description']=entry['description'];
+          obj['image']=img;
+          r.push(obj);
         }
+        index += 1;
+      }
     });
     return r;
   }
@@ -29,6 +35,11 @@ Template.vote.rendered = function() {
       if ($(this).children().length == 10) {
         $(".sortable-items-source").sortable( "option", "connectWith", "" );
       }
+      for (r=0;r<9;r++) {
+        if ($("#row"+r).children().length == 2) {
+          $("#row"+(r+1)).children().eq(0).appendTo($("#row"+r));
+        }
+      }
     }
   }).disableSelection();
 
@@ -38,6 +49,11 @@ Template.vote.rendered = function() {
     receive: function(event, ui) {
       if ($(ui.sender).children().length == 9) {
         $(".sortable-items-source").sortable( "option", "connectWith", ".sortable-items-target" );
+      }
+      for (r=0;r<9;r++) {
+        if ($("#row"+r).children().length == 4) {
+          $("#row"+r).children().eq(3).prependTo($("#row"+(r+1)));
+        }
       }
     }
   }).disableSelection();
@@ -50,7 +66,6 @@ Template.vote.rendered = function() {
         }
       },
       beforeLoad : function() {
-        console.log(this.id)
         this.title = $(this.element).data('info');
       }
     });
