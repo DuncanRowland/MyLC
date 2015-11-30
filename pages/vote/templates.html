@@ -1,11 +1,20 @@
 <template name="vote">
-  <div class="container sortableitems">
+  <div class="container">
     <header>
       <h1>Vote</h1><div style="text-align:right"><a href="/">Debug</a></div>
       <form class="user-submit">
         <center><button class="create">Submit</button></center>
       </form>
     </header>
+    {{#if menutype}}
+      {{>itemSelector}}
+    {{else}}
+      {{>commentSubmittor}}
+    {{/if}}
+  </div>
+</template>
+
+<template name="itemSelector">
 Drag all the items you would like to include in your exhibition over to this side. Order them most to least important to include.
     <div class="sortable-items-target" id="ranked"></div>
 You can just leave any items that you do not want to include in your exhibition over here. Click + to expand.
@@ -19,11 +28,14 @@ You can just leave any items that you do not want to include in your exhibition 
     <div class="sortable-items-source" id="row7">{{#each items start="0" count="10"}}{{>item}}{{/each}}</div>
     <div class="sortable-items-source" id="row8">{{#each items start="0" count="10"}}{{>item}}{{/each}}</div>
     <div class="sortable-items-source" id="row9">{{#each items start="0" count="10"}}{{>item}}{{/each}}</div>
-  </div>
 </template>
 
 <template name="item">
   <div class="inline" id={{_id}}>
     <a href={{image.url store='images'}} class="fancybox" title={{text}} data-info={{description}}><img src={{image.url store='images'}} class='img-fill-div'/></a>
   </div>
+</template>
+
+<template name="commentSubmittor">
+  HI!
 </template>

@@ -1,4 +1,6 @@
-Template.vote.helpers({
+Session.setDefault("xx", true);
+
+Template.itemSelector.helpers({
   items: function (options) {
     // Show start-stop sliced subset from alphabetical order
     var r = [];
@@ -25,7 +27,7 @@ Template.vote.helpers({
   }
 });
 
-Template.vote.rendered = function() {
+Template.itemSelector.rendered = function() {
 
   $( ".sortable-items-target" ).sortable({
     connectWith: ".sortable-items-source",
@@ -78,6 +80,14 @@ Template.vote.events({
     // Prevent default browser form submit
     event.preventDefault();
 
+    console.log("123");
+    console.log(Session.get("xx"));
+    if(Session.get("xx")) {
+      console.log("HELLO")
+      Session.set("xx", false);
+      return false;
+    }
+
     // Get value from form element
     var v = {};
     var rank = 0;
@@ -99,3 +109,11 @@ Template.item.rendered = function() {
     icon.closest( ".portlet" ).find( ".portlet-content" ).toggle();
   });
 }
+
+Template.vote.helpers({
+  menutype: function(){
+    console.log("XX")
+    console.log(Session.get("xx"));
+    return Session.get("xx");
+  }
+});
