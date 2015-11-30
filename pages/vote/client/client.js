@@ -81,7 +81,8 @@ Template.vote.events({
     // Get value from form element
     var v = {};
     var rank = 0;
-    $("div[id='ranked']").children().each(function(){
+    //$("div[id='ranked']").children().each(function(){
+    $("#ranked").children().each(function(){
        v[rank]=this.id;
        rank+=1;
     });
