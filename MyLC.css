@@ -184,6 +184,18 @@ textarea {
 .button-style {
   font-size: 14px;
 }
+.button-style-left {
+  font-size: 14px;
+  float: left;
+}
+.button-style-middle {
+  font-size: 14px;
+  float: right;
+}
+.button-style-right {
+  font-size: 14px;
+  float: right;
+}
 
 .column {
   width: 48%;

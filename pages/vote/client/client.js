@@ -87,6 +87,12 @@ Template.vote.events({
     Session.set("currentPage", cp);
   },
   "click .submit-click": function (event) {
+    console.log('ok');
+    console.log($("#comments").value);
+    console.log('ok');
+    //.value);
+    return;
+
     // Get value from form element
     var v = {};
     var rank = 0;

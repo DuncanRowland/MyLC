@@ -2,13 +2,15 @@
   <div class="container">
     <header>
       <h1>Vote</h1><div style="text-align:right"><a href="/">Debug</a></div>
+      <div>
         <span>
-          {{#if currentPageHasBack}}<left><button class="button-style back-click">Back</button></left>{{/if}}
-          {{#if currentPageHasSubmit}}<center><button class="button-style submit-click">Submit</button></center>{{/if}}
-          {{#if currentPageHasNext}}<right><button class="button-style next-click">Next</button></right>{{/if}}
+          {{#if currentPageHasBack}}<button class="button-style-left back-click">Back</button>{{/if}}
+          {{#if currentPageHasSubmit}}<button class="button-style-middle submit-click">Submit</button>{{/if}}
+          {{#if currentPageHasNext}}<button class="button-style-right next-click">Next</button>{{/if}}
         </span>
+        <br>
+      </div>
     </header>
-Drag all the items you would like to include in your exhibition over to this side. Order them most to least important to include.
     <div class="sortable-items-target" id="ranked"></div>
     {{#if currentPageIs0}}{{>instructions}}{{/if}}
     {{#if currentPageIs1}}{{>selectItems}}{{/if}}
@@ -17,21 +19,27 @@ Drag all the items you would like to include in your exhibition over to this sid
 </template>
 
 <template name="instructions">
-  All instructions go here
+  <b>Text to be written</b><br>
+  All instructions go here along with any logos etc...<br>
+  The aim of this project is... etc...<br>
+  Choose your ten favorite items from the collection... etc...<br>
+  Click the items to find out more about each... etc...<br>
+  <br>
+  To begin, click next.<br>
 </template>
 
 <template name="selectItems">
-You can just leave any items that you do not want to include in your exhibition over here. Click + to expand.
-    <div class="sortable-items-source" id="row0">{{#each items start="0" count="10"}}{{>item}}{{/each}}</div>
-    <div class="sortable-items-source" id="row1">{{#each items start="0" count="10"}}{{>item}}{{/each}}</div>
-    <div class="sortable-items-source" id="row2">{{#each items start="0" count="10"}}{{>item}}{{/each}}</div>
-    <div class="sortable-items-source" id="row3">{{#each items start="0" count="10"}}{{>item}}{{/each}}</div>
-    <div class="sortable-items-source" id="row4">{{#each items start="0" count="10"}}{{>item}}{{/each}}</div>
-    <div class="sortable-items-source" id="row5">{{#each items start="0" count="10"}}{{>item}}{{/each}}</div>
-    <div class="sortable-items-source" id="row6">{{#each items start="0" count="10"}}{{>item}}{{/each}}</div>
-    <div class="sortable-items-source" id="row7">{{#each items start="0" count="10"}}{{>item}}{{/each}}</div>
-    <div class="sortable-items-source" id="row8">{{#each items start="0" count="10"}}{{>item}}{{/each}}</div>
-    <div class="sortable-items-source" id="row9">{{#each items start="0" count="10"}}{{>item}}{{/each}}</div>
+  <center>Please drag your selection above (favourites first) and click next.</center>
+  <div class="sortable-items-source" id="row0">{{#each items start="0" count="10"}}{{>item}}{{/each}}</div>
+  <div class="sortable-items-source" id="row1">{{#each items start="0" count="10"}}{{>item}}{{/each}}</div>
+  <div class="sortable-items-source" id="row2">{{#each items start="0" count="10"}}{{>item}}{{/each}}</div>
+  <div class="sortable-items-source" id="row3">{{#each items start="0" count="10"}}{{>item}}{{/each}}</div>
+  <div class="sortable-items-source" id="row4">{{#each items start="0" count="10"}}{{>item}}{{/each}}</div>
+  <div class="sortable-items-source" id="row5">{{#each items start="0" count="10"}}{{>item}}{{/each}}</div>
+  <div class="sortable-items-source" id="row6">{{#each items start="0" count="10"}}{{>item}}{{/each}}</div>
+  <div class="sortable-items-source" id="row7">{{#each items start="0" count="10"}}{{>item}}{{/each}}</div>
+  <div class="sortable-items-source" id="row8">{{#each items start="0" count="10"}}{{>item}}{{/each}}</div>
+  <div class="sortable-items-source" id="row9">{{#each items start="0" count="10"}}{{>item}}{{/each}}</div>
 </template>
 
 <template name="item">
@@ -41,5 +49,6 @@ You can just leave any items that you do not want to include in your exhibition 
 </template>
 
 <template name="addCommentAndSubmit">
-  Add a comment and submit
+  <center>Please add any comments about your selection below and click submit.</center>
+  <textarea id="comments"></textarea>
 </template>
