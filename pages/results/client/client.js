@@ -18,8 +18,12 @@ Template.results.helpers({
         rank+=1;
         }
       text = text.substring(0, text.length - 2);
-      obj = {preferences: text};
-      r.push(obj)
+      var commentText = "none";
+      if(entry["comment"]!=undefined) {
+        commentText = entry["comment"];
+      }
+      obj = {preferences: text, comment: commentText};
+      r.push(obj);
     });
     return r;
   }

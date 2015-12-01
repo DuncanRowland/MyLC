@@ -87,15 +87,10 @@ Template.vote.events({
     Session.set("currentPage", cp);
   },
   "click .submit-click": function (event) {
-    console.log('ok');
-    console.log($("#comments").value);
-    console.log('ok');
-    //.value);
-    return;
-
-    // Get value from form element
+    // Get values from form element
     var v = {};
     var rank = 0;
+    v["comment"] = $("#comment").val();
     //$("div[id='ranked']").children().each(function(){
     $("#ranked").children().each(function(){
        v[rank]=this.id;
