@@ -185,20 +185,20 @@ textarea {
 .button-style {
   font-size: 14px;
 }
-.button-nav-block {
+.nav-block {
   position: relative;
   width: 100%;
   text-align: left;
 }
-.button-nav-style-left {
+.nav-button-style-left {
   width: 33%;
   text-align: left;
 }
-.button-nav-style-middle {
+.nav-button-style-middle {
   width: 34%;
   text-align: center;
 }
-.button-nav-style-right {
+.nav-button-style-right {
   width: 33%;
   text-align: right;
 }

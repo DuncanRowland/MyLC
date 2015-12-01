@@ -61,6 +61,7 @@ Template.selectItems.rendered = function() {
   }).disableSelection();
 
   $(document).ready(function() {
+    Session.set("currentPage", 0);
     $(".fancybox").fancybox({
       helpers : {
         title: {
@@ -110,7 +111,7 @@ Template.item.rendered = function() {
   });
 }
 
-Template.vote.helpers({
+Template.navigator.helpers({
   currentPageHasBack: function(){;
     return Session.get("currentPage")!=0;
   },

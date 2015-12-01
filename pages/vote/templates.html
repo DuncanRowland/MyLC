@@ -2,31 +2,29 @@
   <div class="container">
     <header>
       <h1>Vote</h1><div style="text-align:right"><a href="/">Debug</a></div>
-      <div>
-        <table class="button-nav-block">
-          <tr>
-          <td class="button-nav-style-left">
-            {{#if currentPageHasBack}}<button class="button-style back-click">Back</button>{{/if}}
-          </td>
-          <td class="button-nav-style-middle">
-            {{#if currentPageHasSubmit}}<button class="button-style submit-click">Submit</button>{{/if}}
-          </td>
-          <td class="button-nav-style-right">
-            {{#if currentPageHasNext}}<button class="button-style next-click">Next</button>{{/if}}
-          </td>
-        </tr>
-        </table>
-        <br>
-      </div>
+      {{>navigator}}
     </header>
     <div class="sortable-items-target" id="ranked"></div>
-    <!--{{#if currentPageIs0}}{{>instructions}}{{/if}}
-    {{#if currentPageIs1}}{{>selectItems}}{{/if}}
-    {{#if currentPageIs2}}{{>addCommentAndSubmit}}{{/if}}-->
-    {{>instructions}}
-    {{>selectItems}}
-    {{>addCommentAndSubmit}}
+      {{>instructions}}
+      {{>selectItems}}
+      {{>addCommentAndSubmit}}
   </div>
+</template>
+
+<template name="navigator">
+  <table class="nav-block">
+    <tr>
+      <td class="nav-button-style-left">
+        {{#if currentPageHasBack}}<button class="button-style back-click">Back</button>{{/if}}
+      </td>
+      <td class="nav-button-style-middle">
+        {{#if currentPageHasSubmit}}<button class="button-style submit-click">Submit</button>{{/if}}
+      </td>
+      <td class="nav-button-style-right">
+        {{#if currentPageHasNext}}<button class="button-style next-click">Next</button>{{/if}}
+      </td>
+    </tr>
+  </table>
 </template>
 
 <template name="instructions">
