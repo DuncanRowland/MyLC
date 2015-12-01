@@ -3,20 +3,22 @@
     <header>
       <h1>Vote</h1><div style="text-align:right"><a href="/">Debug</a></div>
       <form class="user-submit">
-        <center><button class="create">Submit</button></center>
+        <span>
+          <left><button class="create">Back</button></left>
+          <center><button class="create">Submit</button></center>
+          <right><button class="create">Next</button></right>
+        </span>
       </form>
     </header>
-    {{#if menutype}}
-      {{>itemSelector}}
-    {{else}}
-      {{>commentSubmittor}}
-    {{/if}}
+Drag all the items you would like to include in your exhibition over to this side. Order them most to least important to include.
+    <div class="sortable-items-target" id="ranked"></div>
+    {{#if menutype0}}{{>itemSelector}}{{/if}}
+    {{#if menutype1}}{{>commentSubmittor}}{{/if}}
+    {{#if menutype2}}{{/if}}
   </div>
 </template>
 
 <template name="itemSelector">
-Drag all the items you would like to include in your exhibition over to this side. Order them most to least important to include.
-    <div class="sortable-items-target" id="ranked"></div>
 You can just leave any items that you do not want to include in your exhibition over here. Click + to expand.
     <div class="sortable-items-source" id="row0">{{#each items start="0" count="10"}}{{>item}}{{/each}}</div>
     <div class="sortable-items-source" id="row1">{{#each items start="0" count="10"}}{{>item}}{{/each}}</div>

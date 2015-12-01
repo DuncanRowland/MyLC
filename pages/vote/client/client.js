@@ -1,4 +1,4 @@
-Session.setDefault("xx", true);
+Session.setDefault("xx", 0);
 
 Template.itemSelector.helpers({
   items: function (options) {
@@ -80,13 +80,9 @@ Template.vote.events({
     // Prevent default browser form submit
     event.preventDefault();
 
-    console.log("123");
+    Session.set("xx", (Session.get("xx")+1)%3);
     console.log(Session.get("xx"));
-    if(Session.get("xx")) {
-      console.log("HELLO")
-      Session.set("xx", false);
-      return false;
-    }
+    return false;
 
     // Get value from form element
     var v = {};
@@ -111,9 +107,13 @@ Template.item.rendered = function() {
 }
 
 Template.vote.helpers({
-  menutype: function(){
-    console.log("XX")
-    console.log(Session.get("xx"));
-    return Session.get("xx");
+  menutype0: function(){;
+    return Session.get("xx")==0;
+  },
+  menutype1: function(){;
+    return Session.get("xx")==1;
+  },
+  menutype2: function(){;
+    return Session.get("xx")==2;
   }
 });
