@@ -17,7 +17,6 @@ Template.results.helpers({
           }
         rank+=1;
         }
-      text = text.substring(0, text.length - 2);
       var commentText = "none";
       if(entry["comment"]!=undefined) {
         commentText = entry["comment"];
