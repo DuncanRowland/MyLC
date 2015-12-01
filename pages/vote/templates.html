@@ -41,7 +41,8 @@
 
 <template name="selectItems">
   <div hidden={{hidePage}}>
-    <center>Please drag your selection above (favourites first) and click next.</center>
+    <center>Please drag your selections above, up to 10, ordered favourites first.<br>
+            Click an image to see its description, and next when you are finished.</center>
     <div class="sortable-items-source" id="row0">{{#each items start="0" count="10"}}{{>item}}{{/each}}</div>
     <div class="sortable-items-source" id="row1">{{#each items start="0" count="10"}}{{>item}}{{/each}}</div>
     <div class="sortable-items-source" id="row2">{{#each items start="0" count="10"}}{{>item}}{{/each}}</div>
