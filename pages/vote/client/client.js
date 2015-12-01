@@ -1,6 +1,6 @@
-Session.setDefault("xx", 0);
+Session.setDefault("currentPage", 0);
 
-Template.itemSelector.helpers({
+Template.selectItems.helpers({
   items: function (options) {
     // Show start-stop sliced subset from alphabetical order
     var r = [];
@@ -27,7 +27,7 @@ Template.itemSelector.helpers({
   }
 });
 
-Template.itemSelector.rendered = function() {
+Template.selectItems.rendered = function() {
 
   $( ".sortable-items-target" ).sortable({
     connectWith: ".sortable-items-source",
@@ -77,23 +77,16 @@ Template.itemSelector.rendered = function() {
 
 Template.vote.events({
   "click .back-click": function (event) {
-    var i = Session.get("xx");
-    if(i>0){i--};
-    Session.set("xx", i);
+    var cp = Session.get("currentPage");
+    if(cp>0){cp--};
+    Session.set("currentPage", cp);
   },
   "click .next-click": function (event) {
-    var i = Session.get("xx");
-    if(i<2){i++};
-    Session.set("xx", i);
+    var cp = Session.get("currentPage");
+    if(cp<2){cp++};
+    Session.set("currentPage", cp);
   },
-  "click .user-submit": function (event) {
-    // Prevent default browser form submit
-    event.preventDefault();
-
-    Session.set("xx", (Session.get("xx")+1)%3);
-    console.log(Session.get("xx"));
-    return false;
-
+  "click .submit-click": function (event) {
     // Get value from form element
     var v = {};
     var rank = 0;
@@ -117,13 +110,22 @@ Template.item.rendered = function() {
 }
 
 Template.vote.helpers({
-  menutype0: function(){;
-    return Session.get("xx")==0;
+  currentPageIs0: function(){;
+    return Session.get("currentPage")==0;
   },
-  menutype1: function(){;
-    return Session.get("xx")==1;
+  currentPageIs1: function(){;
+    return Session.get("currentPage")==1;
   },
-  menutype2: function(){;
-    return Session.get("xx")==2;
+  currentPageIs2: function(){;
+    return Session.get("currentPage")==2;
+  },
+  currentPageHasBack: function(){;
+    return Session.get("currentPage")!=0;
+  },
+  currentPageHasSubmit: function(){;
+    return Session.get("currentPage")==2;
+  },
+  currentPageHasNext: function(){;
+    return Session.get("currentPage")!=2;
   }
 });
