@@ -116,15 +116,6 @@ Template.item.rendered = function() {
 }
 
 Template.vote.helpers({
-  currentPageIs0: function(){;
-    return Session.get("currentPage")==0;
-  },
-  currentPageIs1: function(){;
-    return Session.get("currentPage")==1;
-  },
-  currentPageIs2: function(){;
-    return Session.get("currentPage")==2;
-  },
   currentPageHasBack: function(){;
     return Session.get("currentPage")!=0;
   },
@@ -135,3 +126,21 @@ Template.vote.helpers({
     return Session.get("currentPage")!=2;
   }
 });
+
+Template.instructions.helpers({
+  hidePage: function(){
+    return (Session.get("currentPage")!=0);
+  }
+})
+
+Template.selectItems.helpers({
+  hidePage: function(){
+    return (Session.get("currentPage")!=1);
+  }
+})
+
+Template.addCommentAndSubmit.helpers({
+  hidePage: function(){
+    return (Session.get("currentPage")!=2);
+  }
+})

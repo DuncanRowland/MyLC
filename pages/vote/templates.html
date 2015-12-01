@@ -12,34 +12,41 @@
       </div>
     </header>
     <div class="sortable-items-target" id="ranked"></div>
-    {{#if currentPageIs0}}{{>instructions}}{{/if}}
+    <!--{{#if currentPageIs0}}{{>instructions}}{{/if}}
     {{#if currentPageIs1}}{{>selectItems}}{{/if}}
-    {{#if currentPageIs2}}{{>addCommentAndSubmit}}{{/if}}
+    {{#if currentPageIs2}}{{>addCommentAndSubmit}}{{/if}}-->
+    {{>instructions}}
+    {{>selectItems}}
+    {{>addCommentAndSubmit}}
   </div>
 </template>
 
 <template name="instructions">
-  <b>Text to be written</b><br>
-  All instructions go here along with any logos etc...<br>
-  The aim of this project is... etc...<br>
-  Choose your ten favorite items from the collection... etc...<br>
-  Click the items to find out more about each... etc...<br>
-  <br>
-  To begin, click next.<br>
+  <div hidden={{hidePage}}>
+    <b>Text to be written</b><br>
+    All instructions go here along with any logos etc...<br>
+    The aim of this project is... etc...<br>
+    Choose your ten favorite items from the collection... etc...<br>
+    Click the items to find out more about each... etc...<br>
+    <br>
+    To begin, click next.<br>
+  </div>
 </template>
 
 <template name="selectItems">
-  <center>Please drag your selection above (favourites first) and click next.</center>
-  <div class="sortable-items-source" id="row0">{{#each items start="0" count="10"}}{{>item}}{{/each}}</div>
-  <div class="sortable-items-source" id="row1">{{#each items start="0" count="10"}}{{>item}}{{/each}}</div>
-  <div class="sortable-items-source" id="row2">{{#each items start="0" count="10"}}{{>item}}{{/each}}</div>
-  <div class="sortable-items-source" id="row3">{{#each items start="0" count="10"}}{{>item}}{{/each}}</div>
-  <div class="sortable-items-source" id="row4">{{#each items start="0" count="10"}}{{>item}}{{/each}}</div>
-  <div class="sortable-items-source" id="row5">{{#each items start="0" count="10"}}{{>item}}{{/each}}</div>
-  <div class="sortable-items-source" id="row6">{{#each items start="0" count="10"}}{{>item}}{{/each}}</div>
-  <div class="sortable-items-source" id="row7">{{#each items start="0" count="10"}}{{>item}}{{/each}}</div>
-  <div class="sortable-items-source" id="row8">{{#each items start="0" count="10"}}{{>item}}{{/each}}</div>
-  <div class="sortable-items-source" id="row9">{{#each items start="0" count="10"}}{{>item}}{{/each}}</div>
+  <div hidden={{hidePage}}>
+    <center>Please drag your selection above (favourites first) and click next.</center>
+    <div class="sortable-items-source" id="row0">{{#each items start="0" count="10"}}{{>item}}{{/each}}</div>
+    <div class="sortable-items-source" id="row1">{{#each items start="0" count="10"}}{{>item}}{{/each}}</div>
+    <div class="sortable-items-source" id="row2">{{#each items start="0" count="10"}}{{>item}}{{/each}}</div>
+    <div class="sortable-items-source" id="row3">{{#each items start="0" count="10"}}{{>item}}{{/each}}</div>
+    <div class="sortable-items-source" id="row4">{{#each items start="0" count="10"}}{{>item}}{{/each}}</div>
+    <div class="sortable-items-source" id="row5">{{#each items start="0" count="10"}}{{>item}}{{/each}}</div>
+    <div class="sortable-items-source" id="row6">{{#each items start="0" count="10"}}{{>item}}{{/each}}</div>
+    <div class="sortable-items-source" id="row7">{{#each items start="0" count="10"}}{{>item}}{{/each}}</div>
+    <div class="sortable-items-source" id="row8">{{#each items start="0" count="10"}}{{>item}}{{/each}}</div>
+    <div class="sortable-items-source" id="row9">{{#each items start="0" count="10"}}{{>item}}{{/each}}</div>
+  </div>
 </template>
 
 <template name="item">
@@ -49,6 +56,8 @@
 </template>
 
 <template name="addCommentAndSubmit">
-  <center>Please add any comments about your selection below and click submit.</center>
-  <textarea id="comments"></textarea>
+  <div hidden={{hidePage}}>
+    <center>Please add any comments about your selection below and click submit.</center>
+    <textarea id="comments"></textarea>
+  </div>
 </template>
