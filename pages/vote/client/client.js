@@ -76,7 +76,17 @@ Template.itemSelector.rendered = function() {
 }
 
 Template.vote.events({
-  "submit .user-submit": function (event) {
+  "click .back-click": function (event) {
+    var i = Session.get("xx");
+    if(i>0){i--};
+    Session.set("xx", i);
+  },
+  "click .next-click": function (event) {
+    var i = Session.get("xx");
+    if(i<2){i++};
+    Session.set("xx", i);
+  },
+  "click .user-submit": function (event) {
     // Prevent default browser form submit
     event.preventDefault();
 
