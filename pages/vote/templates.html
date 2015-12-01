@@ -3,11 +3,19 @@
     <header>
       <h1>Vote</h1><div style="text-align:right"><a href="/">Debug</a></div>
       <div>
-        <span>
-          {{#if currentPageHasBack}}<button class="button-style-left back-click">Back</button>{{/if}}
-          {{#if currentPageHasSubmit}}<button class="button-style-middle submit-click">Submit</button>{{/if}}
-          {{#if currentPageHasNext}}<button class="button-style-right next-click">Next</button>{{/if}}
-        </span>
+        <table class="button-nav-block">
+          <tr>
+          <td class="button-nav-style-left">
+            {{#if currentPageHasBack}}<button class="button-style back-click">Back</button>{{/if}}
+          </td>
+          <td class="button-nav-style-middle">
+            {{#if currentPageHasSubmit}}<button class="button-style submit-click">Submit</button>{{/if}}
+          </td>
+          <td class="button-nav-style-right">
+            {{#if currentPageHasNext}}<button class="button-style next-click">Next</button>{{/if}}
+          </td>
+        </tr>
+        </table>
         <br>
       </div>
     </header>
@@ -57,7 +65,9 @@
 
 <template name="addCommentAndSubmit">
   <div hidden={{hidePage}}>
-    <center>Please add any comments about your selection below and click submit.</center>
-    <textarea id="comment"></textarea>
+    <center>
+      Please add any comments about your selection below and click submit.
+      <textarea id="comment"></textarea>
+    </center>
   </div>
 </template>

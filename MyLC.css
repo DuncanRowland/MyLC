@@ -176,7 +176,7 @@ header .hide-completed {
 
 textarea {
      width: 90%;
-     height: 40%
+     height: 10em;
      -webkit-box-sizing: border-box; /* Safari/Chrome, other WebKit */
      -moz-box-sizing: border-box;    /* Firefox, other Gecko */
      box-sizing: border-box;         /* Opera/IE 8+ */
@@ -185,14 +185,20 @@ textarea {
 .button-style {
   font-size: 14px;
 }
-.button-style-left {
-  font-size: 14px;
-  float: left;
+.button-nav-block {
+  position: relative;
+  width: 100%;
+  text-align: left;
 }
-.button-style-middle {
-  font-size: 14px;
+.button-nav-style-left {
+  width: 33%;
+  text-align: left;
 }
-.button-style-right {
-  font-size: 14px;
-  float: right;
+.button-nav-style-middle {
+  width: 34%;
+  text-align: center;
+}
+.button-nav-style-right {
+  width: 33%;
+  text-align: right;
 }
