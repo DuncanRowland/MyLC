@@ -8,10 +8,18 @@
         {{> result}}
       {{/each}}
     </ul>
+    {{> googlemap}}
+    <center><h1>Thanks, etc...</h1></center>
   </div>
 </template>
 
 <template name="result">
     {{preferences}}
     "{{comment}}"<br>
+</template>
+
+<template name="googlemap">
+  <div class="map-container">
+    {{> googleMap name="exampleMap" options=exampleMapOptions}}
+  </div>
 </template>
