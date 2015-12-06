@@ -40,32 +40,25 @@ Template.googlemap.onRendered(function() {
 
 Template.googlemap.onCreated(function() {
   GoogleMaps.ready('exampleMap', function(map) {
+
+    var infowindow = new google.maps.InfoWindow();
+
     var marker1 = new google.maps.Marker({
       position: {lat: 53.22, lng: -0.54},
-      map: map.instance,
-      url: 'http://localhost:3000/cfs/files/images/EwKzaNFZQYTPZm3w2/ben.jpg?store=images'
+      map: map.instance
     });
-    var infowindow1 = new google.maps.InfoWindow({
-      content: '<div>window 1</div>'
-    });
-    //google.maps.event.addListener(marker, 'click', function() {
     marker1.addListener('click', function() {
-      //window.location.href = 'http://www.google.com';
-      infowindow1.open(map.instance, marker1);
+      infowindow.setContent("M1");
+      infowindow.open(map.instance, marker1);
     });
 
     var marker2 = new google.maps.Marker({
       position: {lat: 53.22, lng: -0.55},
-      map: map.instance,
-      url: 'http://localhost:3000/cfs/files/images/EwKzaNFZQYTPZm3w2/ben.jpg?store=images'
+      map: map.instance
     });
-    var infowindow2 = new google.maps.InfoWindow({
-      content: '<div>window 2</div>'
-    });
-    //google.maps.event.addListener(marker, 'click', function() {
-    marker2.addListener('click', function() {
-      //window.location.href = 'http://www.google.com';
-      infowindow2.open(map.instance, marker2);
+    marker2.addListener('click', function(param) {
+      infowindow.setContent('<img src="http://localhost:3000/cfs/files/images/EwKzaNFZQYTPZm3w2/ben.jpg?store=images">');
+      infowindow.open(map.instance, marker2);
     });
 
 
@@ -81,5 +74,13 @@ Template.googlemap.helpers({
         zoom: 12
       };
     }
+  }
+});
+
+Template.vote.events({
+  "click .map-marker": function (event) {
+    var cp = Session.get("currentPage");
+    if(cp>0){cp--};
+    Session.set("currentPage", cp);
   }
 });
