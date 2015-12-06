@@ -45,21 +45,22 @@ Template.googlemap.onCreated(function() {
 
     var marker1 = new google.maps.Marker({
       position: {lat: 53.22, lng: -0.54},
-      map: map.instance
+      map: map.instance,
+      site: "M1"
     });
-    marker1.addListener('click', function() {
-      infowindow.setContent("M1");
-      infowindow.open(map.instance, marker1);
-    });
+    marker1.addListener('click', function(){setupInfoWindow(marker1)});
 
     var marker2 = new google.maps.Marker({
       position: {lat: 53.22, lng: -0.55},
-      map: map.instance
+      map: map.instance,
+      site: "M2"
     });
-    marker2.addListener('click', function(param) {
-      infowindow.setContent('<img src="http://localhost:3000/cfs/files/images/EwKzaNFZQYTPZm3w2/ben.jpg?store=images">');
-      infowindow.open(map.instance, marker2);
-    });
+    marker2.addListener('click', function(){setupInfoWindow(marker2)});
+
+    function setupInfoWindow(marker) {
+        infowindow.setContent(marker.site);
+        infowindow.open(map.instance, marker);
+    }
 
 
   });
