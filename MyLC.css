@@ -208,3 +208,7 @@ textarea {
   max-width: 100%;
   height: 500px;
 }
+
+.login-buttons-dropdown-align- {
+  text-align: right;
+}
