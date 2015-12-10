@@ -13,7 +13,7 @@ Template.results.helpers({
           if(_id===undefined) {
             text += "?, ";
           } else {
-            text += _id.text + ", ";
+            text += _id.name + ", ";
           }
         rank+=1;
         }

@@ -6,9 +6,9 @@ Template.adminItems.helpers({
     result.forEach(function(entry) {
       var locationid = entry['locationid'];
       var location = Locations.findOne({_id:locationid})
-      var locationText = "Unknown";
+      var locationName = "Unknown";
       if(location != undefined) {
-        locationText = location['text'];
+        locationName = location['name'];
       }
 
       var imageid = entry['imageid'];
@@ -16,9 +16,9 @@ Template.adminItems.helpers({
       if(img != undefined) {
         var obj = {};
         obj['_id']=entry['_id'];
-        obj['text']=entry['text'];
+        obj['name']=entry['name'];
         obj['description']=entry['description'];
-        obj['location'] = locationText;
+        obj['location'] = locationName;
         obj['image']=img;
         r.push(obj)
         }
@@ -39,7 +39,7 @@ Template.adminItems.events({
 
     // Get value from form element
     var image = event.target.image.files[0];
-    var text = event.target.text.value;
+    var name = event.target.name.value;
     var description = event.target.description.value;
     var location = event.target.location.value;
 
@@ -47,7 +47,7 @@ Template.adminItems.events({
       // Inserted new doc with ID fileObj._id, and kicked off the data upload using HTTP
       // Insert a item into the collection
       Items.insert({
-        text: text,
+        name: name,
         description: description,
         locationid: location,
         imageid: fileObj._id
@@ -55,7 +55,7 @@ Template.adminItems.events({
     });
 
     // Clear form
-    event.target.text.value = "";
+    event.target.name.value = "";
     event.target.description.value = "";
     event.target.location.value = "";
     event.target.image.value = "";

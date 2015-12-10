@@ -15,7 +15,7 @@ Template.selectItems.helpers({
         if( index >= start && index < end ) {
           var obj = {};
           obj['_id']=entry['_id'];
-          obj['text']=entry['text'];
+          obj['name']=entry['name'];
           obj['description']=entry['description'];
           obj['image']=img;
           r.push(obj);

@@ -3,7 +3,7 @@
     <header>
       <h1>Add Location</h1><div style="text-align:right"><a href="/">Debug</a></div>
       <form class="new-item">
-        <input type="text" name="text" placeholder="Type here to set item title" onkeydown="if (event.keyCode == 13) {return false;}"/>
+        <input type="text" name="name" placeholder="Type here to set item title" onkeydown="if (event.keyCode == 13) {return false;}"/>
         <input type="text" name="description" placeholder="Type here to add description" onkeydown="if (event.keyCode == 13) {return false;}"/>
         <input type="number" step="0.001" name="lat" placeholder="Enter latitude">
         <input type="number" step="0.001" name="lng" placeholder="Enter longitude">
@@ -22,7 +22,7 @@
 <template name="locationDeleteable">
   <li>
     <div class="portlet ui-widget ui-widget-content ui-helper-clearfix ui-corner-all">
-      <div class="portlet-header ui-widget-header ui-corner-all">{{text}}
+      <div class="portlet-header ui-widget-header ui-corner-all">{{name}}
          <span class='ui-icon ui-icon-plusthick portlet-toggle'></span></div>
       <div class="portlet-content">{{description}}:({{lat}},{{lng}})
       <div><img src="{{image.url store='images'}}" class='img-fill-div'/></div>
