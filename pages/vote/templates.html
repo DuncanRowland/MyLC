@@ -1,13 +1,18 @@
 <template name="vote">
   <div class="container">
     <header>
+      {{> loginButtons}}
       <h1>Vote</h1><div style="text-align:right"><a href="/">Debug</a></div>
-      {{>navigator}}
+      {{#if currentUser}}
+        {{>navigator}}
+      {{/if}}
     </header>
+    {{#if currentUser}}
     <div class="sortable-items-target" id="ranked"></div>
       {{>instructions}}
       {{>selectItems}}
       {{>addCommentAndSubmit}}
+    {{/if}}
   </div>
 </template>
 
