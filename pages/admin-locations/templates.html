@@ -2,10 +2,12 @@
   <div class="container">
     <header>
       {{> loginButtons}}
-      <h1>Administer: Locations</h1><div style="text-align:right"><a href="/">Debug</a></div>
+      <h1>Add Location</h1><div style="text-align:right"><a href="/">Debug</a></div>
       <form class="new-item">
         <input type="text" name="text" placeholder="Type here to set item title" onkeydown="if (event.keyCode == 13) {return false;}"/>
         <input type="text" name="description" placeholder="Type here to add description" onkeydown="if (event.keyCode == 13) {return false;}"/>
+        <input type="number" step="0.001" name="lat" placeholder="Enter latitude">
+        <input type="number" step="0.001" name="lng" placeholder="Enter longitude">
         <input type="file" name="image"/>
         <center><button class="button-style">Create</button></center>
       </form>
@@ -23,7 +25,7 @@
     <div class="portlet ui-widget ui-widget-content ui-helper-clearfix ui-corner-all">
       <div class="portlet-header ui-widget-header ui-corner-all">{{text}}
          <span class='ui-icon ui-icon-plusthick portlet-toggle'></span></div>
-      <div class="portlet-content">{{description}}
+      <div class="portlet-content">{{description}}:({{lat}},{{lng}})
       <div><img src="{{image.url store='images'}}" class='img-fill-div'/></div>
         <span title="DELETE">
           <button class="delete">&times;</button>

@@ -11,6 +11,8 @@ Template.adminLocations.helpers({
         obj['_id']=entry['_id'];
         obj['text']=entry['text'];
         obj['description']=entry['description'];
+        obj['lat']=entry['lat'];
+        obj['lng']=entry['lng'];
         obj['image']=img;
         r.push(obj)
         }
@@ -28,6 +30,8 @@ Template.adminLocations.events({
     // Get value from form element
     var image = event.target.image.files[0];
     var text = event.target.text.value;
+    var lat = event.target.lat.value;
+    var lng = event.target.lng.value;
     var description = event.target.description.value;
 
     Images.insert(image, function (err, fileObj) {
@@ -36,6 +40,8 @@ Template.adminLocations.events({
       Locations.insert({
         text: text,
         description: description,
+        lat: lat,
+        lng: lng,
         imageid: fileObj._id
       });
     });
@@ -43,6 +49,8 @@ Template.adminLocations.events({
     // Clear form
     event.target.text.value = "";
     event.target.description.value = "";
+    event.target.lat.value = "";
+    event.target.lng.value = "";
     event.target.image.value = "";
   }
 });
