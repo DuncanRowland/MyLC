@@ -6,6 +6,7 @@ Template.googlemap.onCreated(function() {
   GoogleMaps.ready('exampleMap', function(map) {
 
     var infowindow = new google.maps.InfoWindow();
+
     var vote = Votes.findOne({"userid":Meteor.userId()}, {sort: {_id:1}});
     var rank = 0;
     var featuredLocations = {};
@@ -29,35 +30,40 @@ Template.googlemap.onCreated(function() {
         console.log(item['name']);
       });
     }
-/*
+
+    var markers=[];
     for (var lid in featuredLocations) {
       var location = Locations.findOne({_id:lid});
       var htmlString = "";
       featuredLocations[lid].forEach(function(item) {
         htmlString = htmlString + item['name'] +":";
       });
-      var newmarker = new google.maps.Marker({
+      markers.push( new google.maps.Marker({
         position: {lat: Number(location['lat']), lng: Number(location['lng'])},
         map: map.instance,
         site: htmlString
-      });
-      newmarker.addListener('click', function(){setupInfoWindow(newmarker)});
+      }) );
     }
-*/
-     var marker1 = new google.maps.Marker({
+    if(markers[0]){markers[0].addListener('click', function(){setupInfoWindow(markers[0])})};
+    if(markers[1]){markers[1].addListener('click', function(){setupInfoWindow(markers[1])})};
+    if(markers[2]){markers[2].addListener('click', function(){setupInfoWindow(markers[2])})};    
+
+/*
+    var mkrz = [];
+    mkrz[1] = new google.maps.Marker({
       position: {lat: 53.22, lng: -0.54},
       map: map.instance,
       site: "M1"
     });
-    marker1.addListener('click', function(){setupInfoWindow(marker1)});
+    mkrz[1].addListener('click', function(){setupInfoWindow(mkrz[1])});
 
-    var marker2 = new google.maps.Marker({
+    mkrz[2] = new google.maps.Marker({
       position: {lat: 53.22, lng: -0.55},
       map: map.instance,
       site: "M2"
     });
-    marker2.addListener('click', function(){setupInfoWindow(marker2)});
-
+    mkrz[2].addListener('click', function(){setupInfoWindow(mkrz[2])});
+*/
     function setupInfoWindow(marker) {
         infowindow.setContent(marker.site);
         infowindow.open(map.instance, marker);
