@@ -34,8 +34,4 @@ if (Meteor.isServer) {
       return true;
     }
   });
-  Accounts.config({
-    sendVerificationEmail: true,
-    forbidClientAccountCreation: false
-  });
 }
