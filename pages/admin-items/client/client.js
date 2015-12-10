@@ -4,6 +4,13 @@ Template.adminItems.helpers({
     var r = [];
     var result = Items.find({}, {sort: {text: 1}});
     result.forEach(function(entry) {
+      var locationid = entry['locationid'];
+      var location = Locations.findOne({_id:locationid})
+      var locationText = "Unknown";
+      if(location != undefined) {
+        locationText = location['text'];
+      }
+
       var imageid = entry['imageid'];
       var img = Images.findOne({_id: imageid});
       if(img != undefined) {
@@ -11,11 +18,16 @@ Template.adminItems.helpers({
         obj['_id']=entry['_id'];
         obj['text']=entry['text'];
         obj['description']=entry['description'];
+        obj['location'] = locationText;
         obj['image']=img;
         r.push(obj)
         }
     });
     return r;
+  },
+  locations: function () {
+    // Show in alphabetical order
+    return Locations.find({}, {sort: {text: 1}});
   }
 });
 
@@ -29,6 +41,7 @@ Template.adminItems.events({
     var image = event.target.image.files[0];
     var text = event.target.text.value;
     var description = event.target.description.value;
+    var location = event.target.location.value;
 
     Images.insert(image, function (err, fileObj) {
       // Inserted new doc with ID fileObj._id, and kicked off the data upload using HTTP
@@ -36,6 +49,7 @@ Template.adminItems.events({
       Items.insert({
         text: text,
         description: description,
+        locationid: location,
         imageid: fileObj._id
       });
     });
@@ -43,6 +57,7 @@ Template.adminItems.events({
     // Clear form
     event.target.text.value = "";
     event.target.description.value = "";
+    event.target.location.value = "";
     event.target.image.value = "";
   }
 });
