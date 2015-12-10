@@ -8,15 +8,26 @@ Template.googlemap.onCreated(function() {
     var infowindow = new google.maps.InfoWindow();
     var vote = Votes.findOne({"userid":Meteor.userId()}, {sort: {_id:1}});
     var rank = 0;
+    var featuredLocations = {};
     while(vote[rank]!=undefined) {
-      var item_id = Items.findOne({_id: vote[rank]})
-      if(item_id!=undefined) {
-        console.log(item_id.locationid);
-        console.log(Locations.findOne({_id:item_id.locationid})['name']);
-        console.log(Locations.findOne({_id:item_id.locationid})['lat']);
-        console.log(Locations.findOne({_id:item_id.locationid})['lng']);
-        rank+=1;
+      var item = Items.findOne({_id: vote[rank]})
+      if(item!=undefined) {
+        var lid = item.locationid;
+        if(!(lid in featuredLocations)) { featuredLocations[lid]=[] }
+        featuredLocations[lid].push(item);
       }
+      rank++;
+    }
+
+    console.log(featuredLocations);
+    for (var lid in featuredLocations) {
+      var location = Locations.findOne({_id:lid});
+      console.log(location['name']);
+      console.log(location['lat']);
+      console.log(location['lng']);
+      featuredLocations[lid].forEach(function(item) {
+        console.log(item['name']);
+      });
     }
 
     var marker1 = new google.maps.Marker({
