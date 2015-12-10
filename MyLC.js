@@ -1,8 +1,9 @@
 Items = new Mongo.Collection("items");
+Locations = new Mongo.Collection("locations");
+Votes = new Mongo.Collection("votes");
 Images = new FS.Collection("images", {
   stores: [new FS.Store.FileSystem("images", {path: "~/uploads"})]
 });
-Votes = new Mongo.Collection("votes");
 
 FlowRouter.route('/', {
     action: function() {
@@ -13,6 +14,12 @@ FlowRouter.route('/', {
 FlowRouter.route('/items', {
     action: function(params, queryParams) {
        BlazeLayout.render('adminItems');
+    }
+});
+
+FlowRouter.route('/locations', {
+    action: function(params, queryParams) {
+       BlazeLayout.render('adminLocations');
     }
 });
 

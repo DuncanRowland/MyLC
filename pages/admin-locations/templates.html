@@ -1,8 +1,8 @@
-<template name="adminItems">
+<template name="adminLocations">
   <div class="container">
     <header>
       {{> loginButtons}}
-      <h1>Administer: Items</h1><div style="text-align:right"><a href="/">Debug</a></div>
+      <h1>Administer: Locations</h1><div style="text-align:right"><a href="/">Debug</a></div>
       <form class="new-item">
         <input type="text" name="text" placeholder="Type here to set item title" onkeydown="if (event.keyCode == 13) {return false;}"/>
         <input type="text" name="description" placeholder="Type here to add description" onkeydown="if (event.keyCode == 13) {return false;}"/>
@@ -11,14 +11,14 @@
       </form>
     </header>
     <ul>
-      {{#each items}}
-        {{> itemDeleteable}}
+      {{#each locations}}
+        {{> locationDeleteable}}
       {{/each}}
     </ul>
   </div>
 </template>
 
-<template name="itemDeleteable">
+<template name="locationDeleteable">
   <li>
     <div class="portlet ui-widget ui-widget-content ui-helper-clearfix ui-corner-all">
       <div class="portlet-header ui-widget-header ui-corner-all">{{text}}
