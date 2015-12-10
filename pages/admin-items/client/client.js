@@ -1,4 +1,4 @@
-Template.admin.helpers({
+Template.adminItems.helpers({
   items: function () {
     // Show in alphabetical order
     var r = [];
@@ -19,7 +19,7 @@ Template.admin.helpers({
   }
 });
 
-Template.admin.events({
+Template.adminItems.events({
 
   "submit .new-item": function (event) {
     // Prevent default browser form submit

@@ -10,9 +10,9 @@ FlowRouter.route('/', {
     }
 });
 
-FlowRouter.route('/admin', {
+FlowRouter.route('/items', {
     action: function(params, queryParams) {
-       BlazeLayout.render('admin');
+       BlazeLayout.render('adminItems');
     }
 });
 
