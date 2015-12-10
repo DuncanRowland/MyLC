@@ -43,20 +43,12 @@ Template.googlemap.onCreated(function() {
         map: map.instance,
         site: htmlString
       });
-      markers.push(newmarker);
-      console.log(markers.length-1);
-      newmarker.addListener('click', function(){setupInfoWindow(markers.length-1)});
+      newmarker.addListener('click', function() {
+        infowindow.setContent(this.site);
+        infowindow.open(map.instance, this);
+        console.log("OK");
+      });
     }
-    //if(markers[0]){markers[0].addListener('click', function(){setupInfoWindow(0)})};
-    //if(markers[1]){markers[1].addListener('click', function(){setupInfoWindow(1)})};
-    //if(markers[2]){markers[2].addListener('click', function(){setupInfoWindow(2)})};
-
-    function setupInfoWindow(markerid) {
-        infowindow.setContent(markers[markerid].site);
-        infowindow.open(map.instance, markers[markerid]);
-    }
-
-
   });
 });
 
