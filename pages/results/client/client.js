@@ -29,8 +29,22 @@ Template.googlemap.onCreated(function() {
         console.log(item['name']);
       });
     }
-
-    var marker1 = new google.maps.Marker({
+/*
+    for (var lid in featuredLocations) {
+      var location = Locations.findOne({_id:lid});
+      var htmlString = "";
+      featuredLocations[lid].forEach(function(item) {
+        htmlString = htmlString + item['name'] +":";
+      });
+      var newmarker = new google.maps.Marker({
+        position: {lat: Number(location['lat']), lng: Number(location['lng'])},
+        map: map.instance,
+        site: htmlString
+      });
+      newmarker.addListener('click', function(){setupInfoWindow(newmarker)});
+    }
+*/
+     var marker1 = new google.maps.Marker({
       position: {lat: 53.22, lng: -0.54},
       map: map.instance,
       site: "M1"
