@@ -1,21 +1,11 @@
 <template name="results">
   <div class="container">
     <header>
-      <h1>All Submissions</h1><div style="text-align:right"><a href="/">Debug</a></div>
+      <h1>Results</h1><div style="text-align:right"><a href="/">Debug</a></div>
     </header>
-    <ul>
-      {{#each results}}
-        {{> result}}
-      {{/each}}
-    </ul>
     {{> googlemap}}
     <center><h1>Thanks, etc...</h1></center>
   </div>
-</template>
-
-<template name="result">
-    {{preferences}}
-    "{{comment}}"<br>
 </template>
 
 <template name="googlemap">

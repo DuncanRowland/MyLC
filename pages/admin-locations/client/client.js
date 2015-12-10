@@ -2,7 +2,7 @@ Template.adminLocations.helpers({
   locations: function () {
     // Show in alphabetical order
     var r = [];
-    var result = Locations.find({}, {sort: {text: 1}});
+    var result = Locations.find({}, {sort: {name: 1}});
     result.forEach(function(entry) {
       var imageid = entry['imageid'];
       var img = Images.findOne({_id: imageid});

@@ -2,7 +2,7 @@ Template.adminItems.helpers({
   items: function () {
     // Show in alphabetical order
     var r = [];
-    var result = Items.find({}, {sort: {text: 1}});
+    var result = Items.find({}, {sort: {name: 1}});
     result.forEach(function(entry) {
       var locationid = entry['locationid'];
       var location = Locations.findOne({_id:locationid})
@@ -27,7 +27,7 @@ Template.adminItems.helpers({
   },
   locations: function () {
     // Show in alphabetical order
-    return Locations.find({}, {sort: {text: 1}});
+    return Locations.find({}, {sort: {name: 1}});
   }
 });
 

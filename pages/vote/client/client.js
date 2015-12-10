@@ -4,7 +4,7 @@ Template.selectItems.helpers({
   items: function (options) {
     // Show start-stop sliced subset from alphabetical order
     var r = [];
-    var result = Items.find( {}, {sort: {text: 1}});
+    var result = Items.find( {}, {sort: {name: 1}});
     var index = 0;
     var start = options.hash.start;
     var end = options.hash.start + options.hash.count;
@@ -91,6 +91,7 @@ Template.vote.events({
     // Get values from form element
     var v = {};
     var rank = 0;
+    v["userid"] = Meteor.userId();
     v["comment"] = $("#comment").val();
     //$("div[id='ranked']").children().each(function(){
     $("#ranked").children().each(function(){
