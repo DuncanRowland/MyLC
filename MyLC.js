@@ -7,8 +7,9 @@ LatestVote = new Mongo.Collection("latestvote");
 //});
 Images = new FS.Collection("images", {
     stores: [
-      new FS.Store.FileSystem("large", {path: "~/uploads/img"}),
-      new FS.Store.FileSystem("small", {path: "~/uploads/thm"}, {
+      new FS.Store.FileSystem("images", {path: "~/uploads/images"}),
+      new FS.Store.FileSystem("thumbs", {
+        path: "~/uploads/thumbs",
         transformWrite: function(fileObj, readStream, writeStream) {
           // Transform the image into a 10x10px thumbnail
           gm(readStream, fileObj.name()).resize('10', '10').stream().pipe(writeStream);
