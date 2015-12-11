@@ -1,18 +1,30 @@
 Session.setDefault("currentPage", 0);
 
+var itemArray; //Lazy load and shuffle (needs 100 items in database)
+
 Template.selectItems.helpers({
   items: function (options) {
     // Show start-stop sliced subset from alphabetical order
     var r = [];
-    var result = Items.find( {}, {sort: {name: 1}});
-    var resultArray = [];
-    result.forEach(function(entry) {
-      resultArray.push(entry);
-    });
+    if(itemArray===undefined) {
+      var result = Items.find( {}, {sort: {name: 1}});
+      itemArray = [];
+      result.forEach(function(entry) {
+        itemArray.push(entry);
+      });
+      //Sometime itemArray.length is wrong here and I don't know why
+      //Maybe a timeout issue?
+      for(var i=0;i<itemArray.length;i++) {
+        var j = Math.floor((Math.random() * itemArray.length));
+        var tmp =  itemArray[i];
+        itemArray[i] = itemArray[j];
+        itemArray[j] = tmp;
+      }
+    }
     var start = options.hash.start;
     var end = start + options.hash.count;
     for(var index=start; index<end; index++) {
-      var entry = resultArray[index % resultArray.length];
+      var entry = itemArray[index % itemArray.length];
       var imageid = entry['imageid'];
       var img = Images.findOne({_id: imageid});
       if(img != undefined) {
