@@ -5,24 +5,25 @@ Template.selectItems.helpers({
     // Show start-stop sliced subset from alphabetical order
     var r = [];
     var result = Items.find( {}, {sort: {name: 1}});
-    var index = 0;
-    var start = options.hash.start;
-    var end = options.hash.start + options.hash.count;
+    var resultArray = [];
     result.forEach(function(entry) {
+      resultArray.push(entry);
+    });
+    var start = options.hash.start;
+    var end = start + options.hash.count;
+    for(var index=start; index<end; index++) {
+      var entry = resultArray[index % resultArray.length];
       var imageid = entry['imageid'];
       var img = Images.findOne({_id: imageid});
       if(img != undefined) {
-        if( index >= start && index < end ) {
-          var obj = {};
-          obj['_id']=entry['_id'];
-          obj['name']=entry['name'];
-          obj['description']=entry['description'];
-          obj['image']=img;
-          r.push(obj);
-        }
-        index += 1;
+        var obj = {};
+        obj['_id']=entry['_id'];
+        obj['name']=entry['name'];
+        obj['description']=entry['description'];
+        obj['image']=img;
+        r.push(obj);
       }
-    });
+    }
     return r;
   }
 });
