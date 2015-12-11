@@ -57,7 +57,7 @@ Template.adminItems.events({
     // Clear form
     event.target.name.value = "";
     event.target.description.value = "";
-    event.target.location.value = "";
+    //event.target.location.value = "";
     event.target.image.value = "";
   }
 });
