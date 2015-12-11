@@ -26,7 +26,11 @@ Template.googlemap.onCreated(function() {
       var location = Locations.findOne({_id:lid});
       var htmlString = "";
       featuredLocations[lid].forEach(function(item) {
-        htmlString = htmlString + item['name'] +":";
+        htmlString = htmlString + item['name'];
+        var img = Images.findOne({_id: item['imageid']});
+        var url = img.url({store:'thumbs'});
+        htmlString = htmlString + "<img src=" + url + ">";
+        console.log(htmlString);
       });
       var newmarker =  new google.maps.Marker({
         position: {lat: Number(location['lat']), lng: Number(location['lng'])},
