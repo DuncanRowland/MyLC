@@ -1,6 +1,7 @@
 Items = new Mongo.Collection("items");
 Locations = new Mongo.Collection("locations");
 Votes = new Mongo.Collection("votes");
+LatestVote = new Mongo.Collection("latestvote");
 Images = new FS.Collection("images", {
   stores: [new FS.Store.FileSystem("images", {path: "~/uploads"})]
 });

@@ -6,9 +6,10 @@ Template.googlemap.onCreated(function() {
   GoogleMaps.ready('exampleMap', function(map) {
 
     var infowindow = new google.maps.InfoWindow();
-    var markers=[];
 
-    var vote = Votes.findOne({"userid":Meteor.userId()}, {sort: {_id:1}});
+    var vote = Votes.findOne({"_id":
+                LatestVote.findOne({"_id":Meteor.userId()})["latest"]});
+
     var rank = 0;
     var featuredLocations = {};
     while(vote[rank]!=undefined) {
@@ -19,17 +20,6 @@ Template.googlemap.onCreated(function() {
         featuredLocations[lid].push(item);
       }
       rank++;
-    }
-
-    console.log(featuredLocations);
-    for (var lid in featuredLocations) {
-      var location = Locations.findOne({_id:lid});
-      console.log(location['name']);
-      console.log(location['lat']);
-      console.log(location['lng']);
-      featuredLocations[lid].forEach(function(item) {
-        console.log(item['name']);
-      });
     }
 
     for (var lid in featuredLocations) {
@@ -46,9 +36,9 @@ Template.googlemap.onCreated(function() {
       newmarker.addListener('click', function() {
         infowindow.setContent(this.site);
         infowindow.open(map.instance, this);
-        console.log("OK");
       });
     }
+
   });
 });
 
@@ -61,13 +51,5 @@ Template.googlemap.helpers({
         zoom: 12
       };
     }
-  }
-});
-
-Template.vote.events({
-  "click .map-marker": function (event) {
-    var cp = Session.get("currentPage");
-    if(cp>0){cp--};
-    Session.set("currentPage", cp);
   }
 });

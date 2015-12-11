@@ -98,7 +98,11 @@ Template.vote.events({
        v[rank]=this.id;
        rank+=1;
     });
-    Votes.insert(v);
+
+    Votes.insert(v, function(err,newid){
+      LatestVote.upsert(Meteor.userId(), { $set: { latest: newid } } );
+    });
+
     FlowRouter.go('/results');
   }
 });
