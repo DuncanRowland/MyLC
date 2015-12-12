@@ -173,7 +173,16 @@ header .hide-completed {
 .sortable-items-target {
     height: 60px;
 }
-
+.inline-location-image {
+  display: inline-block;
+  border: 0px;
+  margin: 0 0 0 0;
+  height: 240px;
+  width: 240px;
+}
+.map-info-box {
+    width: 240px;
+}
 textarea {
      width: 90%;
      height: 10em;

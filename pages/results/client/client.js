@@ -24,14 +24,22 @@ Template.googlemap.onCreated(function() {
 
     for (var lid in featuredLocations) {
       var location = Locations.findOne({_id:lid});
-      var htmlString = "";
+      var img = Images.findOne({_id: location['imageid']});
+      var url = img.url({store:'images'});
+      var htmlString = "<div class='map-info-box'>";
+      htmlString = htmlString + location['name'];
+      htmlString = htmlString + "<div class='inline-location-image'>"
+      htmlString = htmlString + "<img class='img-fill-div' src='"+url+"'>";
+      htmlString = htmlString + "</div>";
+      htmlString = htmlString + "<div>"+location['description']+"</div>";
       featuredLocations[lid].forEach(function(item) {
-        htmlString = htmlString + item['name'];
         var img = Images.findOne({_id: item['imageid']});
         var url = img.url({store:'thumbs'});
-        htmlString = htmlString + "<img src=" + url + ">";
-        console.log(htmlString);
+        htmlString = htmlString + "<div class='inline'>";
+        htmlString = htmlString + "<img class='img-fill-div' title='"+item['name']+"' src='"+url+"'>";
+        htmlString = htmlString + "</div>";
       });
+      htmlString = htmlString + "</div>";
       var newmarker =  new google.maps.Marker({
         position: {lat: Number(location['lat']), lng: Number(location['lng'])},
         map: map.instance,
