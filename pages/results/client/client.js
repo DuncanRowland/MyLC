@@ -26,27 +26,75 @@ Template.googlemap.onCreated(function() {
       var location = Locations.findOne({_id:lid});
       var img = Images.findOne({_id: location['imageid']});
       var url = img.url({store:'images'});
-      var htmlString = "<div class='map-info-box'>";
-      htmlString = htmlString + location['name'];
-      htmlString = htmlString + "<div class='inline-location-image'>"
-      htmlString = htmlString + "<img class='img-fill-div' src='"+url+"'>";
-      htmlString = htmlString + "</div>";
-      htmlString = htmlString + "<div>"+location['description']+"</div>";
+
+      var h=""+ //Horrible
+"<head>"+
+"  <style>"+
+"    .miw-title {"+
+//"      background-color: green;"+
+"      text-align: center;"+
+"      font-size: 20px;"+
+"      padding-top: 10px;"+
+"      padding-bottom: 5px;"+
+"    }"+
+"    .miw-description {"+
+//"      background-color: yellow;"+
+"      text-align: center;"+
+"      font-size: 16px;"+
+"    }"+
+"    .miw-wrapper {"+
+//"      background-color: linen;"+
+"      width: 300px;"+
+"      height: 300px;"+
+"      font-size: 0px;"+
+"      padding-left: 24px;"+
+"    }"+
+"    .miw-location-image-div {"+
+//"      background-color: green;"+
+"      width: 180px;"+
+"      height: 180px;"+
+"      margin: auto;"+
+"    }"+
+"    .miw-items-wrapper {"+
+//"      background-color: black;"+
+"      text-align: center;"+
+"      margin: auto;"+
+"    }"+
+"    .miw-item-image-div {"+
+"      border-style: solid;"+
+"      border-width: 1px;"+
+//"      background-color: blue;"+
+"      width: 58px;"+
+"      height: 58px;"+
+"      margin: auto;"+
+"      display: inline-block;"+
+"    }"+
+"</style>"+
+"</head>"+
+"<body>"+
+"  <div class='miw-wrapper'>"+
+"    <div class='miw-title'>"+location['name']+"</div>"+
+"    <div class='miw-location-image-div' style='background-size: contain; background-image: url("+url+"')></div>"+
+"    <div class='miw-description'>"+location['description']+"</div>"+
+"    <div class='miw-items-wrapper'>";
       featuredLocations[lid].forEach(function(item) {
         var img = Images.findOne({_id: item['imageid']});
         var url = img.url({store:'thumbs'});
-        htmlString = htmlString + "<div class='inline'>";
-        htmlString = htmlString + "<img class='img-fill-div' title='"+item['name']+"' src='"+url+"'>";
-        htmlString = htmlString + "</div>";
+            h=h+
+"      <div class='miw-item-image-div' style='background-size: contain; background-image: url("+url+"')></div>";
       });
-      htmlString = htmlString + "</div>";
+      h=h+
+"    </div>"+
+"  </div>"+
+"</body>";
+      console.log(h);
       var newmarker =  new google.maps.Marker({
         position: {lat: Number(location['lat']), lng: Number(location['lng'])},
         map: map.instance,
-        site: htmlString
+        htmlString: h
       });
       newmarker.addListener('click', function() {
-        infowindow.setContent(this.site);
+        infowindow.setContent(this.htmlString);
         infowindow.open(map.instance, this);
       });
     }
