@@ -45,7 +45,7 @@ Template.googlemap.onCreated(function() {
 "    .miw-wrapper {"+
 //"      background-color: linen;"+
 "      width: 300px;"+
-"      height: 300px;"+
+"      height: 350px;"+
 "      font-size: 0px;"+
 "      padding-left: 24px;"+
 "    }"+
@@ -64,8 +64,8 @@ Template.googlemap.onCreated(function() {
 "      border-style: solid;"+
 "      border-width: 1px;"+
 //"      background-color: blue;"+
-"      width: 58px;"+
-"      height: 58px;"+
+"      width: 50px;"+
+"      height: 50px;"+
 "      margin: auto;"+
 "      display: inline-block;"+
 "    }"+
