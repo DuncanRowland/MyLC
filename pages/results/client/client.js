@@ -37,12 +37,6 @@ Template.googlemap.onCreated(function() {
 "      padding-top: 10px;"+
 "      padding-bottom: 5px;"+
 "    }"+
-"    .miw-description {"+
-//"      background-color: yellow;"+
-"      text-align: center;"+
-"      font-size: 16px;"+
-"      padding-bottom: 12px;"+
-"    }"+
 "    .miw-wrapper {"+
 //"      background-color: linen;"+
 "      width: 250px;"+
@@ -56,6 +50,7 @@ Template.googlemap.onCreated(function() {
 "      width: 200px;"+
 //"      height: 200px;"+
 "      margin: auto;"+
+"      padding-bottom: 12px;"+
 "    }"+
 "    .miw-items-wrapper {"+
 //"      background-color: black;"+
@@ -79,11 +74,10 @@ Template.googlemap.onCreated(function() {
 "</head>"+
 "<body>"+
 "  <div class='miw-wrapper'>"+
-"    <div class='miw-title'>"+location['name']+"</div>"+
+"    <div class='miw-title'><a target='_blank' href="+location['url']+">"+location['name']+"</a></div>"+
 "    <div class='miw-location-image-div'>"+
 "      <img class='miw-img-fill-div' src="+url+"></img>"+
 "    </div>"+
-"    <div class='miw-description'>"+location['description']+"</div>"+
 "    <div class='miw-items-wrapper'>";
       featuredLocations[lid].forEach(function(item) {
         var img = Images.findOne({_id: item['imageid']});

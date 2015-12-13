@@ -10,7 +10,7 @@ Template.adminLocations.helpers({
         var obj = {};
         obj['_id']=entry['_id'];
         obj['name']=entry['name'];
-        obj['description']=entry['description'];
+        obj['url']=entry['url'];
         obj['lat']=entry['lat'];
         obj['lng']=entry['lng'];
         obj['image']=img;
@@ -32,14 +32,14 @@ Template.adminLocations.events({
     var name = event.target.name.value;
     var lat = event.target.lat.value;
     var lng = event.target.lng.value;
-    var description = event.target.description.value;
+    var url = event.target.url.value;
 
     Images.insert(image, function (err, fileObj) {
       // Inserted new doc with ID fileObj._id, and kicked off the data upload using HTTP
       // Insert a item into the collection
       Locations.insert({
         name: name,
-        description: description,
+        url: url,
         lat: lat,
         lng: lng,
         imageid: fileObj._id
@@ -48,7 +48,7 @@ Template.adminLocations.events({
 
     // Clear form
     event.target.name.value = "";
-    event.target.description.value = "";
+    event.target.url.value = "";
     event.target.lat.value = "";
     event.target.lng.value = "";
     event.target.image.value = "";
