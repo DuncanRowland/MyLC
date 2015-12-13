@@ -69,19 +69,27 @@ Template.googlemap.onCreated(function() {
 "      margin: auto;"+
 "      display: inline-block;"+
 "    }"+
+"    .miw-img-fill-div {"+
+"      width: 100%;"+
+"      height: 100%;"+
+"    }"+
 "</style>"+
 "</head>"+
 "<body>"+
 "  <div class='miw-wrapper'>"+
 "    <div class='miw-title'>"+location['name']+"</div>"+
-"    <div class='miw-location-image-div' style='background-size: contain; background-image: url("+url+"')></div>"+
+"    <div class='miw-location-image-div'>"+
+"      <img class='miw-img-fill-div' src="+url+"></img>"+
+"    </div>"+
 "    <div class='miw-description'>"+location['description']+"</div>"+
 "    <div class='miw-items-wrapper'>";
       featuredLocations[lid].forEach(function(item) {
         var img = Images.findOne({_id: item['imageid']});
         var url = img.url({store:'thumbs'});
             h=h+
-"      <div class='miw-item-image-div' style='background-size: contain; background-image: url("+url+"')></div>";
+"      <div class='miw-item-image-div'>"+
+"        <img class='miw-img-fill-div' src="+url+"></img>"+
+"      </div>"
       });
       h=h+
 "    </div>"+
