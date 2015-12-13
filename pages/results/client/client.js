@@ -41,18 +41,20 @@ Template.googlemap.onCreated(function() {
 //"      background-color: yellow;"+
 "      text-align: center;"+
 "      font-size: 16px;"+
+"      padding-bottom: 12px;"+
 "    }"+
 "    .miw-wrapper {"+
 //"      background-color: linen;"+
-"      width: 300px;"+
-"      height: 350px;"+
+"      width: 250px;"+
+//"      height: 350px;"+
 "      font-size: 0px;"+
 "      padding-left: 24px;"+
+"      padding-bottom: 24px;"+
 "    }"+
 "    .miw-location-image-div {"+
 //"      background-color: green;"+
-"      width: 180px;"+
-"      height: 180px;"+
+"      width: 200px;"+
+//"      height: 200px;"+
 "      margin: auto;"+
 "    }"+
 "    .miw-items-wrapper {"+
@@ -64,8 +66,8 @@ Template.googlemap.onCreated(function() {
 "      border-style: solid;"+
 "      border-width: 1px;"+
 //"      background-color: blue;"+
-"      width: 50px;"+
-"      height: 50px;"+
+"      width: 23px;"+
+"      height: 23px;"+
 "      margin: auto;"+
 "      display: inline-block;"+
 "    }"+
