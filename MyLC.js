@@ -65,3 +65,13 @@ if (Meteor.isServer) {
     }
   });
 }
+
+if(Meteor.isClient) {
+  window.fbAsyncInit = function() {
+    FB.init({
+      appId      : '1657697167840424',
+      status     : true,
+      xfbml      : true
+    });
+  };
+}
