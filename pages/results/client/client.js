@@ -117,3 +117,9 @@ Template.googlemap.helpers({
     }
   }
 });
+
+Template.results.rendered = function() {
+    try {
+        FB.XFBML.parse();
+    }catch(e) {}
+};

@@ -22,12 +22,6 @@ Images = new FS.Collection("images", {
     }
 });
 
-
-
-
-
-
-
 FlowRouter.route('/', {
     action: function() {
        BlazeLayout.render('menu');
@@ -64,4 +58,14 @@ if (Meteor.isServer) {
       return true;
     }
   });
+}
+
+if(Meteor.isClient) {
+  window.fbAsyncInit = function() {
+    FB.init({
+      appId      : '1657697167840424',
+      status     : true,
+      xfbml      : true
+    });
+  };
 }
