@@ -7,9 +7,9 @@
         {{>navigator}}
       {{/if}}
     </header>
-    {{#if currentUser}}
     <div class="sortable-items-target" id="ranked"></div>
-      {{>instructions}}
+    {{>instructions}}
+    {{#if currentUser}}
       {{>selectItems}}
       {{>addCommentAndSubmit}}
     {{/if}}
