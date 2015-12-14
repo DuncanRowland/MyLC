@@ -118,7 +118,7 @@ Template.googlemap.helpers({
   }
 });
 
-Template.results.onRendered = function() {
+Template.results.rendered = function() {
   console.log('hello');
 (function(d, s, id) {
     var js, fjs = d.getElementsByTagName(s)[0];
