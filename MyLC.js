@@ -53,6 +53,8 @@ FlowRouter.route('/results', {
 });
 
 if (Meteor.isServer) {
+  Accounts.emailTemplates.from = "<MyLC> no-reply@mylincolnshirecollection.org";
+  Accounts.emailTemplates.sitename = "MyLC";
   Images.allow({
     'insert': function () {
       return true;
