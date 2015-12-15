@@ -4,26 +4,6 @@ Session.setDefault("currentPage", 0);
 
 Template.selectItems.helpers({
   items: function (options) {
-    console.log("Template.selectItems.helpers");
-    /*randomisedIndex
-    var itemArray;
-    // Show start-stop sliced subset from alphabetical order
-    var r = [];
-    if(itemArray===undefined) {
-      var result = Items.find( {}, {sort: {name: 1}});
-      itemArray = [];
-      result.forEach(function(entry) {
-        itemArray.push(entry);
-      });
-      //Sometime itemArray.length is wrong here and I don't know why
-      //Maybe a timeout issue?
-      for(var i=0;i<itemArray.length;i++) {
-        var j = Math.floor((Math.random() * itemArray.length));
-        var tmp =  itemArray[i];
-        itemArray[i] = itemArray[j];
-        itemArray[j] = tmp;
-      }
-    }*/
     var r = [];
     var start = options.hash.start;
     var end = start + options.hash.count;
