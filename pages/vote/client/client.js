@@ -4,12 +4,16 @@ Session.setDefault("currentPage", 0);
 
 Template.selectItems.helpers({
   items: function (options) {
+    //console.log("run helper");
     var r = [];
     var start = options.hash.start;
     var end = start + options.hash.count;
     for(var index=start; index<end; index++) {
       var id = randomisedIndex[index];
+      //console.log("get entry");
       var entry = Items.findOne({_id: id});
+      if(entry===undefined) { return [] }; //Database not ready?
+      //console.log(entry);
       var imageid = entry['imageid'];
       var img = Images.findOne({_id: imageid});
       if(img != undefined) {
@@ -21,6 +25,7 @@ Template.selectItems.helpers({
         r.push(obj);
       }
     }
+    //console.log(r.length);
     return r;
   }
 });
