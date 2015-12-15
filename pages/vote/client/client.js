@@ -9,9 +9,7 @@ Template.selectItems.helpers({
     var end = start + options.hash.count;
     for(var index=start; index<end; index++) {
       var id = randomisedIndex[index];
-      console.log(id);
       var entry = Items.findOne({_id: id});
-      console.log(entry);
       var imageid = entry['imageid'];
       var img = Images.findOne({_id: imageid});
       if(img != undefined) {
