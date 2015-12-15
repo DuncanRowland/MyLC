@@ -1,9 +1,12 @@
 Session.setDefault("currentPage", 0);
 
-var itemArray; //Lazy load and shuffle (needs 100 items in database)
+//var itemArray; //Lazy load and shuffle (needs 100 items in database)
 
 Template.selectItems.helpers({
   items: function (options) {
+    console.log("Template.selectItems.helpers");
+    /*randomisedIndex
+    var itemArray;
     // Show start-stop sliced subset from alphabetical order
     var r = [];
     if(itemArray===undefined) {
@@ -20,11 +23,15 @@ Template.selectItems.helpers({
         itemArray[i] = itemArray[j];
         itemArray[j] = tmp;
       }
-    }
+    }*/
+    var r = [];
     var start = options.hash.start;
     var end = start + options.hash.count;
     for(var index=start; index<end; index++) {
-      var entry = itemArray[index % itemArray.length];
+      var id = randomisedIndex[index];
+      console.log(id);
+      var entry = Items.findOne({_id: id});
+      console.log(entry);
       var imageid = entry['imageid'];
       var img = Images.findOne({_id: imageid});
       if(img != undefined) {

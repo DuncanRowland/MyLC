@@ -59,3 +59,23 @@ if (Meteor.isServer) {
     }
   });
 }
+
+randomisedIndex = [];
+if (Meteor.isClient) {
+  for(var i=0;i<100;i++) {
+    var id;
+    if(i<10) {
+      id="1111111111111100"+i;
+    } else {
+      id="111111111111110"+i;
+    }
+    randomisedIndex.push(id);
+  }
+  for(var i=0;i<randomisedIndex.length;i++) {
+    var j = Math.floor((Math.random() * randomisedIndex.length));
+    var tmp =  randomisedIndex[i];
+    randomisedIndex[i] = randomisedIndex[j];
+    randomisedIndex[j] = tmp;
+  }
+  console.log(randomisedIndex);
+}
