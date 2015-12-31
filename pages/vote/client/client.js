@@ -30,6 +30,17 @@ Template.selectItems.helpers({
   }
 });
 
+updateSizes = function() {
+  var width = $('.container').width();
+  var height = $('.container').height()-300;
+  if ( height>width ) { height=width; } else { width=height; }
+  console.log(width);
+  $('.square-container').css('height', height);
+  $('.square-container').css('width', width);
+  $('.sortable-items-target').css('height',height/10);
+  $('.sortable-items-target').css('width',width);
+}
+
 Template.selectItems.rendered = function() {
 
   $( ".sortable-items-target" ).sortable({
@@ -65,6 +76,9 @@ Template.selectItems.rendered = function() {
 
   $(document).ready(function() {
     Session.set("currentPage", 0);
+
+    $( window ).resize( updateSizes );
+
     $(".fancybox").fancybox({
       helpers : {
         title: {
