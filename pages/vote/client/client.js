@@ -32,9 +32,8 @@ Template.selectItems.helpers({
 
 updateSizes = function() {
   var width = $('.container').width();
-  var height = $('.container').height()-300;
+  var height = $('.container').height()-300; /*header +row? + instructions*/
   if ( height>width ) { height=width; } else { width=height; }
-  console.log(width);
   $('.square-container').css('height', height);
   $('.square-container').css('width', width);
   $('.sortable-items-target').css('height',height/10);
@@ -78,6 +77,7 @@ Template.selectItems.rendered = function() {
     Session.set("currentPage", 0);
 
     $( window ).resize( updateSizes );
+    updateSizes();
 
     $(".fancybox").fancybox({
       helpers : {
