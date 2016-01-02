@@ -2,6 +2,7 @@
 
 /* CSS declarations go here */
 body {
+  overflow: hidden;
   font-family: sans-serif;
   background-color: #315481;
   background-image: linear-gradient(to bottom, #315481, #918e82 100%);
@@ -20,7 +21,7 @@ body {
 }
 
 .container {
-  max-width: 600px;
+  width: 100%;
   margin: 0 auto;
   min-height: 100%;
   height: 100vh;
@@ -188,10 +189,10 @@ header .hide-completed {
   display: inline-block;
   text-align: center;
   list-style-type: none;
-  padding: 0px;
+  padding: 10px;
   border: solid #500;
   border-width: 0px 0px 0px 0px;
-  margin: 0px;
+  margin: 10px;
   height: 100%;
   background: #d2edf4;
   background-image: linear-gradient(to bottom, #b0cdd5, #c1c5d0 100%);

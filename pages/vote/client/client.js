@@ -28,8 +28,8 @@ Template.selectItems.helpers({
 });
 
 updateSizes = function() {
-  var width = $('.container').width();
-  var topgap = $('header').height() * 2.5;
+  var width = $('.container').width()-40;
+  var topgap = $('header').height() * 2.75;
   console.log(topgap);
   var height = $('.container').height()-topgap; /*header +row? + instructions*/
 
@@ -40,7 +40,8 @@ updateSizes = function() {
     var numCols = Math.floor(width/wh);
     var numItems = numRows * numCols;
   } while((numItems<100 || numCols<10) && numRows<20);
-  var thumbsize = height/numRows;
+  console.log(numCols);
+  var thumbsize = wh;
 //  if ( height>width ) { height=width; } else { width=height; }
   $('.sortable-items-target').css('height',(thumbsize+4));
   //$('.sortable-items-target').css('width',(thumbsize+4)*10);
