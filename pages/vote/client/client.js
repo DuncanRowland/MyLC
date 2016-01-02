@@ -29,7 +29,7 @@ Template.selectItems.helpers({
 
 updateSizes = function() {
   var width = $('.container').width();
-  var topgap = $('header').height() * 2;
+  var topgap = $('header').height() * 2.5;
   console.log(topgap);
   var height = $('.container').height()-topgap; /*header +row? + instructions*/
 
