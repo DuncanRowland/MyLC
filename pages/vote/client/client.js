@@ -1,10 +1,7 @@
-Session.setDefault("currentPage", 0);
-
 //var itemArray; //Lazy load and shuffle (needs 100 items in database)
 
 Template.selectItems.helpers({
   items: function (options) {
-    //console.log("run helper");
     var r = [];
     var start = options.hash.start;
     var end = start + options.hash.count;
@@ -33,18 +30,14 @@ Template.selectItems.helpers({
 updateSizes = function() {
   var width = $('.container').width();
   var height = $('.container').height()-220; /*header +row? + instructions*/
+console.log(width);
+console.log(height);
   var numRows = 0;
   do {
     numRows++;
     var wh = Math.floor(height/numRows);
     var numCols = Math.floor(width/wh);
     var numItems = numRows * numCols;
-    console.log(width);
-    console.log(wh);
-    console.log(numItems);
-    console.log(numCols);
-    console.log(numRows);
-    console.log("---");
   } while((numItems<100 || numCols<10) && numRows<20);
   var thumbsize = height/numRows;
 //  if ( height>width ) { height=width; } else { width=height; }
@@ -64,11 +57,6 @@ Template.selectItems.rendered = function() {
       if ($(this).children().length == 10) {
         $(".sortable-items-source").sortable( "option", "connectWith", "" );
       }
-      for (r=0;r<9;r++) {
-        if ($("#row"+r).children().length == 9) {
-          $("#row"+(r+1)).children().eq(0).appendTo($("#row"+r));
-        }
-      }
     }
   }).disableSelection();
 
@@ -79,11 +67,6 @@ Template.selectItems.rendered = function() {
       if ($(ui.sender).children().length == 9) {
         $(".sortable-items-source").sortable( "option", "connectWith", ".sortable-items-target" );
       }
-      for (r=0;r<9;r++) {
-        if ($("#row"+r).children().length == 11) {
-          $("#row"+r).children().eq(10).prependTo($("#row"+(r+1)));
-        }
-      }
     }
   }).disableSelection();
 
@@ -91,7 +74,7 @@ Template.selectItems.rendered = function() {
     Session.set("currentPage", 0);
 
     $( window ).resize( updateSizes );
-    updateSizes();
+    //updateSizes(); Delay until next clicked
 
     $(".fancybox").fancybox({
       helpers : {
@@ -117,6 +100,7 @@ Template.vote.events({
     var cp = Session.get("currentPage");
     if(cp<2){cp++};
     Session.set("currentPage", cp);
+    updateSizes();
   },
   "click .submit-click": function (event) {
     // Get values from form element
