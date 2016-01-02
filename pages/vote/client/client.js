@@ -29,9 +29,10 @@ Template.selectItems.helpers({
 
 updateSizes = function() {
   var width = $('.container').width();
-  var height = $('.container').height()-220; /*header +row? + instructions*/
-console.log(width);
-console.log(height);
+  var topgap = $('header').height() * 2;
+  console.log(topgap);
+  var height = $('.container').height()-topgap; /*header +row? + instructions*/
+
   var numRows = 0;
   do {
     numRows++;
@@ -145,7 +146,8 @@ Template.navigator.helpers({
 
 Template.instructions.helpers({
   hidePage: function(){
-    return (Session.get("currentPage")!=0);
+    if(Meteor.userId()==null) return false;
+    return Session.get("currentPage")!=0;
   }
 })
 

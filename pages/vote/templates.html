@@ -36,7 +36,7 @@
 
 <template name="instructions">
   <div hidden={{hidePage}}>
-    <div class="task-text">
+    <div class="info-text">
       <b>Text to be written</b><br>
       All instructions go here along with any logos etc...<br>
       The aim of this project is... etc...<br>
@@ -50,7 +50,7 @@
 
 <template name="selectItems">
   <div hidden={{hidePage}}>
-    <div class="task-text">
+    <div class="info-text" id="tasktext">
       Drag up to ten selections above ordered favourites first. Click an image to see more details.
     </div>
     <ul class="sortable-items-source">{{#each items start=0  count=100}}{{>item}}{{/each}}</ul>
