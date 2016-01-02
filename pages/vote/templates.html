@@ -2,12 +2,14 @@
   <div class="container">
     <header>
       {{> loginButtons}}
-      <h1>Vote</h1><div style="text-align:right"><a href="/">Debug</a></div>
+      <h1 id="MyLC">My Lincolnshire Collection</h1>
       {{#if currentUser}}
         {{>navigator}}
       {{/if}}
     </header>
-    <div class="sortable-items-target" id="ranked"></div>
+    {{#if currentUser}}
+      <div class="sortable-items-target" id="ranked"></div>
+    {{/if}}
     {{>instructions}}
     {{#if currentUser}}
       {{>selectItems}}
@@ -34,32 +36,24 @@
 
 <template name="instructions">
   <div hidden={{hidePage}}>
-    <b>Text to be written</b><br>
-    All instructions go here along with any logos etc...<br>
-    The aim of this project is... etc...<br>
-    Choose your ten favorite items from the collection... etc...<br>
-    Click the items to find out more about each... etc...<br>
-    <br>
-    To begin, click next.<br>
+    <div class="task-text">
+      <b>Text to be written</b><br>
+      All instructions go here along with any logos etc...<br>
+      The aim of this project is... etc...<br>
+      Choose your ten favorite items from the collection... etc...<br>
+      Click the items to find out more about each... etc...<br>
+      <br>
+      To begin, click next.<br>
+    </div>
   </div>
 </template>
 
 <template name="selectItems">
   <div hidden={{hidePage}}>
-    <center>Please drag your selections above, up to 10, ordered favourites first.<br>
-            Click an image to see its description, and next when you are finished.</center>
-    <!--<div class="square-container">-->
-      <ul class="sortable-items-source">{{#each items start=0  count=100}}{{>item}}{{/each}}</ul>
-<!--      <div class="sortable-items-source" id="row1">{{#each items start=10 count=10}}{{>item}}{{/each}}</div>
-      <div class="sortable-items-source" id="row2">{{#each items start=20 count=10}}{{>item}}{{/each}}</div>
-      <div class="sortable-items-source" id="row3">{{#each items start=30 count=10}}{{>item}}{{/each}}</div>
-      <div class="sortable-items-source" id="row4">{{#each items start=40 count=10}}{{>item}}{{/each}}</div>
-      <div class="sortable-items-source" id="row5">{{#each items start=50 count=10}}{{>item}}{{/each}}</div>
-      <div class="sortable-items-source" id="row6">{{#each items start=60 count=10}}{{>item}}{{/each}}</div>
-      <div class="sortable-items-source" id="row7">{{#each items start=70 count=10}}{{>item}}{{/each}}</div>
-      <div class="sortable-items-source" id="row8">{{#each items start=80 count=10}}{{>item}}{{/each}}</div>
-      <div class="sortable-items-source" id="row9">{{#each items start=90 count=10}}{{>item}}{{/each}}</div>
--->    <!--</div>-->
+    <div class="task-text">
+      Drag up to ten selections above ordered favourites first. Click an image to see more details.
+    </div>
+    <ul class="sortable-items-source">{{#each items start=0  count=100}}{{>item}}{{/each}}</ul>
   </div>
 </template>
 
