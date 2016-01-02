@@ -165,7 +165,7 @@ header .hide-completed {
   position:relative; bottom:0px;
   padding: 0px;
   border: solid #000;
-  border-width: 2px 2px 2px 2px;
+  border-width: 0px 0px 0px 0px;
   margin: 0px;
   height: 100%;
   /*width: set by code to change icon size*/
@@ -178,15 +178,22 @@ header .hide-completed {
   list-style-type: none;
   padding: 0px;
   border: solid #500;
-  border-width: 2px 2px 2px 2px;
+  border-width: 0px 0px 0px 0px;
   margin: 0px;
   height: 100%;
   background: green;
 }
 .sortable-items-target {
-    margin: auto;
-    width: 50%;
-    background: yellow;
+  font-size: 0;
+  display: inline-block;
+  text-align: center;
+  list-style-type: none;
+  padding: 0px;
+  border: solid #050;
+  border-width: 0px 0px 0px 0px;
+  margin: 0px;
+  width: 100%;
+  background: yellow;
 }
 .inline-location-image {
   display: inline-block;

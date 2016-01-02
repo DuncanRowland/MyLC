@@ -32,13 +32,26 @@ Template.selectItems.helpers({
 
 updateSizes = function() {
   var width = $('.container').width();
-  var height = $('.container').height()-300; /*header +row? + instructions*/
-  if ( height>width ) { height=width; } else { width=height; }
-  var thumbsize = 48;
-  $('.sortable-items-target').css('height',thumbsize);
-  $('.sortable-items-target').css('width',thumbsize*10);
-  $('.list-item-style').css('width',width/(thumbsize/10));
-  $('.list-item-style').css('height',width/(thumbsize/10));
+  var height = $('.container').height()-220; /*header +row? + instructions*/
+  var numRows = 0;
+  do {
+    numRows++;
+    var wh = Math.floor(height/numRows);
+    var numCols = Math.floor(width/wh);
+    var numItems = numRows * numCols;
+    console.log(width);
+    console.log(wh);
+    console.log(numItems);
+    console.log(numCols);
+    console.log(numRows);
+    console.log("---");
+  } while((numItems<100 || numCols<10) && numRows<20);
+  var thumbsize = height/numRows;
+//  if ( height>width ) { height=width; } else { width=height; }
+  $('.sortable-items-target').css('height',(thumbsize+4));
+  //$('.sortable-items-target').css('width',(thumbsize+4)*10);
+  $('.list-item-style').css('width',thumbsize);
+  $('.list-item-style').css('height',thumbsize);
 }
 
 Template.selectItems.rendered = function() {
