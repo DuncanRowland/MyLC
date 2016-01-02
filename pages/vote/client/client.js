@@ -34,10 +34,11 @@ updateSizes = function() {
   var width = $('.container').width();
   var height = $('.container').height()-300; /*header +row? + instructions*/
   if ( height>width ) { height=width; } else { width=height; }
-  $('.square-container').css('height', height);
-  $('.square-container').css('width', width);
-  $('.sortable-items-target').css('height',height/10);
-  $('.sortable-items-target').css('width',width);
+  var thumbsize = 48;
+  $('.sortable-items-target').css('height',thumbsize);
+  $('.sortable-items-target').css('width',thumbsize*10);
+  $('.list-item-style').css('width',width/(thumbsize/10));
+  $('.list-item-style').css('height',width/(thumbsize/10));
 }
 
 Template.selectItems.rendered = function() {

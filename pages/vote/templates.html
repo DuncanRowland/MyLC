@@ -48,9 +48,9 @@
   <div hidden={{hidePage}}>
     <center>Please drag your selections above, up to 10, ordered favourites first.<br>
             Click an image to see its description, and next when you are finished.</center>
-    <div class="square-container">
-      <div class="sortable-items-source" id="row0">{{#each items start=0  count=10}}{{>item}}{{/each}}</div>
-      <div class="sortable-items-source" id="row1">{{#each items start=10 count=10}}{{>item}}{{/each}}</div>
+    <!--<div class="square-container">-->
+      <ul class="sortable-items-source">{{#each items start=0  count=100}}{{>item}}{{/each}}</ul>
+<!--      <div class="sortable-items-source" id="row1">{{#each items start=10 count=10}}{{>item}}{{/each}}</div>
       <div class="sortable-items-source" id="row2">{{#each items start=20 count=10}}{{>item}}{{/each}}</div>
       <div class="sortable-items-source" id="row3">{{#each items start=30 count=10}}{{>item}}{{/each}}</div>
       <div class="sortable-items-source" id="row4">{{#each items start=40 count=10}}{{>item}}{{/each}}</div>
@@ -59,14 +59,14 @@
       <div class="sortable-items-source" id="row7">{{#each items start=70 count=10}}{{>item}}{{/each}}</div>
       <div class="sortable-items-source" id="row8">{{#each items start=80 count=10}}{{>item}}{{/each}}</div>
       <div class="sortable-items-source" id="row9">{{#each items start=90 count=10}}{{>item}}{{/each}}</div>
-    </div>
+-->    <!--</div>-->
   </div>
 </template>
 
 <template name="item">
-  <div class="inline" id={{_id}}>
+  <li class="list-item-style" id={{_id}}>
     <a href={{image.url store='images'}} class="fancybox" title={{name}} data-info={{description}}><img src={{image.url store='thumbs'}} class='img-fill-div'/></a>
-  </div>
+  </li>
 </template>
 
 <template name="addCommentAndSubmit">

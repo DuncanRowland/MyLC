@@ -66,11 +66,13 @@ form {
   outline: 0;
 }
 
+/*
 ul {
   margin: 0;
   padding: 0;
   background: white;
 }
+*/
 
 .delete {
   float: right;
@@ -81,6 +83,7 @@ ul {
   position: relative;
 }
 
+/*
 li {
   position: relative;
   list-style: none;
@@ -104,6 +107,7 @@ li.private {
   background: #eee;
   border-color: #ddd;
 }
+*/
 
 header .hide-completed {
   float: right;
@@ -156,20 +160,28 @@ header .hide-completed {
   max-width: 100%;
   max-height: 100%;
 }
-.inline {
+.list-item-style {
   display: inline-block;
-  border: 0px;
-  margin: 0 0 0 0;
+  position:relative; bottom:0px;
+  padding: 0px;
+  border: solid #000;
+  border-width: 2px 2px 2px 2px;
+  margin: 0px;
   height: 100%;
-  width: 10%;
-}
-.square-container {
-    margin: auto;
-    width: 50%;
-    background: green;
+  /*width: set by code to change icon size*/
+  /*float: left;*/
 }
 .sortable-items-source {
-    height: 10%;
+  font-size: 0;
+  display: inline-block;
+  text-align: center;
+  list-style-type: none;
+  padding: 0px;
+  border: solid #500;
+  border-width: 2px 2px 2px 2px;
+  margin: 0px;
+  height: 100%;
+  background: green;
 }
 .sortable-items-target {
     margin: auto;
