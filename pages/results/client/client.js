@@ -117,6 +117,12 @@ Template.googlemap.helpers({
   }
 });
 
+Template.results.helpers({
+  url: function() {
+    return FlowRouter.getRouteName();
+  }
+});
+
 Template.results.rendered = function() {
   (function(d, s, id) {
     var js, fjs = d.getElementsByTagName(s)[0];
