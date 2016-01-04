@@ -24,13 +24,19 @@ Images = new FS.Collection("images", {
 
 FlowRouter.route('/', {
     action: function() {
-       BlazeLayout.render('menu');
+       BlazeLayout.render('vote');
     }
 });
 
-FlowRouter.route('/items', {
+FlowRouter.route('/results', {
     action: function(params, queryParams) {
-       BlazeLayout.render('adminItems');
+       BlazeLayout.render('results');
+    }
+});
+
+FlowRouter.route('/admin', {
+    action: function(params, queryParams) {
+       BlazeLayout.render('menu');
     }
 });
 
@@ -40,15 +46,9 @@ FlowRouter.route('/locations', {
     }
 });
 
-FlowRouter.route('/vote', {
+FlowRouter.route('/items', {
     action: function(params, queryParams) {
-       BlazeLayout.render('vote');
-    }
-});
-
-FlowRouter.route('/results', {
-    action: function(params, queryParams) {
-       BlazeLayout.render('results');
+       BlazeLayout.render('adminItems');
     }
 });
 

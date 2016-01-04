@@ -42,7 +42,7 @@ Template.googlemap.onCreated(function() {
 "      width: 250px;"+
 //"      height: 350px;"+
 "      font-size: 0px;"+
-"      padding-left: 24px;"+
+"      padding-left: 0px;"+
 "      padding-bottom: 24px;"+
 "    }"+
 "    .miw-location-image-div {"+
