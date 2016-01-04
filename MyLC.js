@@ -28,7 +28,7 @@ FlowRouter.route('/', {
     }
 });
 
-FlowRouter.route('/results', {
+FlowRouter.route('/r/:userid', {
     action: function(params, queryParams) {
        BlazeLayout.render('results');
     }
@@ -79,5 +79,5 @@ if (Meteor.isClient) {
     randomisedIndex[i] = randomisedIndex[j];
     randomisedIndex[j] = tmp;
   }
-  
+
 }

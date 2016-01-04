@@ -120,7 +120,7 @@ Template.vote.events({
       LatestVote.upsert(Meteor.userId(), { $set: { latest: newid } } );
     });
 
-    FlowRouter.go('/results');
+    FlowRouter.go('/r/'+Meteor.userId());
   }
 });
 
