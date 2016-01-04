@@ -3,7 +3,9 @@
   <div class="container">
     <header>
       {{> loginButtons}}
-      <h1 id="MyLC">Thanks for your choices!</h1>
+      <h1 id="MyLC">Thanks for your choices!</h1><br>
+      <div class="fb-like" data-href="http://mylincolnshirecollection.org" data-layout="standard" data-action="like" data-show-faces="true" data-share="true"></div>
+      <a href="https://twitter.com/share" class="twitter-share-button" data-url="http://lncn.eu/MyLC" data-text="I've made My Collection" >Tweet</a>
     </header>
     {{> googlemap}}
   </div>
@@ -13,8 +15,6 @@
   <div class="map-container">
     {{> googleMap name="exampleMap" options=exampleMapOptions}}
     <br><br>
-    <h1>Find your selections above!</h1><br><br>
-    <div class="fb-like" data-href="http://mylincolnshirecollection.org" data-layout="standard" data-action="like" data-show-faces="true" data-share="true"></div>
-    <a href="https://twitter.com/share" class="twitter-share-button" data-url="http://lncn.eu/MyLC" data-text="I've made My Collection" >Tweet</a>
+    <h1>Find your selections above!</h1>
   </div>
 </template>
