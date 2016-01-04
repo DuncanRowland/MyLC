@@ -5,10 +5,19 @@ Template.googlemap.onRendered(function() {
 Template.googlemap.onCreated(function() {
   GoogleMaps.ready('exampleMap', function(map) {
 
+    LatestVote.find({"_id":FlowRouter.current().params.userid}).observe({
+      added: function(doc1) {
+        latestid = doc1["latest"];
+        var vote = Votes.findOne({"_id":latestid});
+
+//      }
+//    });
+
+
     var infowindow = new google.maps.InfoWindow();
 
-    var vote = Votes.findOne({"_id":
-                LatestVote.findOne({"_id":FlowRouter.current().params.userid})["latest"]});
+//    var vote = Votes.findOne({"_id":
+//                LatestVote.findOne({"_id":FlowRouter.current().params.userid})["latest"]});
     var rank = 0;
     var featuredLocations = {};
     while(vote[rank]!=undefined) {
@@ -102,8 +111,10 @@ Template.googlemap.onCreated(function() {
       });
     }
 
-  });
-});
+}})})});
+//  });
+//});
+//}
 
 Template.googlemap.helpers({
   exampleMapOptions: function() {
