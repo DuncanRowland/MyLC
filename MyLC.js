@@ -79,4 +79,5 @@ if (Meteor.isClient) {
     randomisedIndex[i] = randomisedIndex[j];
     randomisedIndex[j] = tmp;
   }
+  
 }
