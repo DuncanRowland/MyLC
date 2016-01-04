@@ -119,6 +119,7 @@ Template.googlemap.helpers({
 
 Template.results.helpers({
   url: function() {
+    console.log(FlowRouter.getRouteName());
     return FlowRouter.getRouteName();
   }
 });
