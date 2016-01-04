@@ -3,12 +3,16 @@
   <div class="container">
     <header>
       {{> loginButtons}}
-      <h1 id="MyLC">Thanks for your choices!</h1><br>
-<!--      <div class="fb-like" data-href="http://mylincolnshirecollection.org" data-layout="standard" data-action="like" data-show-faces="true" data-share="true"></div>
--->
-      <div class="fb-like" data-href="http://mylincolnshirecollection.org" data-layout="button_count" data-action="like" data-show-faces="false" data-share="false"></div>
-      <div class="fb-share-button" data-href={{url}} data-layout="button"></div>
-      <a href="https://twitter.com/share" class="twitter-share-button" data-text="I've made My Collection" >Tweet</a>
+      <div id="Thanks">
+        {{#if currentUser}}
+          <h1>Thanks for your choices!</h1><br>
+        {{else}}
+          <h1><a href="/">Make Your Own Collection!</a></h1><br>
+        {{/if}}
+      </div>
+      <span class="fb-like" data-href="http://mylincolnshirecollection.org" data-layout="button_count" data-action="like" data-show-faces="false" data-share="false"></span>
+      <span class="fb-share-button" data-href={{url}} data-layout="button"></span>
+      <span style="float:right"><a href="https://twitter.com/share" class="twitter-share-button" data-text="I've made My Collection">Tweet</a></span>
     </header>
     {{> googlemap}}
   </div>
@@ -18,6 +22,10 @@
   <div class="map-container">
     {{> googleMap name="exampleMap" options=exampleMapOptions}}
     <br><br>
-    <h1>Find your selections above!</h1>
+    <div id="Thanks">
+      {{#if currentUser}}
+        <h1>Find your selections above</h1><br>
+      {{/if}}
+    </div>
   </div>
 </template>

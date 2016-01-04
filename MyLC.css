@@ -54,6 +54,13 @@ h1 {
   text-align:center;
 }
 
+#Thanks {
+  padding-top: 10px;
+  padding-bottom: 10px;
+  text-align:center;
+  margin: auto;
+}
+
 form {
   margin-top: 10px;
   margin-bottom: -10px;
