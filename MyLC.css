@@ -91,7 +91,6 @@ ul {
   position: relative;
 }
 
-/*
 li {
   position: relative;
   list-style: none;
@@ -115,7 +114,6 @@ li.private {
   background: #eee;
   border-color: #ddd;
 }
-*/
 
 header .hide-completed {
   float: right;
@@ -261,59 +259,4 @@ textarea {
   text-align: right;
 }
 
-/* map info window - NB - THESE ARE FOR REFERENCE ONLY see h=h+ ! */
-/*
-<html>
-<head>
-  <style>
-    .miw-title {
-      background-color: green;
-      text-align: center;
-      font-size: 16px;
-    }
-    .miw-description {
-      background-color: yellow;
-      text-align: center;
-      font-size: 16px;
-    }
-    .miw-wrapper {
-      background-color: linen;
-      width: 300px;
-      height: 300px;
-      font-size: 0px;
-    }
-    .miw-location-image-div {
-      background-color: green;
-      width: 180px;
-      height: 180px;
-      margin: auto;
-    }
-    .miw-items-wrapper {
-      background-color: black;
-      text-align: center;
-      margin: auto;
-    }
-    .miw-item-image-div {
-      border-style: solid;
-      border-width: 1px;
-      background-color: blue;
-      width: 58px;
-      height: 58px;
-      margin: auto;
-      display: inline-block;
-    }
-</style>
-</head>
-<body>
-  <div class="miw-wrapper">
-    <div class="miw-title">outer</div>
-    <div class="miw-location-image-div" style="background-size: contain; background-image: url(http://vignette4.wikia.nocookie.net/mrmen/images/5/52/Small.gif")></div>
-    <div class="miw-description">description</div>
-    <div class="miw-items-wrapper">
-      <div class="miw-item-image-div" style="background-size: contain; background-image: url(http://vignette4.wikia.nocookie.net/mrmen/images/5/52/Small.gif")></div>
-      <div class="miw-item-image-div" style="background-size: contain; background-image: url(http://vignette4.wikia.nocookie.net/mrmen/images/5/52/Small.gif")></div>
-    </div>
-  </div>
-</body>
-</html>
-*/
+/* map info window style in code - see h=h+... */
