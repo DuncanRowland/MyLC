@@ -3,6 +3,9 @@ Template.googlemap.onRendered(function() {
 });
 
 Template.googlemap.onCreated(function() {
+
+try {
+
   GoogleMaps.ready('exampleMap', function(map) {
 
     var infowindow = new google.maps.InfoWindow();
@@ -111,6 +114,9 @@ Template.googlemap.onCreated(function() {
       }
     }); //LatestVote.find
   }); //GoogleMaps.ready
+
+} catch(err) { console.log(err); }
+
 }); //Template.googlemap.onCreated
 
 Template.googlemap.helpers({
