@@ -7,15 +7,33 @@ Template.googlemap.onCreated(function() {
 
     var infowindow = new google.maps.InfoWindow();
 
+    console.log("begin");
     var uid = FlowRouter.current().params.userid;
     console.log(uid);
+    LatestVote.find({"_id":uid}).observe({
+      added: function(document) {
+        console.log("CALLBACK1");
+        console.log(document);
+        var latestid = document["latest"]
+        console.log(latestid);
+        Votes.find({"_id":latestid}).observe({
+          added: function(document) {
+            console.log("CALLBACK2");
+            console.log(document);
+//          }
+//        });
+//      }
+//    });
+    var vote = document;
+/*
     var lv = LatestVote.findOne({"_id":uid});
     console.log(lv);
     var la = lv["latest"];
     console.log(la);
-    var vote = Votes.findOne({"_id":la});
-    console.log(vote);
-                //LatestVote.findOne({"_id":FlowRouter.current().params.userid})["latest"]});
+    var vvote = Votes.findOne({"_id":la});
+    console.log(vvote);
+    var vote = Votes.findOne({"_id":LatestVote.findOne({"_id":FlowRouter.current().params.userid})["latest"]});
+*/
     var rank = 0;
     var featuredLocations = {};
     while(vote[rank]!=undefined) {
@@ -108,6 +126,12 @@ Template.googlemap.onCreated(function() {
         infowindow.open(map.instance, this);
       });
     }
+
+  }
+});
+}
+});
+
 
   });
 });
