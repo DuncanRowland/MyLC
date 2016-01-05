@@ -7,51 +7,30 @@ Template.googlemap.onCreated(function() {
 
     var infowindow = new google.maps.InfoWindow();
 
-    console.log("begin");
-    var uid = FlowRouter.current().params.userid;
-    console.log(uid);
-    LatestVote.find({"_id":uid}).observe({
+    LatestVote.find({"_id":FlowRouter.current().params.userid}).observe({
       added: function(document) {
-        console.log("CALLBACK1");
-        console.log(document);
-        var latestid = document["latest"]
-        console.log(latestid);
-        Votes.find({"_id":latestid}).observe({
+        Votes.find({"_id":document["latest"]}).observe({
           added: function(document) {
-            console.log("CALLBACK2");
-            console.log(document);
-//          }
-//        });
-//      }
-//    });
-    var vote = document;
-/*
-    var lv = LatestVote.findOne({"_id":uid});
-    console.log(lv);
-    var la = lv["latest"];
-    console.log(la);
-    var vvote = Votes.findOne({"_id":la});
-    console.log(vvote);
-    var vote = Votes.findOne({"_id":LatestVote.findOne({"_id":FlowRouter.current().params.userid})["latest"]});
-*/
-    var rank = 0;
-    var featuredLocations = {};
-    while(vote[rank]!=undefined) {
-      var item = Items.findOne({_id: vote[rank]})
-      if(item!=undefined) {
-        var lid = item.locationid;
-        if(!(lid in featuredLocations)) { featuredLocations[lid]=[] }
-        featuredLocations[lid].push(item);
-      }
-      rank++;
-    }
+            var vote = document;
 
-    for (var lid in featuredLocations) {
-      var location = Locations.findOne({_id:lid});
-      var img = Images.findOne({_id: location['imageid']});
-      var url = img.url({store:'images'});
+            var rank = 0;
+            var featuredLocations = {};
+            while(vote[rank]!=undefined) {
+              var item = Items.findOne({_id: vote[rank]})
+              if(item!=undefined) {
+                var lid = item.locationid;
+                if(!(lid in featuredLocations)) { featuredLocations[lid]=[] }
+                featuredLocations[lid].push(item);
+              }
+              rank++;
+            }
 
-      var h=""+ //Horrible
+            for (var lid in featuredLocations) {
+              var location = Locations.findOne({_id:lid});
+              var img = Images.findOne({_id: location['imageid']});
+              var url = img.url({store:'images'});
+
+              var h=""+ //css for googlemap info window
 "<head>"+
 "  <style>"+
 "    .miw-title {"+
@@ -103,38 +82,36 @@ Template.googlemap.onCreated(function() {
 "      <img class='miw-img-fill-div' src="+url+"></img>"+
 "    </div>"+
 "    <div class='miw-items-wrapper'>";
-      featuredLocations[lid].forEach(function(item) {
-        var img = Images.findOne({_id: item['imageid']});
-        var url = img.url({store:'thumbs'});
-            h=h+
+              featuredLocations[lid].forEach(function(item) {
+                var img = Images.findOne({_id: item['imageid']});
+                var url = img.url({store:'thumbs'});
+                    h=h+
 "      <div class='miw-item-image-div'>"+
 "        <img class='miw-img-fill-div' src="+url+"></img>"+
 "      </div>"
-      });
-      h=h+
+              });
+              h=h+
 "    </div>"+
 "  </div>"+
 "</body>";
-      console.log(h);
-      var newmarker =  new google.maps.Marker({
-        position: {lat: Number(location['lat']), lng: Number(location['lng'])},
-        map: map.instance,
-        htmlString: h
-      });
-      newmarker.addListener('click', function() {
-        infowindow.setContent(this.htmlString);
-        infowindow.open(map.instance, this);
-      });
-    }
+              var newmarker =  new google.maps.Marker({
+                position: {lat: Number(location['lat']), lng: Number(location['lng'])},
+                map: map.instance,
+                htmlString: h
+              });
 
-  }
-});
-}
-});
+              newmarker.addListener('click', function() {
+                infowindow.setContent(this.htmlString);
+                infowindow.open(map.instance, this);
+              });
 
-
-  });
-});
+            }
+          }
+        }); //Votes.find
+      }
+    }); //LatestVote.find
+  }); //GoogleMaps.ready
+}); //Template.googlemap.onCreated
 
 Template.googlemap.helpers({
   exampleMapOptions: function() {
@@ -150,7 +127,7 @@ Template.googlemap.helpers({
 
 Template.results.helpers({
   url: function() {
-    console.log(FlowRouter.getRouteName());
+    //console.log(FlowRouter.getRouteName());
     return FlowRouter.getRouteName();
   }
 });
