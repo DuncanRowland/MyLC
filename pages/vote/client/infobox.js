@@ -89,6 +89,7 @@ MakeInfoboxes = function(vote) {
     site['lat']=Number(location['lat']);
     site['lng']=Number(location['lng']);
     doc[sitenum]=site;
+    sitenum++;
   } //lid in featuredLocations
 
   return doc;
