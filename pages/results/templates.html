@@ -2,7 +2,9 @@
   <div id="fb-root"></div>
   <div class="container">
     <header>
-      {{> loginButtons}}
+      {{#if currentUser}}
+        {{> loginButtons}}
+      {{/if}}
       <div id="Thanks">
         {{#if currentUser}}
           <h1>Thanks for your choices!</h1><br>
