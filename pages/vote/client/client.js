@@ -116,9 +116,15 @@ Template.vote.events({
        rank+=1;
     });
 
-    Votes.insert(v, function(err,newid){
-      LatestVote.upsert(Meteor.userId(), { $set: { latest: newid } } );
-    });
+    //Votes.insert(v, function(err,newid){
+    //  LatestVote.upsert(Meteor.userId(), { $set: { latest: newid } } );
+    //});
+    Votes.insert(v);
+    console.log("RETURNED");
+    console.log("ARSE"+v);
+    console.log("FUCK"+MakeInfoboxes(v));
+    console.log("RESULT");
+    LatestVote.upsert(Meteor.userId(), { $set: { latest: MakeInfoboxes(v) } } );
 
     FlowRouter.go('/r/'+Meteor.userId());
   }
