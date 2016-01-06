@@ -33,16 +33,26 @@ Template.adminLocations.events({
     var lat = event.target.lat.value;
     var lng = event.target.lng.value;
     var url = event.target.url.value;
+    var locationId = event.target.locationId.value;
 
     Images.insert(image, function (err, fileObj) {
       // Inserted new doc with ID fileObj._id, and kicked off the data upload using HTTP
       // Insert a item into the collection
-      Locations.insert({
-        name: name,
-        url: url,
-        lat: lat,
-        lng: lng,
-        imageid: fileObj._id
+      //Locations.insert({
+      //  name: name,
+      //  url: url,
+      //  lat: lat,
+      //  lng: lng,
+      //  imageid: fileObj._id
+      //});
+      Locations.upsert(locationId, {
+        $set: {
+          name: name,
+          url: url,
+          lat: lat,
+          lng: lng,
+          imageid: fileObj._id
+        }
       });
     });
 

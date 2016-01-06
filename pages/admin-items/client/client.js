@@ -2,7 +2,7 @@ Template.adminItems.helpers({
   items: function () {
     // Show in alphabetical order
     var r = [];
-    var result = Items.find({}, {sort: {name: 1}});
+    var result = Items.find({}, {sort: {_id: 1}});
     result.forEach(function(entry) {
       var locationid = entry['locationid'];
       var location = Locations.findOne({_id:locationid})
@@ -41,16 +41,25 @@ Template.adminItems.events({
     var image = event.target.image.files[0];
     var name = event.target.name.value;
     var description = event.target.description.value;
-    var location = event.target.location.value;
+    var locationId = event.target.locationId.value;
+    var itemId = event.target.itemId.value;
 
     Images.insert(image, function (err, fileObj) {
       // Inserted new doc with ID fileObj._id, and kicked off the data upload using HTTP
       // Insert a item into the collection
-      Items.insert({
-        name: name,
-        description: description,
-        locationid: location,
-        imageid: fileObj._id
+      //Items.insert({
+      //  name: name,
+      //  description: description,
+      //  locationid: location,
+      //  imageid: fileObj._id
+      //});
+      Items.upsert(itemId, {
+        $set: {
+          name:name,
+          description: description,
+          locationid: locationId,
+          imageid: fileObj._id
+        }
       });
     });
 

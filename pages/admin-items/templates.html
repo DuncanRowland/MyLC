@@ -5,13 +5,20 @@
       <form class="new-item">
         <input type="text" name="name" placeholder="Type here to set item title" onkeydown="if (event.keyCode == 13) {return false;}"/>
         <input type="text" name="description" placeholder="Type here to add description" onkeydown="if (event.keyCode == 13) {return false;}"/>
-        <select name="location">
+        Location
+        <select name="locationId">
           {{#each locations}}
             {{> locationOption}}
           {{/each}}
-        </select>
+        </select><br>
         <input type="file" name="image"/>
-        <center><button class="button-style">Create</button></center>
+        <br>Replace Item
+        <select name="itemId">
+          {{#each items}}
+            {{> itemId}}
+          {{/each}}
+        </select>
+        <button class="button-style">Replace</button>
       </form>
     </header>
     <ul>
@@ -25,16 +32,20 @@
 <template name="itemDeleteable">
   <li>
     <div class="portlet ui-widget ui-widget-content ui-helper-clearfix ui-corner-all">
-      <div class="portlet-header ui-widget-header ui-corner-all">{{name}}
+      <div class="portlet-header ui-widget-header ui-corner-all">{{_id}}:{{name}}
          <span class='ui-icon ui-icon-plusthick portlet-toggle'></span></div>
       <div class="portlet-content">{{description}}<br>({{location}})
       <div><img src="{{image.url store='images'}}" class='img-fill-div'/></div>
-        <span title="DELETE">
+<!--        <span title="DELETE">
           <button class="delete">&times;</button>
-        </span>
+        </span> -->
       </div>
     </div>
   </li>
+</template>
+
+<template name="itemId">
+  <option value="{{_id}}">{{_id}}</option>
 </template>
 
 <template name="locationOption">

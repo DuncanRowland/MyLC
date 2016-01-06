@@ -5,10 +5,16 @@
       <form class="new-item">
         <input type="text" name="name" placeholder="Type here to set item title" onkeydown="if (event.keyCode == 13) {return false;}"/>
         <input type="text" name="url" placeholder="Type here to add url" onkeydown="if (event.keyCode == 13) {return false;}"/>
-        <input type="number" step="0.001" name="lat" placeholder="Enter latitude">
-        <input type="number" step="0.001" name="lng" placeholder="Enter longitude">
+        <input type="number" step="0.0001" name="lat" placeholder="Enter latitude">
+        <input type="number" step="0.0001" name="lng" placeholder="Enter longitude">
         <input type="file" name="image"/>
-        <center><button class="button-style">Create</button></center>
+        <br>Replace Location
+        <select name="locationId">
+          {{#each locations}}
+            {{> locationOption}}
+          {{/each}}
+        </select>
+        <button class="button-style">Replace</button>
       </form>
     </header>
     <ul>
@@ -27,9 +33,9 @@
       <div class="portlet-content">{{url}}:({{lat}},{{lng}})
       <div><img src="{{image.url store='images'}}" class='img-fill-div'/></div>
       <div><img src="{{image.url store='thumbs'}}" class='img-fill-div'/></div>
-        <span title="DELETE">
+<!--        <span title="DELETE">
           <button class="delete">&times;</button>
-        </span>
+        </span> -->
       </div>
     </div>
   </li>

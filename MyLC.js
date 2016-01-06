@@ -66,10 +66,9 @@ randomisedIndex = [];
 if (Meteor.isClient) {
   for(var i=0;i<100;i++) {
     var id;
-    if(i<10) {
-      id="1111111111111100"+i;
-    } else {
-      id="111111111111110"+i;
+    id=""+i;
+    while(id.length<3) {
+      id="0"+id;
     }
     randomisedIndex.push(id);
   }
