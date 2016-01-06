@@ -7,10 +7,8 @@ Template.selectItems.helpers({
     var end = start + options.hash.count;
     for(var index=start; index<end; index++) {
       var id = randomisedIndex[index];
-      //console.log("get entry");
       var entry = Items.findOne({_id: id});
       if(entry===undefined) { return [] }; //Database not ready?
-      //console.log(entry);
       var imageid = entry['imageid'];
       var img = Images.findOne({_id: imageid});
       if(img != undefined) {
@@ -22,7 +20,6 @@ Template.selectItems.helpers({
         r.push(obj);
       }
     }
-    //console.log(r.length);
     return r;
   }
 });
@@ -30,7 +27,6 @@ Template.selectItems.helpers({
 updateSizes = function() {
   var width = $('.container').width()-40;
   var topgap = $('header').height() * 2.75;
-  console.log(topgap);
   var height = $('.container').height()-topgap; /*header +row? + instructions*/
 
   var numRows = 0;
@@ -40,7 +36,6 @@ updateSizes = function() {
     var numCols = Math.floor(width/wh);
     var numItems = numRows * numCols;
   } while((numItems<100 || numCols<10) && numRows<20);
-  console.log(numCols);
   var thumbsize = wh;
 //  if ( height>width ) { height=width; } else { width=height; }
   $('.sortable-items-target').css('height',(thumbsize+4));
@@ -120,10 +115,6 @@ Template.vote.events({
     //  LatestVote.upsert(Meteor.userId(), { $set: { latest: newid } } );
     //});
     Votes.insert(v);
-    console.log("RETURNED");
-    console.log("ARSE"+v);
-    console.log("FUCK"+MakeInfoboxes(v));
-    console.log("RESULT");
     LatestVote.upsert(Meteor.userId(), { $set: { latest: MakeInfoboxes(v) } } );
 
     FlowRouter.go('/r/'+Meteor.userId());

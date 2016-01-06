@@ -12,15 +12,15 @@ try {
 
     LatestVote.find({"_id":FlowRouter.current().params.userid}).observe({
       added: function(document) {
-console.log("CALLBACK");
+
         var latest = document['latest'];
 
         var sitenum = 0;
         while(latest[sitenum]!=undefined) {
-
-          var thishtml=latest[sitenum]['html'];
-          var thislat=latest[sitenum]['lat'];
-          var thislng=latest[sitenum]['lng'];
+          var thissite = latest[sitenum]
+          var thishtml=thissite['html'];
+          var thislat=thissite['lat'];
+          var thislng=thissite['lng'];
           sitenum++;
 
           var newmarker =  new google.maps.Marker({
@@ -36,7 +36,6 @@ console.log("CALLBACK");
 
         }
       }
-
     }); //LatestVote.find
   }); //GoogleMaps.ready
 
