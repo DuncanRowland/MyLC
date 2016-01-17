@@ -30,7 +30,6 @@ try {
           });
 
           newmarker.addListener('click', function() {
-            //$('#fancyboxholder').html(this.htmlString);
             $.fancybox({
               'autoScale': true,
               'transitionIn': 'elastic',
@@ -39,11 +38,8 @@ try {
               'speedOut': 300,
               'autoDimensions': true,
               'centerOnScroll': true,
-              'content' : "HI"+this.htmlString
+              'content' : this.htmlString
             });
-            console.log(this.htmlString);
-            //infowindow.setContent(this.htmlString);
-            //infowindow.open(map.instance, this);
           });
 
         }

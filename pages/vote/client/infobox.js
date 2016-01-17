@@ -66,9 +66,9 @@ MakeInfoboxes = function(vote) {
 "</head>"+
 "<body>"+
 "  <div class='miw-wrapper'>"+
-"    <div class='miw-title'><a target='_blank' href="+location['url']+">"+location['name']+"</a></div>"+
+"    <div class='miw-title'><a target='_blank' href='"+location['url']+"'>"+location['name']+"</a></div>"+
 "    <div class='miw-location-image-div'>"+
-"      <img class='miw-img-fill-div' src="+url+"></img>"+
+"      <img class='miw-img-fill-div' src='"+url+"'></img>"+
 "    </div>"+
 "    <div class='miw-items-wrapper'>";
     featuredLocations[lid].forEach(function(item) {
@@ -76,7 +76,7 @@ MakeInfoboxes = function(vote) {
       var url = img.url({store:'thumbs'});
         h=h+
 "      <div class='miw-item-image-div'>"+
-"        <img class='miw-img-fill-div' src="+url+"></img>"+
+"        <img class='miw-img-fill-div' src='"+url+"'></img>"+
 "      </div>"
     });
     h=h+
