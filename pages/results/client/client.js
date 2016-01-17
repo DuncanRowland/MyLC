@@ -30,7 +30,7 @@ try {
           });
 
           newmarker.addListener('click', function() {
-            $('#fancyboxholder').html(this.htmlString);
+            //$('#fancyboxholder').html(this.htmlString);
             $.fancybox({
               'autoScale': true,
               'transitionIn': 'elastic',
@@ -39,7 +39,8 @@ try {
               'speedOut': 300,
               'autoDimensions': true,
               'centerOnScroll': true,
-              'href' : '#fancyboxholder'
+              'content' : "HI"+this.htmlString
+              console.log(this.htmlString);
             });
             //infowindow.setContent(this.htmlString);
             //infowindow.open(map.instance, this);
