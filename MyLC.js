@@ -65,7 +65,7 @@ if (Meteor.isServer) {
 randomisedIndex = [];
 if (Meteor.isClient) {
 
-  if (/Edge\/12./i.test(navigator.userAgent)){
+  if (/Edge\/1/i.test(navigator.userAgent)){
      // this is Microsoft Edge
      window.alert('Microsoft Edge is not supported.\nPlease use a different browser.');
   }
