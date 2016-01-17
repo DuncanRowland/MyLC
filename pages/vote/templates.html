@@ -7,11 +7,9 @@
         {{>navigator}}
       {{/if}}
     </header>
-    {{#if currentUser}}
-    <div style="text-align:center">
-      <div class="sortable-items-target" id="ranked"></div>
+    <div style="text-align:center" hidden={{hideTargetThumbs}}>
+      <ul class="sortable-items-target" id="ranked"><li class="list-dummy-style"><img src='/drophere.png' class='img-fill-div'/></li></ul>
     </div>
-    {{/if}}
     {{>instructions}}
     {{#if currentUser}}
       {{>selectItems}}

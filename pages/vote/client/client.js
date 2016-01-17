@@ -24,6 +24,7 @@ Template.selectItems.helpers({
   }
 });
 
+var thumbsize;
 updateSizes = function() {
   var width = $('.container').width()-40;
   var topgap = $('header').height() * 2.75;
@@ -36,17 +37,28 @@ updateSizes = function() {
     var numCols = Math.floor(width/wh);
     var numItems = numRows * numCols;
   } while((numItems<100 || numCols<10) && numRows<20);
-  var thumbsize = wh;
+  thumbsize = wh;
   if(thumbsize<30) {thumbsize=30};
-  $('.sortable-items-target').css('height',(thumbsize+4));
-  $('.sortable-items-target').css('width',(thumbsize+2)*10);
+  $('.sortable-items-target').css('height',thumbsize);
+  $('.sortable-items-target').css('width',thumbsize*10);
   $('.list-item-style').css('width',thumbsize);
   $('.list-item-style').css('height',thumbsize);
+  $('.list-dummy-style').css('width',thumbsize);
+  $('.list-dummy-style').css('height',thumbsize);
 }
 
 Template.selectItems.rendered = function() {
 
   $( ".sortable-items-target" ).sortable({
+    placeholder: "list-placeholder-style",
+    items: "li:not(.list-dummy-style)",
+    over: function() {
+      $('.list-dummy-style').remove();
+    },
+    start: function() {
+      $('.list-placeholder-style').css('width',thumbsize);
+      $('.list-placeholder-style').css('height',thumbsize);
+    },
     connectWith: ".sortable-items-source",
     revert: 300,
     dropOnEmpty: true,
@@ -58,6 +70,11 @@ Template.selectItems.rendered = function() {
   }).disableSelection();
 
   $( ".sortable-items-source" ).sortable({
+    placeholder: "list-placeholder-style",
+    start: function() {
+      $('.list-placeholder-style').css('width',thumbsize);
+      $('.list-placeholder-style').css('height',thumbsize);
+    },
     connectWith: ".sortable-items-target",
     revert: 300,
     receive: function(event, ui) {
@@ -121,6 +138,12 @@ Template.vote.events({
   }
 });
 
+Template.vote.helpers({
+  hideTargetThumbs: function(){
+    return Session.get("currentPage")==0;
+  }
+});
+
 Template.item.rendered = function() {
   $( ".portlet-toggle" ).unbind("click");
   $( ".portlet-toggle" ).click(function() {
@@ -131,13 +154,13 @@ Template.item.rendered = function() {
 }
 
 Template.navigator.helpers({
-  currentPageHasBack: function(){;
+  currentPageHasBack: function(){
     return Session.get("currentPage")!=0;
   },
-  currentPageHasSubmit: function(){;
+  currentPageHasSubmit: function(){
     return Session.get("currentPage")==2;
   },
-  currentPageHasNext: function(){;
+  currentPageHasNext: function(){
     return Session.get("currentPage")!=2;
   }
 });
