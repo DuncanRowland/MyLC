@@ -37,9 +37,9 @@ updateSizes = function() {
     var numItems = numRows * numCols;
   } while((numItems<100 || numCols<10) && numRows<20);
   var thumbsize = wh;
-//  if ( height>width ) { height=width; } else { width=height; }
+  if(thumbsize<30) {thumbsize=30};
   $('.sortable-items-target').css('height',(thumbsize+4));
-  //$('.sortable-items-target').css('width',(thumbsize+4)*10);
+  $('.sortable-items-target').css('width',(thumbsize+2)*10);
   $('.list-item-style').css('width',thumbsize);
   $('.list-item-style').css('height',thumbsize);
 }
