@@ -30,8 +30,19 @@ try {
           });
 
           newmarker.addListener('click', function() {
-            infowindow.setContent(this.htmlString);
-            infowindow.open(map.instance, this);
+            $('#fancyboxholder').html(this.htmlString);
+            $.fancybox({
+              'autoScale': true,
+              'transitionIn': 'elastic',
+              'transitionOut': 'elastic',
+              'speedIn': 500,
+              'speedOut': 300,
+              'autoDimensions': true,
+              'centerOnScroll': true,
+              'href' : '#fancyboxholder'
+            });
+            //infowindow.setContent(this.htmlString);
+            //infowindow.open(map.instance, this);
           });
 
         }
