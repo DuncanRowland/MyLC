@@ -40,8 +40,8 @@ try {
               'autoDimensions': true,
               'centerOnScroll': true,
               'content' : "HI"+this.htmlString
-              console.log(this.htmlString);
             });
+            console.log(this.htmlString);
             //infowindow.setContent(this.htmlString);
             //infowindow.open(map.instance, this);
           });
