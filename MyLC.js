@@ -67,7 +67,7 @@ if (Meteor.isClient) {
 
   if (/Edge\/1/i.test(navigator.userAgent)){
      // this is Microsoft Edge
-     window.alert('Microsoft Edge is not supported.\nPlease use a different browser.');
+     window.alert('Microsoft Edge partially supported.\nClick the green arrow to load items.');
   }
 
   for(var i=0;i<100;i++) {
