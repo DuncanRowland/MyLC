@@ -3,7 +3,8 @@
 /* CSS declarations go here */
 body {
   overflow: hidden;
-  font-family: Helvetica Neue,Helvetica,Arial,sans-serif;
+  /*font-family: Helvetica Neue,Helvetica,Arial,sans-serif;*/
+  font-family: FontAwesome;
   background-color: #315481;
   background-image: linear-gradient(to bottom, #315481, #918e82 100%);
   background-attachment: fixed;
@@ -40,13 +41,13 @@ header {
   display: block;
 }
 
-h1 {
+/*h1 {
   font-size: 1.5em;
   margin: 0;
   margin-bottom: 0px;
   display: inline-block;
   margin-right: 1em;
-}
+}*/
 
 #MyLC {
   padding-top: 10px;
@@ -284,7 +285,7 @@ textarea {
 }
 
 .login-buttons-dropdown-align- {
-  text-align: right;
+  text-align: left;
 }
 
 /* map info window style in code - see h=h+... */

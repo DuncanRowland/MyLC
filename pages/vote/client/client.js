@@ -142,7 +142,7 @@ Template.vote.helpers({
   hideTargetThumbs: function(){
     if(!Meteor.userId() && Session.get("currentPage")!=0) {
       $(".sortable-items-target").empty();
-      $(".sortable-items-target").append("<li class='list-dummy-style'><img src='/drophere.png' class='img-fill-div'/>");
+      $(".sortable-items-target").append("<li class='list-dummy-style'><img src='/drophere.png' class='img-fill-div'/></li>");
       Session.set("currentPage", 0);
       FlowRouter.go('/');
     }

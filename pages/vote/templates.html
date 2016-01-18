@@ -8,7 +8,7 @@
       {{/if}}
     </header>
     <div style="text-align:center" hidden={{hideTargetThumbs}}>
-      <ul class="sortable-items-target" id="ranked"><li class="list-dummy-style"><img src='/drophere.png' class='img-fill-div'/></li></ul>
+      <ul class="sortable-items-target" id="ranked"><li class='list-dummy-style'><img src='/drophere.png' class='img-fill-div'/></li></ul>
     </div>
     {{>instructions}}
     {{#if currentUser}}
@@ -22,13 +22,13 @@
   <table class="nav-block">
     <tr>
       <td class="nav-button-style-left">
-        {{#if currentPageHasBack}}<button class="button-style back-click">Back</button>{{/if}}
+        {{#if currentPageHasBack}}<button class="button-style back-click"><i class="fa fa-angle-double-left"></i> Back</button>{{/if}}
       </td>
       <td class="nav-button-style-middle">
-        {{#if currentPageHasSubmit}}<button class="button-style submit-click">Submit</button>{{/if}}
+        {{#if currentPageHasSubmit}}<button class="button-style submit-click"><i class="fa fa-angle-double-right"></i> Submit <i class="fa fa-angle-double-left"></i></button>{{/if}}
       </td>
       <td class="nav-button-style-right">
-        {{#if currentPageHasNext}}<button class="button-style next-click">Next</button>{{/if}}
+        {{#if currentPageHasNext}}<button class="button-style next-click">Next <i class="fa fa-angle-double-right"></i></button>{{/if}}
       </td>
     </tr>
   </table>
