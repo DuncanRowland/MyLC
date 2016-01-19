@@ -3,8 +3,7 @@
 /* CSS declarations go here */
 body {
   overflow: hidden;
-  /*font-family: Helvetica Neue,Helvetica,Arial,sans-serif;*/
-  font-family: FontAwesome;
+  font-family: Helvetica Neue,Helvetica,Arial,sans-serif;
   background-color: #315481;
   background-image: linear-gradient(to bottom, #315481, #918e82 100%);
   background-attachment: fixed;
@@ -26,12 +25,12 @@ body {
   margin: 0 auto;
   min-height: 100%;
   height: 100vh;
-  background: #d2edf4;
-  background-image: linear-gradient(to bottom, #d0edf5, #e1e5f0 100%);
+  background: #e1e5f0;
+  /*background-image: linear-gradient(to bottom, #d0edf5, #e1e5f0 100%);*/
 }
 
 header {
-  background: #d2edf4;
+  /*background: #d2edf4;*/
   background-image: linear-gradient(to bottom, #d0edf5, #e1e5f0 100%);
   padding: 20px 15px 15px 15px;
   position: relative;
@@ -41,13 +40,17 @@ header {
   display: block;
 }
 
-/*h1 {
+h1 {
   font-size: 1.5em;
-  margin: 0;
-  margin-bottom: 0px;
-  display: inline-block;
-  margin-right: 1em;
-}*/
+  font-weight: normal;
+  margin: 0px;
+}
+
+h2 {
+  font-size: 1.1em;
+  font-weight: normal;
+  margin: 0px;
+}
 
 #MyLC {
   padding-top: 10px;
@@ -221,8 +224,8 @@ header .hide-completed {
   border-width: 0px 0px 0px 0px;
   margin: 0px;
   height: 100%;
-  background: #d2edf4;
-  background-image: linear-gradient(to bottom, #b0cdd5, #c1c5d0 100%);
+  /*background: #d2edf4;*/
+  background-image: linear-gradient(to bottom, #d1d5e0, #d9d9d9 100%);
 }
 .sortable-items-target {
   font-size: 0;
