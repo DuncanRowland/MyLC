@@ -41,6 +41,8 @@ updateSizes = function() {
   if(thumbsize<31) {thumbsize=31}; /*Fiddles for iOS to make 10x10*/
   if(width==335)thumbsize=36; /*iPhone6/s*/
   if(width==374)thumbsize=40; /*iPhone6/s Plus*/
+  if(width==360)thumbsize=39; /*Chrome*/
+  /*console.log(width);*/
   $('.sortable-items-target').css('height',thumbsize);
   $('.sortable-items-target').css('width',thumbsize*10);
   $('.list-item-style').css('width',thumbsize);
