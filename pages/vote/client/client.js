@@ -27,7 +27,7 @@ Template.selectItems.helpers({
 var thumbsize;
 updateSizes = function() {
   var width = $('.container').width()-40;
-  var topgap = $('header').height()+30/*for infotext*/;
+  var topgap = $('header').height()*2/*for infotext*/;
   var height = $('.container').height()-topgap; /*header +row? + instructions*/
 
   var numRows = 0;
@@ -38,10 +38,10 @@ updateSizes = function() {
     var numItems = numRows * numCols;
   } while((numItems<100 || numCols<10) && numRows<20);
   thumbsize = wh;
-  //if(thumbsize<31) {thumbsize=31}; /*Fiddles for iOS to make 10x10*/
-  //if(width==335)thumbsize=36; /*iPhone6/s*/
-  //if(width==374)thumbsize=40; /*iPhone6/s Plus*/
-  //if(width==360)thumbsize=39; /*Chrome*/
+  if(thumbsize<31) {thumbsize=31}; /*Fiddles for iOS to make 10x10*/
+  if(width==335)thumbsize=36; /*iPhone6/s*/
+  if(width==374)thumbsize=40; /*iPhone6/s Plus*/
+  if(width==360)thumbsize=39; /*Chrome*/
   /*console.log(width);*/
   $('.sortable-items-target').css('height',thumbsize);
   $('.sortable-items-target').css('width',thumbsize*10);
