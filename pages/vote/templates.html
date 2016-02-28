@@ -7,7 +7,7 @@
         {{>navigator}}
       {{/if}}
     </header>
-    <div style="text-align:center" hidden={{hideTargetThumbs}}>
+    <div style="text-align:center" hidden={{hideTargetThumbs}} id="targetitems">
       <ul class="sortable-items-target" id="ranked"><li class='list-dummy-style'><img src='/drophere.png' class='img-fill-div'/></li></ul>
     </div>
     {{>instructions}}
@@ -25,7 +25,7 @@
         {{#if currentPageHasBack}}<button class="button-style back-click"><i class="fa fa-angle-double-left"></i> Back</button>{{/if}}
       </td>
       <td class="nav-button-style-middle">
-        {{#if currentPageHasSubmit}}<button class="button-style submit-click"><i class="fa fa-angle-double-right"></i> Submit <i class="fa fa-angle-double-left"></i></button>{{/if}}
+        {{#if currentPageHasSubmit}}<button class="button-style submit-click">Submit Collection</button>{{/if}}
       </td>
       <td class="nav-button-style-right">
         {{#if currentPageHasNext}}<button class="button-style next-click">Next <i class="fa fa-angle-double-right"></i></button>{{/if}}
@@ -37,13 +37,16 @@
 <template name="instructions">
   <div hidden={{hidePage}}>
     <div class="info-text">
-      <h2>Text to be written</h2><br>
-      All instructions go here along with any logos etc...<br>
-      The aim of this project is... etc...<br>
-      Choose your ten favorite items from the collection... etc...<br>
-      Click the items to find out more about each... etc...<br>
+      <h2>Make your own collection of Lincolnshire's treasures and share it with your friends.</h2><br>
       <br>
-      To begin, click next.<br>
+      To begin, sign in above and click next.<br>
+      <br>
+      <br><h6>
+      Your preferences will contribute to the ‘Our Lincolnshire’ research project. For more details, please check out our
+      <a href="http://ourlincolnshire.blogs.lincoln.ac.uk/">
+        blog
+      </a>.</h6>
+      <br>
     </div>
     <p></p>
     <div class="info-text">
@@ -57,7 +60,7 @@
 <template name="selectItems">
   <div hidden={{hidePage}}>
     <div class="info-text" id="tasktext">
-      Drag up to ten selections above ordered favourites first. Click an image to see more details.
+      Drag up to ten selections into the bar above. Click a tile to enlarge it and to find out more.
     </div>
     <ul class="sortable-items-source">{{#each items start=0  count=100}}{{>item}}{{/each}}</ul>
   </div>
@@ -72,7 +75,7 @@
 <template name="addCommentAndSubmit">
   <div hidden={{hidePage}}>
     <div class="info-text">
-      Please add any comments about your selection below and click submit.<br><br>
+      Please add a few comments about your Lincolnshire Collection below and click submit.<br><br>
       <textarea id="comment"></textarea>
     </div>
   </div>
