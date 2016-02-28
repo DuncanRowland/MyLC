@@ -3,7 +3,7 @@
 /* CSS declarations go here */
 @font-face {
     font-family: "3Dumb";
-    src: url(http://localhost:3000/3Dumb.ttf) format("truetype");
+    src: url(/3Dumb.ttf) format("truetype");
 }
 h1.customfont {
     font-family: "3Dumb", Verdana, Tahoma;
