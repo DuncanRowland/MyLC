@@ -1,6 +1,11 @@
 <template name="vote">
   <div class="container">
     <header>
+      <div style="z-index:10;position:absolute;right:0;top:0;width:15%;max-width:100px">
+        <a href="http://ourlincolnshire.blogs.lincoln.ac.uk/">
+          <img class="img-fill-div" src="/OLLogo.png">
+        </a>
+      </div>
       {{> loginButtons}}
       <h1 id="MyLC">My Lincolnshire Collection</h1>
       {{#if currentUser}}
@@ -25,7 +30,7 @@
         {{#if currentPageHasBack}}<button class="button-style back-click"><i class="fa fa-angle-double-left"></i> Back</button>{{/if}}
       </td>
       <td class="nav-button-style-middle">
-        {{#if currentPageHasSubmit}}<button class="button-style submit-click">Submit Collection</button>{{/if}}
+        {{#if currentPageHasSubmit}}<button class="button-style submit-click"> Submit </button>{{/if}}
       </td>
       <td class="nav-button-style-right">
         {{#if currentPageHasNext}}<button class="button-style next-click">Next <i class="fa fa-angle-double-right"></i></button>{{/if}}
@@ -37,6 +42,7 @@
 <template name="instructions">
   <div hidden={{hidePage}}>
     <div class="info-text">
+      <br>
       <h2>Make your own collection of Lincolnshire's treasures and share it with your friends.</h2><br>
       <br>
       To begin, sign in above and click next.<br>
@@ -53,7 +59,7 @@
       <a href="http://ourlincolnshire.blogs.lincoln.ac.uk/">
         <img class="img-fill-div" style="width:75%;max-width:400px" src="logos.jpg">
       </a>
-  </div>
+    </div>
   </div>
 </template>
 
