@@ -125,6 +125,7 @@ Template.vote.events({
     var v = {};
     var rank = 0;
     v["userid"] = Meteor.userId();
+    v["timestamp"] = new Date().getTime().toString();
     v["comment"] = $("#comment").val();
     //$("div[id='ranked']").children().each(function(){
     $("#ranked").children().each(function(){
