@@ -33,7 +33,7 @@ FlowRouter.route('/r/:userid', {
        BlazeLayout.render('results');
     }
 });
-
+/*
 FlowRouter.route('/admin', {
     action: function(params, queryParams) {
        BlazeLayout.render('menu');
@@ -51,7 +51,7 @@ FlowRouter.route('/items', {
        BlazeLayout.render('adminItems');
     }
 });
-
+*/
 if (Meteor.isServer) {
   Accounts.emailTemplates.from = "MyLC <no-reply@mylincolnshirecollection.org>";
   Accounts.emailTemplates.sitename = "MyLC";

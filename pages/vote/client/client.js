@@ -27,7 +27,7 @@ Template.selectItems.helpers({
 var thumbsize;
 updateSizes = function() {
   var width = $('.container').width()-40;
-  var topgap = $('header').height()*2/*for infotext*/;
+  var topgap = $('header').height()*2+70/*for infotext*/;
   var height = $('.container').height()-topgap; /*header +row? + instructions*/
 
   var numRows = 0;

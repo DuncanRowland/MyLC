@@ -57,7 +57,7 @@ Template.googlemap.helpers({
       return {
         center: {lat: 53.22, lng: -0.54},
 //new google.maps.LatLng(53.22, -0.54),
-        zoom: 12
+        zoom: 8
       };
     }
   }

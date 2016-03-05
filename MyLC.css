@@ -228,7 +228,10 @@ header .hide-completed {
   display: inline-block;
   text-align: center;
   list-style-type: none;
-  padding: 0px;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  padding-left: 0px;
+  padding-right: 0px;
   border: solid #500;
   border-width: 0px 0px 0px 0px;
   margin: 0px;
