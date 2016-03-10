@@ -89,10 +89,35 @@ Template.selectItems.rendered = function() {
   }).disableSelection();
 
   $(document).ready(function() {
-    Session.set("currentPage", 0);
+    Session.set("currentPage", 1);
 
     $( window ).resize( updateSizes );
     //updateSizes(); Delay until next clicked
+
+    $.fancybox({
+      helpers : {
+        title: {
+          type: 'inside'
+        }
+      },
+      'width': '100%',
+      'height': '100%',
+      'autoScale': true,
+      'transitionIn': 'fade',
+      'transitionOut': 'fade',
+      'type': 'image',
+      'href': 'Banner.jpg',
+      'title': ""+
+"<div class='info-text'>"+
+"<br>"+
+"<h2>Make your own collection of Lincolnshire's treasures and share it with your friends.</h2><br>"+
+"<br><h5>"+
+"Your preferences will contribute to the ‘Our Lincolnshire’ research project. For more details, please check out our "+
+"<a target='_blank' href='http://ourlincolnshire.blogs.lincoln.ac.uk/'>"+
+"blog</a>.</h5>"+
+"<br>"+
+"</div>"
+            });
 
     $(".fancybox").fancybox({
       helpers : {
@@ -162,17 +187,18 @@ Template.item.rendered = function() {
     icon.toggleClass( "ui-icon-minusthick ui-icon-plusthick" );
     icon.closest( ".portlet" ).find( ".portlet-content" ).toggle();
   });
+  updateSizes();
 }
 
 Template.navigator.helpers({
   currentPageHasBack: function(){
-    return Session.get("currentPage")!=0;
+    return Session.get("currentPage")==2;
   },
   currentPageHasSubmit: function(){
     return Session.get("currentPage")==2;
   },
   currentPageHasNext: function(){
-    return Session.get("currentPage")!=2;
+    return Session.get("currentPage")==1;
   }
 });
 
