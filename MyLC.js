@@ -65,6 +65,8 @@ if (Meteor.isServer) {
 randomisedIndex = [];
 if (Meteor.isClient) {
 
+  if(Meteor.userId()){ Meteor.logout() }
+
   if (/Edge\/1/i.test(navigator.userAgent)){
      // this is Microsoft Edge
      window.alert('Microsoft Edge partially supported.\nClick the green arrow to load items.');
