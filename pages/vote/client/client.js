@@ -105,12 +105,14 @@ Template.selectItems.rendered = function() {
       'autoScale': true,
       'transitionIn': 'fade',
       'transitionOut': 'fade',
+      'closeBtn' : false,
       'type': 'image',
       'href': 'Banner.jpg',
       'title': ""+
 "<div class='info-text'>"+
 "<br>"+
 "<h2>Make your own collection of Lincolnshire's treasures and share it with your friends.</h2><br>"+
+"<input type='button' class='button-style' onclick='$.fancybox.close()' value='Start' />"+
 "<br><h5>"+
 "Your preferences will contribute to the ‘Our Lincolnshire’ research project. For more details, please check out our "+
 "<a target='_blank' href='http://ourlincolnshire.blogs.lincoln.ac.uk/'>"+
