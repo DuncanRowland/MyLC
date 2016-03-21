@@ -16,11 +16,8 @@
     <div style="text-align:center" hidden={{hideTargetThumbs}} id="targetitems">
       <ul class="sortable-items-target" id="ranked"><li class='list-dummy-style'><img src='/drophere.png' class='img-fill-div'/></li></ul>
     </div>
-    {{>instructions}}
-    {{#if currentUser}}
       {{>selectItems}}
       {{>addCommentAndSubmit}}
-    {{/if}}
   </div>
 </template>
 
@@ -38,31 +35,6 @@
       </td>
     </tr>
   </table>
-</template>
-
-<template name="instructions">
-  <div hidden={{hidePage}}>
-    <div class="info-text">
-      <br>
-      <h2>Make your own collection of Lincolnshire's treasures and share it with your friends.</h2><br>
-      <br>
-      <h2>What will you pick to represent Our Heritage?</h2><br>
-      <br>
-      <h2>To begin just click next.</h2><br>
-      <br>
-      <br><h5>
-      Your preferences will contribute to the ‘Our Lincolnshire’ research project. For more details, please check out our
-      <a target="_blank" href="http://ourlincolnshire.blogs.lincoln.ac.uk/">
-        blog</a>.</h5>
-      <br>
-    </div>
-    <p></p>
-    <div class="info-text">
-      <a target="_blank" href="http://ourlincolnshire.blogs.lincoln.ac.uk/">
-        <img class="img-fill-div" style="width:75%;max-width:400px" src="logos.jpg">
-      </a>
-    </div>
-  </div>
 </template>
 
 <template name="selectItems">

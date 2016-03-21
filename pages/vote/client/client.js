@@ -24,25 +24,46 @@ Template.selectItems.helpers({
   }
 });
 
+var throttle=0;
+updateSizesThrottled = function() {
+  throttle=(throttle+1)%100;
+  if(throttle==0) updateSizes();
+  console.log(throttle);
+}
 var thumbsize;
 updateSizes = function() {
-  var width = $('.container').width()-40;
-  var topgap = $('header').height()*2+70/*for infotext*/;
-  var height = $('.container').height()-topgap; /*header +row? + instructions*/
+
+  var width = $(window).width()-40;
+  var height = $(window).height()-
+               $('header').outerHeight()-
+               $('#tasktext').outerHeight()-
+               20;
 
   var numRows = 0;
   do {
     numRows++;
-    var wh = Math.floor(height/numRows);
+    var wh = Math.floor(height/(numRows+1));
     var numCols = Math.floor(width/wh);
-    var numItems = numRows * numCols;
-  } while((numItems<100 || numCols<10) && numRows<20);
+    var numItems = (numRows+1) * numCols;
+    /*console.log($('.sortable-items-source').width());
+    console.log($('.container').outerHeight());
+    console.log($(window).height());
+    console.log($('header').outerHeight());
+    console.log($('#tasktext').outerHeight());
+    console.log(numRows);
+    console.log(numCols);
+    console.log(numItems);
+    console.log(height);
+    console.log(wh);
+    console.log(wh*numRows);*/
+  } while((numItems<(100+numCols) || numCols<10) && numRows<20);
   thumbsize = wh;
   if(thumbsize<31) {thumbsize=31}; /*Fiddles for iOS to make 10x10*/
   if(width==335)thumbsize=36; /*iPhone6/s*/
   if(width==374)thumbsize=40; /*iPhone6/s Plus*/
   if(width==360)thumbsize=39; /*Chrome*/
-  /*console.log(width);*/
+  console.log(width);
+
   $('.sortable-items-target').css('height',thumbsize);
   $('.sortable-items-target').css('width',thumbsize*10);
   $('.list-item-style').css('width',thumbsize);
@@ -92,7 +113,6 @@ Template.selectItems.rendered = function() {
     Session.set("currentPage", 1);
 
     $( window ).resize( updateSizes );
-    //updateSizes(); Delay until next clicked
 
     $.fancybox({
       helpers : {
@@ -112,7 +132,7 @@ Template.selectItems.rendered = function() {
 "<div class='info-text'>"+
 "<br>"+
 "<h2>Make your own collection of Lincolnshire's treasures and share it with your friends.</h2><br>"+
-"<input type='button' class='button-style' onclick='$.fancybox.close()' value='Start' />"+
+"<input type='button' class='button-style' onclick='updateSizes();$.fancybox.close()' value='Start' />"+
 "<br><h5>"+
 "Your preferences will contribute to the ‘Our Lincolnshire’ research project. For more details, please check out our "+
 "<a target='_blank' href='http://ourlincolnshire.blogs.lincoln.ac.uk/'>"+
@@ -132,7 +152,6 @@ Template.selectItems.rendered = function() {
       }
     });
   });
-
 }
 
 Template.vote.events({
@@ -145,7 +164,6 @@ Template.vote.events({
     var cp = Session.get("currentPage");
     if(cp<2){cp++};
     Session.set("currentPage", cp);
-    updateSizes();
   },
   "click .submit-click": function (event) {
     // Get values from form element
@@ -172,13 +190,14 @@ Template.vote.events({
 
 Template.vote.helpers({
   hideTargetThumbs: function(){
-    if(!Meteor.userId() && Session.get("currentPage")!=0) {
+    /*if(!Meteor.userId() && Session.get("currentPage")!=0) {
       $(".sortable-items-target").empty();
       $(".sortable-items-target").append("<li class='list-dummy-style'><img src='/drophere.png' class='img-fill-div'/></li>");
-      Session.set("currentPage", 0);
+      Session.set("currentPage", 1);
       FlowRouter.go('/');
     }
-    return Session.get("currentPage")==0;
+    return Session.get("currentPage")==0;*/
+    return false;
   }
 });
 
@@ -189,7 +208,7 @@ Template.item.rendered = function() {
     icon.toggleClass( "ui-icon-minusthick ui-icon-plusthick" );
     icon.closest( ".portlet" ).find( ".portlet-content" ).toggle();
   });
-  updateSizes();
+  updateSizesThrottled();
 }
 
 Template.navigator.helpers({
@@ -203,13 +222,6 @@ Template.navigator.helpers({
     return Session.get("currentPage")==1;
   }
 });
-
-Template.instructions.helpers({
-  hidePage: function(){
-    if(Meteor.userId()==null) return false;
-    return Session.get("currentPage")!=0;
-  }
-})
 
 Template.selectItems.helpers({
   hidePage: function(){
