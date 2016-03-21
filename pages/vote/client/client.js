@@ -28,7 +28,6 @@ var throttle=0;
 updateSizesThrottled = function() {
   throttle=(throttle+1)%100;
   if(throttle==0) updateSizes();
-  console.log(throttle);
 }
 var thumbsize;
 updateSizes = function() {
@@ -62,7 +61,6 @@ updateSizes = function() {
   if(width==335)thumbsize=36; /*iPhone6/s*/
   if(width==374)thumbsize=40; /*iPhone6/s Plus*/
   if(width==360)thumbsize=39; /*Chrome*/
-  console.log(width);
 
   $('.sortable-items-target').css('height',thumbsize);
   $('.sortable-items-target').css('width',thumbsize*10);
