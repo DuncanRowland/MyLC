@@ -2,9 +2,6 @@ Items = new Mongo.Collection("items");
 Locations = new Mongo.Collection("locations");
 Votes = new Mongo.Collection("votes");
 LatestVote = new Mongo.Collection("latestvote");
-//Images = new FS.Collection("images", {
-//  stores: [new FS.Store.FileSystem("images", {path: "~/uploads"})]
-//});
 Images = new FS.Collection("images", {
     stores: [
       new FS.Store.FileSystem("images", {path: "~/uploads/images"}),
@@ -33,7 +30,7 @@ FlowRouter.route('/r/:userid', {
        BlazeLayout.render('results');
     }
 });
-/*
+/* Commented out admin access, also requres insecure and autopublish
 FlowRouter.route('/admin', {
     action: function(params, queryParams) {
        BlazeLayout.render('menu');
@@ -50,20 +47,50 @@ FlowRouter.route('/items', {
     action: function(params, queryParams) {
        BlazeLayout.render('adminItems');
     }
-});
+}); Don't forget to uncomment Images.allow insert below too...
 */
+
 if (Meteor.isServer) {
   Accounts.emailTemplates.from = "MyLC <no-reply@mylincolnshirecollection.org>";
   Accounts.emailTemplates.sitename = "MyLC";
   Images.allow({
-    'insert': function () {
+    //'insert': function () {
+    //  return true;
+    //},
+    'download':function() {
       return true;
     }
   });
+  Meteor.publish("items", function () {
+    return Items.find();
+  });
+  Meteor.publish("images", function () {
+    return Images.find();
+  });
+  Meteor.publish("locations", function () {
+    return Locations.find();
+  });
+  Meteor.publish("latestvote", function () {
+    return LatestVote.find();
+  });
 }
+
+Meteor.methods({
+  insertVotes: function (votes) {
+    Votes.insert(votes);
+  },
+  upsertLatestVote: function (uid, html) {
+    LatestVote.upsert(uid, { $set: { latest: html } } );
+  }
+});
 
 randomisedIndex = [];
 if (Meteor.isClient) {
+
+  Meteor.subscribe("items");
+  Meteor.subscribe("images");
+  Meteor.subscribe("locations");
+  Meteor.subscribe("latestvote");
 
   if(Meteor.userId()){ Meteor.logout() }
 
@@ -72,6 +99,7 @@ if (Meteor.isClient) {
      window.alert('Microsoft Edge partially supported.\nClick the green arrow to load items.');
   }
 
+  //Shuffle order of tiles
   for(var i=0;i<100;i++) {
     var id;
     id=""+i;

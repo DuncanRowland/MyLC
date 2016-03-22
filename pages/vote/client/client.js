@@ -1,4 +1,4 @@
-//var itemArray; //Lazy load and shuffle (needs 100 items in database)
+//var itemArray; //pre-shuffled
 
 Template.selectItems.helpers({
   items: function (options) {
@@ -44,17 +44,6 @@ updateSizes = function() {
     var wh = Math.floor(height/(numRows+1));
     var numCols = Math.floor(width/wh);
     var numItems = (numRows+1) * numCols;
-    /*console.log($('.sortable-items-source').width());
-    console.log($('.container').outerHeight());
-    console.log($(window).height());
-    console.log($('header').outerHeight());
-    console.log($('#tasktext').outerHeight());
-    console.log(numRows);
-    console.log(numCols);
-    console.log(numItems);
-    console.log(height);
-    console.log(wh);
-    console.log(wh*numRows);*/
   } while((numItems<(100+numCols) || numCols<10) && numRows<20);
   thumbsize = wh;
   if(thumbsize<31) {thumbsize=31}; /*Fiddles for iOS to make 10x10*/
@@ -170,32 +159,15 @@ Template.vote.events({
     v["userid"] = Meteor.userId();
     v["timestamp"] = new Date().getTime().toString();
     v["comment"] = $("#comment").val();
-    //$("div[id='ranked']").children().each(function(){
     $("#ranked").children().each(function(){
        v[rank]=this.id;
        rank+=1;
     });
 
-    //Votes.insert(v, function(err,newid){
-    //  LatestVote.upsert(Meteor.userId(), { $set: { latest: newid } } );
-    //});
-    Votes.insert(v);
-    LatestVote.upsert(Meteor.userId(), { $set: { latest: MakeInfoboxes(v) } } );
+    Meteor.call("insertVotes", v);
+    Meteor.call("upsertLatestVote", Meteor.userId(), MakeInfoboxes(v));
 
     FlowRouter.go('/r/'+Meteor.userId());
-  }
-});
-
-Template.vote.helpers({
-  hideTargetThumbs: function(){
-    /*if(!Meteor.userId() && Session.get("currentPage")!=0) {
-      $(".sortable-items-target").empty();
-      $(".sortable-items-target").append("<li class='list-dummy-style'><img src='/drophere.png' class='img-fill-div'/></li>");
-      Session.set("currentPage", 1);
-      FlowRouter.go('/');
-    }
-    return Session.get("currentPage")==0;*/
-    return false;
   }
 });
 

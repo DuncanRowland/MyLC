@@ -7,13 +7,12 @@
           <img class="img-fill-div" src="/OLLogo.png">
         </a>
       </div>
-      <!--{{> loginButtons}}-->
       <h1 id="MyLC" class="customfont">My Lincolnshire Collection</h1>
       {{#if currentUser}}
         {{>navigator}}
       {{/if}}
     </header>
-    <div style="text-align:center" hidden={{hideTargetThumbs}} id="targetitems">
+    <div style="text-align:center" id="targetitems">
       <ul class="sortable-items-target" id="ranked"><li class='list-dummy-style'><img src='/drophere.png' class='img-fill-div'/></li></ul>
     </div>
       {{>selectItems}}
