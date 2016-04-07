@@ -139,7 +139,12 @@ Template.selectItems.rendered = function() {
         var el = $("#"+_id);
         if ( el.parent().hasClass("sortable-items-source") )
         {
-           this.title="<center><input type='button' class='button-style' onclick='el=$(\"#"+_id+"\");$(\"#ranked\").prepend(el);el.fadeOut(0).fadeIn(\"slow\");$.fancybox.close()' value='Select' /></center><br>"+
+           this.title="<center><input type='button' class='button-style' onclick='$(\".list-dummy-style\").remove();el=$(\"#"+_id+"\");$(\"#ranked\").prepend(el);el.fadeOut(0).fadeIn(\"slow\");$.fancybox.close()' value='Select' /></center><br>"+
+                      this.title;
+        }
+        else
+        {
+           this.title="<center><input type='button' class='button-style' onclick='el=$(\"#"+_id+"\");$(\"#unranked\").append(el);el.fadeOut(0).fadeIn(\"slow\");$.fancybox.close()' value='Remove' /></center><br>"+
                       this.title;
         }
       }
