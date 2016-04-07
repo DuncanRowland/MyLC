@@ -47,7 +47,7 @@
 
 <template name="item">
   <li class="list-item-style" id={{_id}}>
-    <a href={{image.url store='images'}} class="fancybox" title={{name}} data-info={{description}}><img src={{image.url store='thumbs'}} class='img-fill-div'/></a>
+    <a href={{image.url store='images'}} class="fancybox" rel="fancygroup" title={{name}} data-info={{description}} id={{_id}}><img src={{image.url store='thumbs'}} class='img-fill-div'/></a>
   </li>
 </template>
 

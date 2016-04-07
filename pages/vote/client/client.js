@@ -127,15 +127,21 @@ Template.selectItems.rendered = function() {
 "<br>"+
 "</div>"
             });
-
     $(".fancybox").fancybox({
-      helpers : {
-        title: {
-          type: 'inside'
-        }
+      prevEffect		: 'elastic',
+      nextEffect		: 'elastic',
+      closeBtn		: true,
+      helpers		: {
+        title	: { type : 'inside' },
       },
-      beforeLoad : function() {
-        this.title = $(this.element).data('info');
+      afterLoad : function() {
+        var _id = this.group[this.index].element[0].id;
+        var el = $("#"+_id);
+        if ( el.parent().hasClass("sortable-items-source") )
+        {
+           this.title="<center><input type='button' class='button-style' onclick='el=$(\"#"+_id+"\");$(\"#ranked\").prepend(el);el.fadeOut(0).fadeIn(\"slow\");$.fancybox.close()' value='Select' /></center><br>"+
+                      this.title;
+        }
       }
     });
   });
