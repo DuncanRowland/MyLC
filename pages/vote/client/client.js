@@ -146,7 +146,7 @@ Template.selectItems.rendered = function() {
 "$(\"#ranked\").prepend(el);"+
 "el.fadeOut(0).fadeIn(\"slow\");"+
 "$.fancybox.close()'"+
-"/>"+this.title;
+"/>"+$(this.element).data('info');
         } else {
            this.title=""+
 "<input type='button' class='button-style' value='Remove' style='margin:auto;display:block' onclick='"+
@@ -154,7 +154,7 @@ Template.selectItems.rendered = function() {
 "$(\"#unranked\").append(el);"+
 "el.fadeOut(0).fadeIn(\"slow\");"+
 "$.fancybox.close()'"+
-"/>"+this.title;
+"/>"+$(this.element).data('info');
         }
       }
     });
