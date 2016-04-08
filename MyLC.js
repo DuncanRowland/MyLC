@@ -116,4 +116,20 @@ if (Meteor.isClient) {
     randomisedIndex[j] = tmp;
   }
 
+  //Fancybox hack to correct size issue (too tall when off bottom)
+  var F = $.fancybox;
+  F._orig_setDimension = F._setDimension;
+  F._setDimension = function() {
+    var viewport,
+        maxWidth;
+    F._orig_setDimension();
+    viewport  = F.getViewport();
+    maxWidth  = viewport.w - (F.current.margin[0] + F.current.margin[2]);
+    maxWidth = maxWidth / 1.25;
+    if ( parseFloat( F.current.dim.width ) < maxWidth ) {
+        F.current.dim.width = maxWidth + 'px';
+        F.wrap.width( maxWidth );
+    }
+}
+
 }

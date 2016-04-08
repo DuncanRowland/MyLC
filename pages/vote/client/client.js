@@ -130,6 +130,7 @@ Template.selectItems.rendered = function() {
     $(".fancybox").fancybox({
       prevEffect		: 'elastic',
       nextEffect		: 'elastic',
+//      maxHeight : '40%',
       closeBtn		: true,
       helpers		: {
         title	: { type : 'inside' },
@@ -139,7 +140,7 @@ Template.selectItems.rendered = function() {
         var el = $("#"+_id);
         if ( el.parent().hasClass("sortable-items-source") )
         {
-           this.title=$(this.element).data('info')+
+           this.title="<p align='justify'>"+$(this.element).data('info')+"</p>"+
 "<input type='button' class='button-style' value='Select' style='margin-left:auto;margin-right:auto;margin-top:15px;display:block' onclick='"+
 "$(\".list-dummy-style\").remove();"+
 "el=$(\"#"+_id+"\");"+
@@ -148,7 +149,7 @@ Template.selectItems.rendered = function() {
 "$.fancybox.close()'"+
 "/>";
         } else {
-           this.title=$(this.element).data('info')+
+           this.title="<p align='justify'>"+$(this.element).data('info')+"</p>"+
 "<input type='button' class='button-style' value='Remove' style='margin-left:auto;margin-right:auto;margin-top:15px;display:block' onclick='"+
 "el=$(\"#"+_id+"\");"+
 "$(\"#unranked\").append(el);"+

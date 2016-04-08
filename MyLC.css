@@ -310,6 +310,9 @@ textarea {
   text-align: left;
 }
 
+.fancybox-inner {
+    margin: 0 auto;
+}
 .fancybox-nav span {
  visibility: visible;
 }
