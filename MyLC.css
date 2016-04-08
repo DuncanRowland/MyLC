@@ -249,6 +249,7 @@ header .hide-completed {
   border: solid #b5c5bf;
   border-width: 1px 1px 1px 1px;
   margin: 0px;
+  margin-bottom: 10px;
   width: 100%;
   background: #e5f5ef;
 }
@@ -274,6 +275,11 @@ textarea {
 
 .button-style {
   font-size: 14px;
+  background-color: #212121;
+  color: #eeeeee;
+  -webkit-border-radius: 14px;
+   -moz-border-radius: 14px;
+        border-radius: 14px;
 }
 .nav-block {
   position: relative;
@@ -304,4 +310,13 @@ textarea {
   text-align: left;
 }
 
+.fancybox-nav span {
+ visibility: visible;
+}
+.fancybox-next {
+    right: -45px;
+}
+.fancybox-prev {
+    left: -45px;
+}
 /* map info window style in code - see h=h+... */

@@ -50,6 +50,7 @@ FlowRouter.route('/items', {
 }); Don't forget to uncomment Images.allow insert below too...
 */
 
+
 if (Meteor.isServer) {
   Accounts.emailTemplates.from = "MyLC <no-reply@mylincolnshirecollection.org>";
   Accounts.emailTemplates.sitename = "MyLC";

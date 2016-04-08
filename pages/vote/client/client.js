@@ -36,7 +36,7 @@ updateSizes = function() {
   var height = $(window).height()-
                $('header').outerHeight()-
                $('#tasktext').outerHeight()-
-               20;
+               30;
 
   var numRows = 0;
   do {
@@ -139,22 +139,22 @@ Template.selectItems.rendered = function() {
         var el = $("#"+_id);
         if ( el.parent().hasClass("sortable-items-source") )
         {
-           this.title=""+
-"<input type='button' class='button-style' value='Select' style='margin:auto;display:block' onclick='"+
+           this.title=$(this.element).data('info')+
+"<input type='button' class='button-style' value='Select' style='margin-left:auto;margin-right:auto;margin-top:15px;display:block' onclick='"+
 "$(\".list-dummy-style\").remove();"+
 "el=$(\"#"+_id+"\");"+
 "$(\"#ranked\").prepend(el);"+
 "el.fadeOut(0).fadeIn(\"slow\");"+
 "$.fancybox.close()'"+
-"/>"+$(this.element).data('info');
+"/>";
         } else {
-           this.title=""+
-"<input type='button' class='button-style' value='Remove' style='margin:auto;display:block' onclick='"+
+           this.title=$(this.element).data('info')+
+"<input type='button' class='button-style' value='Remove' style='margin-left:auto;margin-right:auto;margin-top:15px;display:block' onclick='"+
 "el=$(\"#"+_id+"\");"+
 "$(\"#unranked\").append(el);"+
 "el.fadeOut(0).fadeIn(\"slow\");"+
 "$.fancybox.close()'"+
-"/>"+$(this.element).data('info');
+"/>";
         }
       }
     });
