@@ -123,13 +123,14 @@ if (Meteor.isClient) {
     var viewport,
         maxWidth;
     F._orig_setDimension();
-    viewport  = F.getViewport();
-    maxWidth  = viewport.w - (F.current.margin[0] + F.current.margin[2]);
-    maxWidth = maxWidth / 1.25;
-    if ( parseFloat( F.current.dim.width ) < maxWidth ) {
+    if ( this.group.length!=1 ) { //Just hack for gallery fancyboxes
+      viewport  = F.getViewport();
+      maxWidth  = viewport.w - (F.current.margin[0] + F.current.margin[2]);
+      maxWidth = maxWidth / 1.25;
+      if ( parseFloat( F.current.dim.width ) < maxWidth ) {
         F.current.dim.width = maxWidth + 'px';
         F.wrap.width( maxWidth );
+      }
     }
-}
-
+  }
 }
