@@ -114,7 +114,7 @@ Template.selectItems.rendered = function() {
       'transitionOut': 'fade',
       'closeBtn' : false,
       'type': 'image',
-      'href': 'Banner.jpg',
+      'href': 'giphy.gif',
       'title': ""+
 "<div class='info-text'>"+
 "<br>"+
