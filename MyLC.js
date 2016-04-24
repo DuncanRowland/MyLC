@@ -126,7 +126,7 @@ if (Meteor.isClient) {
     if ( this.group.length!=1 /* && this.current.title.length > 400 */ ) { //Just hack for gallery fancyboxes
       viewport  = F.getViewport();
       maxWidth  = viewport.w - (F.current.margin[0] + F.current.margin[2]);
-      maxWidth = maxWidth / 1.25;
+      if(viewport.w>750) { maxWidth = maxWidth / 1.5; }
       if ( parseFloat( F.current.dim.width ) < maxWidth ) {
         F.current.dim.width = maxWidth + 'px';
         F.wrap.width( maxWidth );
