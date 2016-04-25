@@ -123,24 +123,13 @@ if (Meteor.isClient) {
   F.fitToView=false;
   F._setDimension = function() {
     var viewport,
-        maxWidth,
-        maxHeight;
+        maxWidth;
     F._orig_setDimension();
-    if ( this.group.length!=1 /* && this.current.title.length > 400 */ ) { //Just hack for gallery fancyboxes
+    if ( this.group.length!=1 ) { //Just hack for gallery fancyboxes
       viewport  = F.getViewport();
       maxWidth  = viewport.w - (F.current.margin[0] + F.current.margin[2]);
-      //if(viewport.w>750) { maxWidth = maxWidth / 1.5; }
-      maxWidth = maxWidth / 1.15;
-      if ( parseFloat( F.current.dim.width ) < maxWidth ) {
-        F.current.dim.width = maxWidth + 'px';
-        F.wrap.width( maxWidth );
-      }
-      /*maxHeight  = viewport.h - (F.current.margin[1] + F.current.margin[3]);
-      //if(viewport.h>750) { maxWidth = maxWidth / 1.5; }
-      if ( parseFloat( F.current.dim.height ) < maxHeight ) {
-        F.current.dim.height = maxHeight + 'px';
-        F.wrap.height( maxHeight );
-      }*/
+      F.current.dim.width = maxWidth + 'px';
+      F.wrap.width( maxWidth );
     }
   }
 }
